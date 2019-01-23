@@ -15,7 +15,6 @@ public class FormRegistrazione extends Activity {
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
 
-    //Prova commit
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
