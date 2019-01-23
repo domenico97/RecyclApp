@@ -14,7 +14,8 @@ public class FormRegistrazione extends Activity {
     private EditText email, password, nome, cognome, telefono, indirizzo, cf;
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
-//PROVA
+    private int prova;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
