@@ -2,15 +2,15 @@ package com.example.domenico.myapp;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.synnapps.carouselview.CarouselView;
 
-public class HomePageOperatoreEcologico extends Activity {
+public class HomePageOperatoreEcologico extends AppCompatActivity {
 
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page_cittadino);
+        setContentView(R.layout.home_page_operatore_ecologico);
 
 
 
