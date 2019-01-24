@@ -37,21 +37,24 @@ public class HomepageCittadino extends AppCompatActivity {
 
         @Override
         public View setViewForPosition(int position) {
-            View customView = getLayoutInflater().inflate(R.layout.view_custom, null);
-            testo = customView.findViewById(R.id.testo);
-            image = customView.findViewById(R.id.image);
-            if (testo != null && image != null) {
+            View customView = null;
+           // if (testo != null && image != null) {
                 if (position==0) {
+                     customView = getLayoutInflater().inflate(R.layout.view_custom_first, null);
+                    testo = customView.findViewById(R.id.testo);
+                    image = customView.findViewById(R.id.image);
                     testo.setText("NOME UTENTE oggi si conferisce");
                     image.setImageResource(R.drawable.alluminio);
 
                 } else {
+                     customView = getLayoutInflater().inflate(R.layout.view_custom_second, null);
+                    testo = customView.findViewById(R.id.testo);
+                    //image = customView.findViewById(R.id.image);
                     testo.setText("Continua così, NOME UTENTE");
-                    image.setImageResource(R.drawable.alluminio);
+                   // image.setImageResource(R.drawable.alluminio);
                 }
-            }
-            if (testo != null)
-                Toast.makeText(getApplicationContext(), "" + testo.getText().toString(), Toast.LENGTH_LONG).show();
+
+
             return customView;
         }
     };

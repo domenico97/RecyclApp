@@ -244,9 +244,11 @@
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
-        android:layout_height="340dp"
+        android:layout_height="396dp"
         android:layout_below="@id/frame4"
-        android:layout_margin="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="7dp"
         app:autoPlay="false"
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
@@ -260,7 +262,7 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="47dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         app:itemIconTint="@drawable/bottom_navigation_colors"

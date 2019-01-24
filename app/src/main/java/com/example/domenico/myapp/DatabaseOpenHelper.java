@@ -16,7 +16,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             SchemaDB.Tavola.COLUMN_EMAIL,
             SchemaDB.Tavola.COLUMN_INDIRIZZO,
             SchemaDB.Tavola.COLUMN_TIPO,
-            SchemaDB.Tavola.COLUMN_TELEFONO
+            SchemaDB.Tavola.COLUMN_TELEFONO,
+            SchemaDB.Tavola.COLUMN_PUNTI
     };
 
     final private static String CREATE_CMD =
@@ -29,6 +30,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.COLUMN_EMAIL + " TEXT NOT NULL,"
                     + SchemaDB.Tavola.COLUMN_INDIRIZZO + " TEXT NOT NULL,"
                     + SchemaDB.Tavola.COLUMN_TIPO+ " TEXT NOT NULL, "
+                    + SchemaDB.Tavola.COLUMN_PUNTI+ " INTEGER DEFAULT 0, "
                     + SchemaDB.Tavola.COLUMN_TELEFONO + " TEXT NOT NULL); ";
 
     final private static Integer VERSION = 1;
