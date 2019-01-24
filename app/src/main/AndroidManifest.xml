@@ -25,7 +25,7 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login"></activity>
         <activity android:name=".HomepageCittadino" />
-        <activity android:name=".HomePageOperatoreEcologico" />
+        <activity android:name=".HomepageOperatoreEcologico" />
     </application>
 
 </manifest>

@@ -2,18 +2,11 @@ package com.example.domenico.myapp;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 
-
-public class HomePageOperatoreEcologico extends AppCompatActivity {
-
+public class HomepageDipendenteComunale extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.home_page_operatore_ecologico);
-
-
-
+        //setContentView(R.layout.home_page_operatore_ecologico);
     }
-
 }

@@ -21,7 +21,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class LoginForm extends Activity {
-    private LoginActivity.UserLoginTask mAuthTask = null;
+    //private LoginActivity.UserLoginTask mAuthTask = null;
     private EditText email, password;
     SharedPreferences prefs;
     private DatabaseOpenHelper dbHelper;
@@ -71,7 +71,7 @@ public class LoginForm extends Activity {
 
        /* if (mAuthTask != null) {
             return;
-        }
+        }*/
         // Reset errors.
         email.setError(null);
         password.setError(null);
@@ -147,11 +147,11 @@ public class LoginForm extends Activity {
 
                // Intent i = new Intent();
                 if (cursor.getString(3).equals("cittadino")) {
-                    //i.setClass(getApplicationContext(), HomepageCittadino.class);
+                    i.setClass(getApplicationContext(), HomepageCittadino.class);
                 } else if (cursor.getString(3).equals("op ecologico")) {
-                    // i.setClass(getApplicationContext(), HomepageOpEcologico.class);
+                     i.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
                 } else if (cursor.getString(3).equals("dip comunale")) {
-                    //i.setClass(getApplicationContext(), HomepageDipComunale.class);
+                    i.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
                 }
                 // startActivity(i);
 
@@ -165,7 +165,7 @@ public class LoginForm extends Activity {
                 Toast.makeText(getApplicationContext(), "Credenziali non corrette", Toast.LENGTH_LONG).show();
             }
         }
-        */
+
     }
 
 
