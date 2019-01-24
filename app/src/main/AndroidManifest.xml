@@ -21,9 +21,6 @@
         <activity android:name=".FormRegistrazione" />
         <activity android:name=".LoginForm" />
         <activity android:name=".RecuperaPassword" />
-        <activity
-            android:name=".LoginActivity"
-            android:label="@string/title_activity_login"></activity>
         <activity android:name=".HomepageCittadino" />
         <activity android:name=".HomepageOperatoreEcologico" />
     </application>

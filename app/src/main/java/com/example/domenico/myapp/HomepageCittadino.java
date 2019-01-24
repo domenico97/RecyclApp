@@ -1,7 +1,9 @@
 package com.example.domenico.myapp;
 
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -24,10 +26,11 @@ import java.util.Date;
 public class HomepageCittadino extends AppCompatActivity {
 
     CarouselView customCarouselView;
+    SharedPreferences prefs;
     int NUMBER_OF_PAGES = 2;
     TextView testo;
     boolean prima_pagina = true;
-    String giorno;
+    String giorno,nomeUtente;
     ImageButton image;
     private View BottomNavigationView;
     int occorenzaGiorno;
@@ -37,17 +40,19 @@ public class HomepageCittadino extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_cittadino);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        nomeUtente = prefs.getString("NOME","");
         Date date = new Date();
 
         SimpleDateFormat format = new SimpleDateFormat("EEEE");
         occorenzaGiorno = getOccurenceOfDayInMonth(date);
-        //System.out.println(format.format(date));
         giorno = format.format((date));
-        //Log.d("DATA",format.format((date)));
+
 
         //BottomNavigationView = findViewById(R.id.navigationView);
         customCarouselView = (CarouselView) findViewById(R.id.carouselView);
         customCarouselView.setPageCount(NUMBER_OF_PAGES);
+
         // set ViewListener for custom view
         customCarouselView.setViewListener(viewListener);
 
@@ -63,11 +68,11 @@ public class HomepageCittadino extends AppCompatActivity {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_first, null);
                 testo = customView.findViewById(R.id.testo);
                 image = customView.findViewById(R.id.image);
-                testo.setText("NOME UTENTE oggi si conferisce");
+                testo.setText(nomeUtente+" oggi si conferisce");
                 if (giorno.equals("lunedì")) {
-                    if (occorenzaGiorno == 2 || occorenzaGiorno == 4){
+                    if (occorenzaGiorno == 2 || occorenzaGiorno == 4) {
                         image.setImageResource(R.drawable.alluminio);
-                    }else
+                    } else
                         image.setImageResource(R.drawable.indifferenziato);
                 }
                 if (giorno.equals("martedì"))
@@ -86,7 +91,7 @@ public class HomepageCittadino extends AppCompatActivity {
             } else {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_second, null);
                 testo = customView.findViewById(R.id.testo);
-                testo.setText("Continua così, NOME UTENTE");
+                testo.setText("Continua così, "+ nomeUtente);
 
             }
 

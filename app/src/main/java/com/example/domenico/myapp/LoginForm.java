@@ -59,19 +59,13 @@ public class LoginForm extends Activity {
 
 
     public void effettuaLogin() {
-       /* email = findViewById(R.id.email);
-        password = findViewById(R.id.pswrdd);
-         if (email.getText().toString().equals("") || password.getText().toString().equals("")) {
-            Toast.makeText(getApplicationContext(), "Inserire e-mail e password", Toast.LENGTH_LONG).show();
-        } */
 
-        Intent i = new Intent();
+
+
+        /*Intent i = new Intent();
         i.setClass(getApplicationContext(), HomepageCittadino.class);
-        startActivity(i);
+        startActivity(i);*/
 
-       /* if (mAuthTask != null) {
-            return;
-        }*/
         // Reset errors.
         email.setError(null);
         password.setError(null);
@@ -145,7 +139,7 @@ public class LoginForm extends Activity {
             if (cursor != null && cursor.getCount() > 0) {
                 cursor.moveToFirst();
 
-               // Intent i = new Intent();
+                Intent i = new Intent();
                 if (cursor.getString(3).equals("cittadino")) {
                     i.setClass(getApplicationContext(), HomepageCittadino.class);
                 } else if (cursor.getString(3).equals("op ecologico")) {
@@ -153,11 +147,12 @@ public class LoginForm extends Activity {
                 } else if (cursor.getString(3).equals("dip comunale")) {
                     i.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
                 }
-                // startActivity(i);
+                 startActivity(i);
 
                 //Salvo l'id dell'utente in una SharedPreferences
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("ID", cursor.getInt(0));
+                editor.putString("NOME", cursor.getString(1));
                 editor.commit();
 
                 Toast.makeText(getApplicationContext(), "Nome:" + cursor.getString(1) + "Cognome: " + cursor.getString(2), Toast.LENGTH_LONG).show();
