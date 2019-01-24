@@ -37,6 +37,7 @@ public class MainActivity extends Activity {
             dbHelper = new DatabaseOpenHelper(this);
             db = dbHelper.getWritableDatabase();
             utenti.add(new Utente("Giulia", "Valli", "VLLGLI79A41H703B", "giulia.valli@gmail.com", "via Roma Fisciano", "giulia79", "3894552124", "dip comunale"));
+            utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703B", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
             utenti.add(new Utente("Marco", "Giuliani", "GLNMRC74M06H703X", "marco.giuliani@gmail.com", "via Toscanello Baronissi", "marco74", "3297856896", "op ecologico"));
             for (int i = 0; i < utenti.size(); i++) {
                 ContentValues values = new ContentValues();
