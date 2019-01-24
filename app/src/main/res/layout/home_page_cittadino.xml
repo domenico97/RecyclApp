@@ -244,16 +244,16 @@
     <com.synnapps.carouselview.CarouselView
         android:id="@+id/carouselView"
         android:layout_width="match_parent"
-        android:layout_height="396dp"
+        android:layout_height="392dp"
         android:layout_below="@id/frame4"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="7dp"
         app:autoPlay="false"
-        app:fillColor="#FFFFFFFF"
-        app:pageColor="#00000000"
-        app:radius="6dp"
-        app:strokeColor="#FFFFFF"
+        app:fillColor="@color/colorPrimary"
+        app:pageColor="#FFFFFF"
+        app:radius="4dp"
+        app:strokeColor="@color/colorPrimary"
         app:strokeWidth="1dp">
         <!-- app:slideInterval="3000"-->
 

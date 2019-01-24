@@ -19,24 +19,30 @@
         android:layout_width="match_parent"
         android:layout_height="245dp"
         android:layout_below="@id/testo"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
         android:adjustViewBounds="true"
-        android:scaleType="fitCenter"
-        android:layout_margin="10dp"
-        android:background="@color/white" />
+        android:background="@color/default_circle_indicator_page_color"
+        android:scaleType="fitCenter" />
 
 
     <android.support.v7.widget.CardView
         android:layout_width="270dp"
-        android:layout_height="60dp"
+        android:layout_height="55dp"
         android:layout_below="@id/image"
         android:layout_marginLeft="10dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="3dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="identifica"
         app:cardCornerRadius="7dp"
-        app:cardElevation="5dp">
+        app:cardElevation="3dp">
 
 
         <RelativeLayout
@@ -59,7 +65,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginTop="9dp"
+                android:layout_marginTop="3dp"
                 android:layout_toRightOf="@+id/logoIdentifica"
                 android:text="Identifica la tipologia di un rifiuto"
                 android:textAlignment="center"
