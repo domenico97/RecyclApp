@@ -251,7 +251,7 @@
         app:fillColor="#FFFFFFFF"
         app:pageColor="#00000000"
         app:radius="6dp"
-        app:strokeColor="#FF777777"
+        app:strokeColor="#FFFFFF"
         app:strokeWidth="1dp">
         <!-- app:slideInterval="3000"-->
 
