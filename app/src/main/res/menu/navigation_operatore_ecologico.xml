@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home_operatore_ecologico"
+        android:icon="@drawable/home"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/segnalazioni_operatore_ecologico"
+        android:icon="@drawable/alert"
+        android:title="Segnalazioni Effettuate"/>
+
+    <item
+        android:id="@+id/avvisi_operatore_ecologico"
+        android:icon="@drawable/bell"
+        android:title="Avvisi"/>
+</menu>
