@@ -32,11 +32,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_marginStart="96dp"
             android:layout_marginLeft="96dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Calendario conferimento"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold|italic" />
 
@@ -46,8 +48,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
+            android:onClick="areaPersonale"
             android:background="@android:color/transparent"
-
             android:src="@drawable/user_circle" />
 
     </RelativeLayout>

@@ -36,6 +36,7 @@
             android:layout_marginLeft="96dp"
             android:layout_marginTop="8dp"
             android:text="Profilo"
+            android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold|italic" />
 

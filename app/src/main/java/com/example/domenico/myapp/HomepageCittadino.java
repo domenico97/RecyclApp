@@ -5,9 +5,12 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
@@ -34,7 +37,7 @@ public class HomepageCittadino extends AppCompatActivity {
     boolean prima_pagina = true;
     String giorno, nomeUtente;
     ImageButton image;
-    private View BottomNavigationView;
+    private BottomNavigationView bottomNavigationView;
     private int punti;
     int occorenzaGiorno;
 
@@ -53,7 +56,26 @@ public class HomepageCittadino extends AppCompatActivity {
         giorno = format.format((date));
 
 
-        //BottomNavigationView = findViewById(R.id.navigationView);
+        bottomNavigationView = findViewById(R.id.navigationView);
+
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        //Sono già alla Home
+                        break;
+                    case R.id.navigation_news:
+
+                        break;
+                    case R.id.navigation_info:
+
+                        break;
+                }
+                return false;
+            }
+        });
         customCarouselView = (CarouselView) findViewById(R.id.carouselView);
         customCarouselView.setPageCount(NUMBER_OF_PAGES);
 
@@ -98,8 +120,8 @@ public class HomepageCittadino extends AppCompatActivity {
                 testo.setText("Continua così, " + nomeUtente);
                 TextView points = customView.findViewById(R.id.punti);
                 points.setText("" + punti);
-                ProgressBar progressBar= customView.findViewById(R.id.progress);
-                progressBar.setProgress(punti/10);
+                ProgressBar progressBar = customView.findViewById(R.id.progress);
+                progressBar.setProgress(punti / 10);
             }
 
 
@@ -124,6 +146,7 @@ public class HomepageCittadino extends AppCompatActivity {
 
     public void areaPersonale(View v) {
         Intent i = new Intent();
+        i.putExtra("ActivityPrecedente","Home");
         i.setClass(getApplicationContext(), AreaPersonale.class);
         startActivity(i);
     }
