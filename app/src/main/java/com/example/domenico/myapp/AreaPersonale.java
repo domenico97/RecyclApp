@@ -32,8 +32,7 @@ public class AreaPersonale extends AppCompatActivity {
     Bitmap bitmap;
     ImageView image;
     int id;
-    boolean img_save = false;
-    private byte[] imamagine;
+    private byte[] immagine;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,17 +55,22 @@ public class AreaPersonale extends AppCompatActivity {
             cf.setText(c.getString(2));
             email.setText(c.getString(3));
             telefono.setText(c.getString(4));
-            imamagine = c.getBlob(5);
+            immagine = c.getBlob(5);
+            bitmap = BitmapFactory.decodeByteArray(immagine, 0, immagine.length);
+            image.setImageBitmap(bitmap);
         }
-        /*bitmap = BitmapFactory.decodeByteArray(immagine, 0, immagine.length);
-        image.setImageBitmap(bitmap);*/
-
 
     }
 
     public void back(View v) {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), HomepageCittadino.class);
+        startActivity(i);
+    }
+
+    public void logout(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), LoginForm.class);
         startActivity(i);
     }
 
@@ -93,7 +97,8 @@ public class AreaPersonale extends AppCompatActivity {
                 ContentValues cv = new ContentValues();
                 cv.put(SchemaDB.Tavola.COLUMN_IMMAGINE, stream.toByteArray());
                 db.update(SchemaDB.Tavola.TABLE_NAME, cv, "id=" + id, null);
-                img_save = true;
+               /* bitmap = BitmapFactory.decodeByteArray(stream.toByteArray(), 0, stream.toByteArray().length);
+                image.setImageBitmap(bitmap);*/
 
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
