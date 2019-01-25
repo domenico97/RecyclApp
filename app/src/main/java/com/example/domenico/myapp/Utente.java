@@ -3,7 +3,7 @@ package com.example.domenico.myapp;
 public class Utente {
 
     private String nome, cognome, password, email, cf, indirizzo, telefono, tipo;
-    private int punti;
+    private int punti,conferimenti;
 
 
     public Utente(String nome, String cognome, String cf, String email, String indirizzo, String password, String tel, String tipo) {
@@ -16,6 +16,7 @@ public class Utente {
         this.telefono = tel;
         this.tipo = tipo;
         this.punti = 0;
+        this.conferimenti=0;
 
     }
 

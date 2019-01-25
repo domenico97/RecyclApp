@@ -7,6 +7,8 @@ import android.util.Log;
 
 public class DatabaseOpenHelper extends SQLiteOpenHelper {
 
+
+
     final static String[] columns = {
             SchemaDB.Tavola._ID,
             SchemaDB.Tavola.COLUMN_NAME,
@@ -17,7 +19,10 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             SchemaDB.Tavola.COLUMN_INDIRIZZO,
             SchemaDB.Tavola.COLUMN_TIPO,
             SchemaDB.Tavola.COLUMN_TELEFONO,
-            SchemaDB.Tavola.COLUMN_PUNTI
+            SchemaDB.Tavola.COLUMN_PUNTI,
+            SchemaDB.Tavola.COLUMN_CONFERIMENTI,
+            SchemaDB.Tavola.COLUMN_IMMAGINE
+
     };
 
     final private static String CREATE_CMD =
@@ -31,6 +36,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.COLUMN_INDIRIZZO + " TEXT NOT NULL,"
                     + SchemaDB.Tavola.COLUMN_TIPO+ " TEXT NOT NULL, "
                     + SchemaDB.Tavola.COLUMN_PUNTI+ " INTEGER DEFAULT 0, "
+                    + SchemaDB.Tavola.COLUMN_CONFERIMENTI+ " INTEGER DEFAULT 0, "
+                    + SchemaDB.Tavola.COLUMN_IMMAGINE+ " BLOB, "
                     + SchemaDB.Tavola.COLUMN_TELEFONO + " TEXT NOT NULL); ";
 
     final private static Integer VERSION = 1;
