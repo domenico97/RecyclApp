@@ -56,8 +56,10 @@ public class AreaPersonale extends AppCompatActivity {
             email.setText(c.getString(3));
             telefono.setText(c.getString(4));
             immagine = c.getBlob(5);
-            bitmap = BitmapFactory.decodeByteArray(immagine, 0, immagine.length);
-            image.setImageBitmap(bitmap);
+            if(immagine!=null) {
+                bitmap = BitmapFactory.decodeByteArray(immagine, 0, immagine.length);
+                image.setImageBitmap(bitmap);
+            }
         }
 
     }
@@ -92,7 +94,7 @@ public class AreaPersonale extends AppCompatActivity {
                 bitmap = BitmapFactory.decodeStream(inputStream);
                 image.setImageBitmap(bitmap);
                 ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 0, stream);
+                bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
                 db = MainActivity.dbHelper.getWritableDatabase();
                 ContentValues cv = new ContentValues();
                 cv.put(SchemaDB.Tavola.COLUMN_IMMAGINE, stream.toByteArray());
