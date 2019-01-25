@@ -24,6 +24,7 @@
         <activity android:name=".HomepageCittadino" />
         <activity android:name=".HomepageOperatoreEcologico" />
         <activity android:name=".Calendario" />
+        <activity android:name=".AreaPersonale" />
     </application>
 
 </manifest>

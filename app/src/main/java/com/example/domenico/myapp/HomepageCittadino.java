@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,12 +29,13 @@ public class HomepageCittadino extends AppCompatActivity {
 
     CarouselView customCarouselView;
     SharedPreferences prefs;
-    int NUMBER_OF_PAGES = 2;
+    private int NUMBER_OF_PAGES = 2;
     TextView testo;
     boolean prima_pagina = true;
-    String giorno,nomeUtente;
+    String giorno, nomeUtente;
     ImageButton image;
     private View BottomNavigationView;
+    private int punti;
     int occorenzaGiorno;
 
 
@@ -42,7 +44,8 @@ public class HomepageCittadino extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_cittadino);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        nomeUtente = prefs.getString("NOME","");
+        nomeUtente = prefs.getString("NOME", "");
+        punti = prefs.getInt("PUNTI", 0);
         Date date = new Date();
 
         SimpleDateFormat format = new SimpleDateFormat("EEEE");
@@ -69,7 +72,7 @@ public class HomepageCittadino extends AppCompatActivity {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_first, null);
                 testo = customView.findViewById(R.id.testo);
                 image = customView.findViewById(R.id.image);
-                testo.setText(nomeUtente+" oggi si conferisce");
+                testo.setText(nomeUtente + " oggi si conferisce");
                 if (giorno.equals("lunedì")) {
                     if (occorenzaGiorno == 2 || occorenzaGiorno == 4) {
                         image.setImageResource(R.drawable.alluminio);
@@ -92,8 +95,11 @@ public class HomepageCittadino extends AppCompatActivity {
             } else {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_second, null);
                 testo = customView.findViewById(R.id.testo);
-                testo.setText("Continua così, "+ nomeUtente);
-
+                testo.setText("Continua così, " + nomeUtente);
+                TextView points = customView.findViewById(R.id.punti);
+                points.setText("" + punti);
+                ProgressBar progressBar= customView.findViewById(R.id.progress);
+                progressBar.setProgress(punti/10);
             }
 
 
@@ -110,9 +116,15 @@ public class HomepageCittadino extends AppCompatActivity {
     }
 
 
-    public void calendario(View v){
+    public void calendario(View v) {
         Intent i = new Intent();
-        i.setClass(getApplicationContext(),Calendario.class);
+        i.setClass(getApplicationContext(), Calendario.class);
+        startActivity(i);
+    }
+
+    public void areaPersonale(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), AreaPersonale.class);
         startActivity(i);
     }
 

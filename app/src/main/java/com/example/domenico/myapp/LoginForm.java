@@ -110,7 +110,8 @@ public class LoginForm extends Activity {
                     SchemaDB.Tavola._ID,
                     SchemaDB.Tavola.COLUMN_NAME,
                     SchemaDB.Tavola.COLUMN_COGNOME,
-                    SchemaDB.Tavola.COLUMN_TIPO
+                    SchemaDB.Tavola.COLUMN_TIPO,
+                    SchemaDB.Tavola.COLUMN_PUNTI
             };
             //String[] projection = null;
 
@@ -143,17 +144,17 @@ public class LoginForm extends Activity {
                 if (cursor.getString(3).equals("cittadino")) {
                     i.setClass(getApplicationContext(), HomepageCittadino.class);
                 } else if (cursor.getString(3).equals("op ecologico")) {
-                     i.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
+                    i.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
                 } else if (cursor.getString(3).equals("dip comunale")) {
                     i.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
                 }
-                 startActivity(i);
-
                 //Salvo l'id dell'utente in una SharedPreferences
                 SharedPreferences.Editor editor = prefs.edit();
                 editor.putInt("ID", cursor.getInt(0));
                 editor.putString("NOME", cursor.getString(1));
+                editor.putInt("PUNTI", cursor.getInt(4));
                 editor.commit();
+                startActivity(i);
 
                 Toast.makeText(getApplicationContext(), "Nome:" + cursor.getString(1) + "Cognome: " + cursor.getString(2), Toast.LENGTH_LONG).show();
             } else {

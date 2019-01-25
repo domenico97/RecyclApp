@@ -13,21 +13,67 @@
         android:layout_marginLeft="10dp"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="18sp" />
+        android:textSize="19sp"
+        android:textStyle="bold|italic" />
+
+
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/testo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hai raccolto"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></FrameLayout>
+
+        <TextView
+            android:id="@+id/punti"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="100"
+            android:textAlignment="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"></FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Eco-punti"
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+    </LinearLayout>
 
     <android.support.v7.widget.CardView
 
         android:layout_width="wrap_content"
         android:layout_height="55dp"
-        android:layout_below="@id/testo"
+        android:layout_below="@id/linear"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="155dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="identifica"
-        app:cardCornerRadius="7dp"
-        app:cardElevation="3dp">
+        android:onClick="identifica">
 
 
         <RelativeLayout
@@ -41,9 +87,9 @@
                 android:id="@+id/progress"
                 style="@style/Widget.AppCompat.ProgressBar.Horizontal"
                 android:layout_width="250dp"
-
                 android:layout_height="match_parent"
                 android:layout_margin="10dp" />
+
 
             <ImageView
                 android:layout_width="50dp"
