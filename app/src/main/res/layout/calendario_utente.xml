@@ -5,23 +5,71 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/linear"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="35dp"
+            android:adjustViewBounds="true"
+            android:onClick="back"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/left_arrow1"
+            android:background="@android:color/transparent"/>
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="96dp"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="8dp"
+            android:layout_centerVertical="true"
+            android:layout_marginBottom="8dp"
+            android:text="@string/app_name"
+            android:textSize="22sp" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+           android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+
+            android:src="@drawable/user_circle" />
+
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/titolo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/linear"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp"
-        android:textAppearance="@style/TextAppearance.AppCompat.Display3"
-        tools:text="Calendario" />
+        android:layout_marginTop="20dp"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold|italic"
+        tools:text="Calendario conferimento" />
 
     <CalendarView
         android:id="@+id/calendarView"
         android:layout_width="match_parent"
-        android:layout_marginRight="5dp"
-        android:layout_marginLeft="5dp"
-        android:layout_height="369dp"
-        android:layout_marginTop="30dp"
+        android:layout_height="335dp"
         android:layout_below="@id/titolo"
+        android:layout_marginTop="30dp"
+
         />
 
 </RelativeLayout>
