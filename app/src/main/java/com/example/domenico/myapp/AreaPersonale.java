@@ -149,7 +149,6 @@ public class AreaPersonale extends AppCompatActivity {
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-
         if (requestCode != PICK_IMAGE) return;
         if (resultCode != RESULT_OK) return;
         if (data != null) {

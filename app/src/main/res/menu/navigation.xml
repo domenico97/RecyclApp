@@ -6,7 +6,7 @@
         android:icon="@drawable/home"
         android:title="Home"/>
 
-    <item
+    <item 
         android:id="@+id/navigation_news"
         android:icon="@drawable/bell"
         android:title="Avvisi"/>

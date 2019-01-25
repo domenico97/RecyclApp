@@ -50,6 +50,7 @@ public class Calendario extends AppCompatActivity {
         startActivity(i);
     }
 
+
     public void areaPersonale(View v) {
         Intent i = new Intent();
         i.putExtra("ActivityPrecedente","calendario");

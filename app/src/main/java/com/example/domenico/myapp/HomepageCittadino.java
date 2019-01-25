@@ -55,10 +55,8 @@ public class HomepageCittadino extends AppCompatActivity {
         occorenzaGiorno = getOccurenceOfDayInMonth(date);
         giorno = format.format((date));
 
-
         bottomNavigationView = findViewById(R.id.navigationView);
-
-
+       //Listener bottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
