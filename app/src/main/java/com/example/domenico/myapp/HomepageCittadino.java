@@ -1,5 +1,6 @@
 package com.example.domenico.myapp;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -107,5 +108,13 @@ public class HomepageCittadino extends AppCompatActivity {
 
         return calendar.get(Calendar.DAY_OF_WEEK_IN_MONTH);
     }
+
+
+    public void calendario(View v){
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(),Calendario.class);
+        startActivity(i);
+    }
+
 
 }
