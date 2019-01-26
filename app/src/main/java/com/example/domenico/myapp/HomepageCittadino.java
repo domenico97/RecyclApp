@@ -1,5 +1,6 @@
 package com.example.domenico.myapp;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -169,12 +170,13 @@ public class HomepageCittadino extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("RIMANI_CONNESSO", false);
                            finishAffinity();
-
-
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         break;

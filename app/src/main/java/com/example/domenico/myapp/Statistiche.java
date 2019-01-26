@@ -1,9 +1,14 @@
 package com.example.domenico.myapp;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +19,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,15 +29,22 @@ import lecho.lib.hellocharts.model.SliceValue;
 import lecho.lib.hellocharts.view.PieChartView;
 
 public class Statistiche extends AppCompatActivity {
-
+    private DatabaseOpenHelper dbHelper;
+    TextView puntiTot, segnalazioni, infrazioni, conferimentiTot;
+    private SQLiteDatabase db = null;
     private BottomNavigationView bottomNavigationView;
     PieChartView pieChartView;
+    SharedPreferences prefs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.statistiche_layout);
         bottomNavigationView = findViewById(R.id.navigationView);
+        puntiTot = findViewById(R.id.numeroPuntiTotali);
+        segnalazioni = findViewById(R.id.SegnalInviate);
+        conferimentiTot = findViewById(R.id.confTotali);
+        infrazioni = findViewById(R.id.InfrazTotali);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -52,16 +65,27 @@ public class Statistiche extends AppCompatActivity {
             }
         });
 
+        db = MainActivity.dbHelper.getWritableDatabase();
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        int id = prefs.getInt("ID", 0);
+        Cursor c = db.rawQuery("SELECT punti,conferimenti,infrazioni,segnalazioni FROM  utenti where id = ?", new String[]{"" + id});
+        if (c.moveToLast()) {
 
+            puntiTot.setText("" + c.getInt(0));
+            conferimentiTot.setText("" + c.getInt(1));
+            infrazioni.setText("" + c.getInt(2));
+            segnalazioni.setText("" + c.getInt(3));
+
+        }
 
         //Grafico a torta
         pieChartView = findViewById(R.id.chart);
 
         List pieData = new ArrayList<>();
-        pieData.add(new SliceValue(15, Color.rgb(51,133,255)).setLabel("Q1: $10"));
-        pieData.add(new SliceValue(25, Color.rgb(255,0,0)).setLabel("Q2: $4"));
-        pieData.add(new SliceValue(10, Color.rgb(255, 214, 51)).setLabel("Q3: $18"));
-        pieData.add(new SliceValue(60, Color.rgb(0, 179, 60)).setLabel("Q4: $28"));
+        pieData.add(new SliceValue(((Integer.parseInt(conferimentiTot.getText().toString())+1) * 10), Color.rgb(51, 133, 255)).setLabel(conferimentiTot.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(infrazioni.getText().toString())+1) * 10), Color.rgb(255, 0, 0)).setLabel(infrazioni.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(segnalazioni.getText().toString())+1) * 10), Color.rgb(255, 214, 51)).setLabel(segnalazioni.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(puntiTot.getText().toString())+1) * 10), Color.rgb(0, 179, 60)).setLabel(puntiTot.getText().toString()));
 
         PieChartData pieChartData = new PieChartData(pieData);
         pieChartData.setHasLabels(true).setValueLabelTextSize(14);

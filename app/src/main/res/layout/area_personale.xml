@@ -228,11 +228,11 @@
     </LinearLayout>
 
     <android.support.v7.widget.CardView
-        android:layout_width="150dp"
+        android:layout_width="170dp"
         android:layout_height="60dp"
         android:layout_below="@id/linear4"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="25dp"
+        android:layout_marginTop="35dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
         android:onClick="logout"
@@ -247,7 +247,7 @@
 
             <TextView
                 android:id="@+id/textLogout"
-                android:layout_width="wrap_content"
+                android:layout_width="60dp"
                 android:layout_height="wrap_content"
                 android:textStyle="italic|bold"
                 android:layout_centerVertical="true"
@@ -256,7 +256,7 @@
                 android:text="ESCI"
                 android:layout_marginRight="50dp"
                 android:textAlignment="center"
-                android:textSize="17sp" />
+                android:textSize="19sp" />
 
             <ImageView
                 android:id="@+id/logoLogout"

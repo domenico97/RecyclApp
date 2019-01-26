@@ -47,16 +47,16 @@ public class AreaPersonale extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.area_personale);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        Log.d("PROVA","SONO QUI 1");
+
         bottomNavigationView = findViewById(R.id.navigationView);
         s = findViewById(R.id.switchConnesso);
-        Log.d("PROVA","SONO QUI 2");
+
         if (prefs.getBoolean("RIMANI_CONNESSO", false)) {
             s.setChecked(true);
         } else {
             s.setChecked(false);
         }
-        Log.d("PROVA","SONO QUI 3");
+
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -83,23 +83,24 @@ public class AreaPersonale extends AppCompatActivity {
         email = findViewById(R.id.email);
 
         id = prefs.getInt("ID", 0);
-        Log.d("PROVA","SONO QUI 4");
+        Log.d("PROVA", "" + id);
         db = MainActivity.dbHelper.getWritableDatabase();
-        Log.d("PROVA","SONO QUI 5");
-        Cursor c = db.rawQuery("SELECT nome,cognome,cf,email,telefono,immagine FROM  utenti where id = ?", new String[]{"" + id});
-        if (c.moveToLast()) {
 
-            nome.setText(c.getString(0) + " " + c.getString(1));
-            cf.setText(c.getString(2));
-            email.setText(c.getString(3));
-            telefono.setText(c.getString(4));
-            immagine = c.getBlob(5);
-            if (immagine != null) {
-                bitmap = BitmapFactory.decodeByteArray(immagine, 0, immagine.length);
-                image.setImageBitmap(bitmap);
+        Cursor c = db.rawQuery("SELECT nome,cognome,cf,email,telefono,immagine FROM utenti where id = ?", new String[]{"" + id});
+        if (c != null && c.getCount() > 0) {
+            if (c.moveToFirst()) {
+
+                nome.setText(c.getString(0) + " " + c.getString(1));
+                cf.setText(c.getString(2));
+                email.setText(c.getString(3));
+                telefono.setText(c.getString(4));
+                immagine = c.getBlob(5);
+                if (immagine != null) {
+                    bitmap = BitmapFactory.decodeByteArray(immagine, 0, immagine.length);
+                    image.setImageBitmap(bitmap);
+                }
             }
         }
-        Log.d("PROVA","SONO QUI 6");
     }
 
     public void back(View v) {
@@ -175,7 +176,7 @@ public class AreaPersonale extends AppCompatActivity {
                 ContentValues cv = new ContentValues();
                 cv.put(SchemaDB.Tavola.COLUMN_IMMAGINE, stream.toByteArray());
                 db.update(SchemaDB.Tavola.TABLE_NAME, cv, "id=" + id, null);
-               /* bitmap = BitmapFactory.decodeByteArray(stream.toByteArray(), 0, stream.toByteArray().length);
+                /*bitmap = BitmapFactory.decodeByteArray(stream.toByteArray(), 0, stream.toByteArray().length);
                 image.setImageBitmap(bitmap);*/
 
             } catch (FileNotFoundException e) {
