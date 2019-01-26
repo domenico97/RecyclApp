@@ -1,5 +1,7 @@
 package com.example.domenico.myapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
@@ -56,7 +58,7 @@ public class HomepageCittadino extends AppCompatActivity {
         giorno = format.format((date));
 
         bottomNavigationView = findViewById(R.id.navigationView);
-       //Listener bottomNavigationView
+        //Listener bottomNavigationView
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -92,13 +94,13 @@ public class HomepageCittadino extends AppCompatActivity {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_first, null);
                 testo = customView.findViewById(R.id.testo);
                 image = customView.findViewById(R.id.image);
-                testo.setText(nomeUtente + " oggi si conferisce");
                 if (giorno.equals("lunedì")) {
                     if (occorenzaGiorno == 2 || occorenzaGiorno == 4) {
                         image.setImageResource(R.drawable.alluminio);
                     } else
                         image.setImageResource(R.drawable.indifferenziato);
                 }
+                boolean nonConferire = false;
                 if (giorno.equals("martedì"))
                     image.setImageResource(R.drawable.umido);
                 if (giorno.equals("mercoledì"))
@@ -107,11 +109,16 @@ public class HomepageCittadino extends AppCompatActivity {
                     image.setImageResource(R.drawable.carta_vetro);
                 if (giorno.equals("venerdì"))
                     image.setImageResource(R.drawable.umido);
-                if (giorno.equals("sabato"))
+                if (giorno.equals("sabato")) {
+                    nonConferire = true;
                     image.setImageResource(R.drawable.non_conferire);
+                }
                 if (giorno.equals("domenica"))
                     image.setImageResource(R.drawable.umido);
-
+                if (nonConferire)
+                    testo.setText(nomeUtente + " oggi ");
+                else
+                    testo.setText(nomeUtente + " oggi si conferisce");
             } else {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_second, null);
                 testo = customView.findViewById(R.id.testo);
@@ -142,11 +149,45 @@ public class HomepageCittadino extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void statistiche(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), Statistiche.class);
+        startActivity(i);
+    }
+
     public void areaPersonale(View v) {
         Intent i = new Intent();
-        i.putExtra("ActivityPrecedente","Home");
+       // i.putExtra("ActivityPrecedente", "Home");
         i.setClass(getApplicationContext(), AreaPersonale.class);
         startActivity(i);
+    }
+    /*
+    public void raccltaPunti(View v) {
+
+    }*/
+
+    @Override
+    public void onBackPressed() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                           finishAffinity();
+
+
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Conferma \nVuoi davvero uscire da RecyclApp ?")
+                .setPositiveButton("Si", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
+        return;
     }
 
 

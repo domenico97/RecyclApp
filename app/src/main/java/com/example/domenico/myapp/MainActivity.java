@@ -31,10 +31,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_layout);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-
+        dbHelper = new DatabaseOpenHelper(this);
         boolean primoAccesso = prefs.getBoolean("Accesso", true);
         if (primoAccesso) {
-            dbHelper = new DatabaseOpenHelper(this);
             db = dbHelper.getWritableDatabase();
             utenti.add(new Utente("Giulia", "Valli", "VLLGLI79A41H703B", "giulia.valli@gmail.com", "via Roma Fisciano", "giulia79", "3894552124", "dip comunale"));
             utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703B", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
@@ -56,7 +55,7 @@ public class MainActivity extends Activity {
                 public void run() {
 
                     try {
-                        Thread.sleep(1500);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -68,14 +67,26 @@ public class MainActivity extends Activity {
             }).start();
 
 
-            }else{
-                Intent i = new Intent();
-                i.setClass(getApplicationContext(), FormRegistrazione.class);
-                startActivity(i);
+        } else {
+            Intent z = new Intent();
+            if (prefs.getBoolean("RIMANI_CONNESSO", false)) {
+                if (prefs.getString("TIPO", "").equals("cittadino")) {
+                    z.setClass(getApplicationContext(), HomepageCittadino.class);
+                } else if (prefs.getString("TIPO", "").equals("operatoreEcologico")) {
+                    z.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
+                } else if (prefs.getString("TIPO", "").equals("dipendenteComunale")) {
+                    z.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
+                }
+
+            } else {
+                z.setClass(getApplicationContext(), LoginForm.class);
+
             }
-
-
+            startActivity(z);
         }
 
 
     }
+
+
+}

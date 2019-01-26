@@ -15,9 +15,11 @@ import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +36,7 @@ public class AreaPersonale extends AppCompatActivity {
     TextView nome, cognome, cf, telefono, email;
     private SQLiteDatabase db = null;
     private BottomNavigationView bottomNavigationView;
+    private Switch s;
     SharedPreferences prefs;
     Bitmap bitmap;
     ImageView image;
@@ -43,8 +46,17 @@ public class AreaPersonale extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.area_personale);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Log.d("PROVA","SONO QUI 1");
         bottomNavigationView = findViewById(R.id.navigationView);
-
+        s = findViewById(R.id.switchConnesso);
+        Log.d("PROVA","SONO QUI 2");
+        if (prefs.getBoolean("RIMANI_CONNESSO", false)) {
+            s.setChecked(true);
+        } else {
+            s.setChecked(false);
+        }
+        Log.d("PROVA","SONO QUI 3");
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -70,10 +82,10 @@ public class AreaPersonale extends AppCompatActivity {
         telefono = findViewById(R.id.telefono);
         email = findViewById(R.id.email);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         id = prefs.getInt("ID", 0);
-
+        Log.d("PROVA","SONO QUI 4");
         db = MainActivity.dbHelper.getWritableDatabase();
+        Log.d("PROVA","SONO QUI 5");
         Cursor c = db.rawQuery("SELECT nome,cognome,cf,email,telefono,immagine FROM  utenti where id = ?", new String[]{"" + id});
         if (c.moveToLast()) {
 
@@ -87,17 +99,18 @@ public class AreaPersonale extends AppCompatActivity {
                 image.setImageBitmap(bitmap);
             }
         }
-
+        Log.d("PROVA","SONO QUI 6");
     }
 
     public void back(View v) {
-        Intent intent = getIntent();
+       /* Intent intent = getIntent();
         Intent i = new Intent();
         if(intent.getStringExtra("ActivityPrecedente").equals("calendario"))
         i.setClass(getApplicationContext(), Calendario.class);
         else if((intent.getStringExtra("ActivityPrecedente").equals("Home")))
             i.setClass(getApplicationContext(), HomepageCittadino.class);
-        startActivity(i);
+        startActivity(i);*/
+        finish();
     }
 
     public void logout(View v) {
@@ -171,6 +184,21 @@ public class AreaPersonale extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+    }
+
+    public void rimaniConnesso(View v) {
+        SharedPreferences.Editor editor = prefs.edit();
+
+        if (!prefs.getBoolean("RIMANI_CONNESSO", false)) {
+            s.setChecked(true);
+            editor.putBoolean("RIMANI_CONNESSO", true);
+        } else {
+            s.setChecked(false);
+            editor.putBoolean("RIMANI_CONNESSO", false);
+        }
+
+        editor.putString("TIPO", "cittadino");
+        editor.commit();
     }
 }
 

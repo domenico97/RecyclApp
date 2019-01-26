@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -30,13 +29,13 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_marginStart="96dp"
             android:layout_marginLeft="96dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:text="Calendario conferimento"
+            android:text="Statistiche"
             android:textColor="@color/black"
             android:textSize="22sp"
             android:textStyle="bold|italic" />
@@ -48,20 +47,23 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
-            android:onClick="areaPersonale"
             android:background="@android:color/transparent"
+            android:onClick="areaPersonale"
             android:src="@drawable/user_circle" />
 
     </RelativeLayout>
 
-    <CalendarView
-        android:id="@+id/calendarView"
-        android:layout_width="match_parent"
-        android:layout_height="335dp"
-        android:layout_below="@id/relative"
-        android:layout_marginTop="40dp"
+
+    <lecho.lib.hellocharts.view.PieChartView
+        android:id="@+id/chart"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:layout_margin="10dp"
+        android:layout_above="@id/navigationView"
+        android:layout_centerHorizontal="true"
 
         />
+
 
 
     <android.support.design.widget.BottomNavigationView
@@ -73,5 +75,4 @@
         app:itemIconTint="@drawable/bottom_navigation_colors2"
         app:itemTextColor="@drawable/bottom_navigation_colors2"
         app:menu="@menu/navigation" />
-
 </RelativeLayout>

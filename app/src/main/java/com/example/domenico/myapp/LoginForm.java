@@ -32,6 +32,9 @@ public class LoginForm extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("Accesso", false);
+        editor.commit();
         email = findViewById(R.id.email);
         password = (EditText) findViewById(R.id.pswrdd);
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -59,12 +62,6 @@ public class LoginForm extends Activity {
 
 
     public void effettuaLogin() {
-
-
-
-        /*Intent i = new Intent();
-        i.setClass(getApplicationContext(), HomepageCittadino.class);
-        startActivity(i);*/
 
         // Reset errors.
         email.setError(null);
@@ -163,94 +160,6 @@ public class LoginForm extends Activity {
         }
 
     }
-
-
-       /* else {
-
-            db = MainActivity.dbHelper.getWritableDatabase();
-            String[] projection = {
-                    SchemaDB.Tavola._ID,
-                    SchemaDB.Tavola.COLUMN_NAME,
-                    SchemaDB.Tavola.COLUMN_COGNOME,
-                    SchemaDB.Tavola.COLUMN_TIPO
-            };
-            //String[] projection = null;
-
-            // Specifichiamo come le vogliamo ordinare le righe
-            String sortOrder = SchemaDB.Tavola.COLUMN_NAME + " ASC";
-
-            // Definiamo la parte 'where' della query.
-            String selection;
-            selection = SchemaDB.Tavola.COLUMN_EMAIL + " = ? "
-                    + " and "
-                    + SchemaDB.Tavola.COLUMN_PASSWORD + " = ? ";
-
-            // Specifchiamo gli argomento per i segnaposto (i ? nella stringa selection).
-            String[] selectionArgs = {email.getText().toString(), password.getText().toString()};
-
-            // Eseguiamo la query
-            Cursor cursor = db.query(
-                    SchemaDB.Tavola.TABLE_NAME,  // The table to query
-                    projection,                  // The columns to return
-                    selection,                                // The columns for the WHERE clause
-                    selectionArgs,                            // The values for the WHERE clause
-                    null,                                     // don't group the rows
-                    null,                                     // don't filter by row groups
-                    sortOrder                                 // The sort order
-            );
-            cursor.moveToFirst();
-            if (cursor.getColumnCount() > 0) {
-                Intent i = new Intent();
-                if (cursor.getString(3).equals("cittadino")) {
-                    //i.setClass(getApplicationContext(), HomepageCittadino.class);
-                } else if (cursor.getString(3).equals("op ecologico")) {
-                    // i.setClass(getApplicationContext(), HomepageOpEcologico.class);
-                } else if (cursor.getString(3).equals("dip comunale")) {
-                    //i.setClass(getApplicationContext(), HomepageDipComunale.class);
-                }
-                // startActivity(i);
-
-                //Salvo l'id dell'utente in una SharedPreferences
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putInt("ID",cursor.getInt(0));
-                editor.commit();
-
-                Toast.makeText(getApplicationContext(), "Nome:" + cursor.getString(1) + "Cognome: " + cursor.getString(2), Toast.LENGTH_LONG).show();
-            }
-        }
-}*/
-
-    /*private void showProgress(final boolean show) {
-        // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
-        // for very easy animations. If available, use these APIs to fade-in
-        // the progress spinner.
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            int shortAnimTime = getResources().getInteger(android.R.integer.config_shortAnimTime);
-
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-            mLoginFormView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 0 : 1).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-                }
-            });
-
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mProgressView.animate().setDuration(shortAnimTime).alpha(
-                    show ? 1 : 0).setListener(new AnimatorListenerAdapter() {
-                @Override
-                public void onAnimationEnd(Animator animation) {
-                    mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-                }
-            });
-        } else {
-            // The ViewPropertyAnimator APIs are not available, so simply show
-            // and hide the relevant UI components.
-            mProgressView.setVisibility(show ? View.VISIBLE : View.GONE);
-            mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
-        }
-    }*/
 
 
     private boolean isEmailValid(String email) {
