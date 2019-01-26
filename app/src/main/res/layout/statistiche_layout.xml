@@ -54,16 +54,173 @@
     </RelativeLayout>
 
 
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° Conferimenti totali :"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:textStyle="bold|italic" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/confTotali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="XXX"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° Infrazioni :"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:textStyle="bold|italic" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/InfrazTotali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:text="XXX"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° Segnalazioni inviate :"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:textStyle="bold|italic" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/SegnalInviate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:gravity="right"
+            android:text="XXX"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear3"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="N° Punti totali :"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            android:textStyle="bold|italic" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/numeroPuntiTotali"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:text="XXX"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            android:textStyle="italic" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_below="@id/linear4"
+        android:layout_alignParentRight="true"
+        android:onClick="onButtonShowPopupWindowClick"
+        android:layout_centerInParent="true"
+        android:layout_marginRight="30dp"
+        android:background="@color/default_circle_indicator_page_color"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/question"
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:textSize="22sp"
+
+        />
+
     <lecho.lib.hellocharts.view.PieChartView
         android:id="@+id/chart"
         android:layout_width="350dp"
         android:layout_height="350dp"
-        android:layout_margin="10dp"
-        android:layout_above="@id/navigationView"
+        android:layout_below="@id/image"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
 
         />
-
 
 
     <android.support.design.widget.BottomNavigationView
