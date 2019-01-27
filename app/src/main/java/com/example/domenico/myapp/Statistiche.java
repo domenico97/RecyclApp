@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -108,8 +109,11 @@ public class Statistiche extends AppCompatActivity {
 
     public void onButtonShowPopupWindowClick(View view) {
 
+        DialogFragment x = new StatisticheLegenda();
+        x.show(getSupportFragmentManager(),"legenda");
+
         // inflate the layout of the popup window
-        LayoutInflater inflater = (LayoutInflater)
+      /*  LayoutInflater inflater = (LayoutInflater)
                 getSystemService(LAYOUT_INFLATER_SERVICE);
         View popupView = inflater.inflate(R.layout.popup_window, null);
 
@@ -131,6 +135,6 @@ public class Statistiche extends AppCompatActivity {
                 popupWindow.dismiss();
                 return true;
             }
-        });
+        });*/
     }
 }
