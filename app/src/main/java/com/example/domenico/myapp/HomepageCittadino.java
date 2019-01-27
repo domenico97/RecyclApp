@@ -63,6 +63,7 @@ public class HomepageCittadino extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent i = new Intent();
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
                         //Sono già alla Home
@@ -71,7 +72,8 @@ public class HomepageCittadino extends AppCompatActivity {
 
                         break;
                     case R.id.navigation_info:
-
+                        i.setClass(getApplicationContext(), Contatti.class);
+                        startActivity(i);
                         break;
                 }
                 return false;

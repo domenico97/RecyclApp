@@ -22,9 +22,9 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             SchemaDB.Tavola.COLUMN_CONFERIMENTI,
             SchemaDB.Tavola.COLUMN_IMMAGINE,
             SchemaDB.Tavola.COLUMN_INFRAZIONI,
-            SchemaDB.Tavola.COLUMN_SEGNALAZIONI
-           // SchemaDB.Tavola.COLUMN_MESSAGGIO,
-          //  SchemaDB.Tavola.COLUMN_MITTENTE
+            SchemaDB.Tavola.COLUMN_SEGNALAZIONI,
+            SchemaDB.Tavola.COLUMN_MESSAGGIO,
+          SchemaDB.Tavola.COLUMN_MITTENTE
     };
 
     final private static String CREATE_CMD =
@@ -45,12 +45,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.COLUMN_TELEFONO + " TEXT NOT NULL); ";
 
 
-    /*final private static String CREATE_CMD1 =
+    final private static String CREATE_CMD1 =
             "CREATE TABLE " + SchemaDB.Tavola.TABLE_NAME1 + " ("
                     + SchemaDB.Tavola._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + SchemaDB.Tavola.COLUMN_MESSAGGIO + " TEXT NOT NULL, "
                     + SchemaDB.Tavola.COLUMN_MITTENTE + " TEXT NOT NULL,"
-                    + SchemaDB.Tavola.COLUMN_TIPO + " TEXT NOT NULL); ";*/
+                    + SchemaDB.Tavola.COLUMN_TIPO + " TEXT NOT NULL); ";
 
 
     final private static Integer VERSION = 1;
@@ -64,7 +64,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_CMD);
-        //db.execSQL(CREATE_CMD1);
+        db.execSQL(CREATE_CMD1);
     }
 
 

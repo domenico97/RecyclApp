@@ -10,6 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -60,9 +61,10 @@ public class AreaPersonale extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent i = new Intent();
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent i = new Intent();
+
                         i.setClass(getApplicationContext(), HomepageCittadino.class);
                         startActivity(i);
                         break;
@@ -70,7 +72,8 @@ public class AreaPersonale extends AppCompatActivity {
 
                         break;
                     case R.id.navigation_info:
-
+                        i.setClass(getApplicationContext(), Contatti.class);
+                        startActivity(i);
                         break;
                 }
                 return false;
@@ -85,6 +88,7 @@ public class AreaPersonale extends AppCompatActivity {
         id = prefs.getInt("ID", 0);
         Log.d("PROVA", "" + id);
         db = MainActivity.dbHelper.getWritableDatabase();
+
 
         Cursor c = db.rawQuery("SELECT nome,cognome,cf,email,telefono,immagine FROM utenti where id = ?", new String[]{"" + id});
         if (c != null && c.getCount() > 0) {
@@ -104,13 +108,6 @@ public class AreaPersonale extends AppCompatActivity {
     }
 
     public void back(View v) {
-       /* Intent intent = getIntent();
-        Intent i = new Intent();
-        if(intent.getStringExtra("ActivityPrecedente").equals("calendario"))
-        i.setClass(getApplicationContext(), Calendario.class);
-        else if((intent.getStringExtra("ActivityPrecedente").equals("Home")))
-            i.setClass(getApplicationContext(), HomepageCittadino.class);
-        startActivity(i);*/
         finish();
     }
 
@@ -176,6 +173,7 @@ public class AreaPersonale extends AppCompatActivity {
                 ContentValues cv = new ContentValues();
                 cv.put(SchemaDB.Tavola.COLUMN_IMMAGINE, stream.toByteArray());
                 db.update(SchemaDB.Tavola.TABLE_NAME, cv, "id=" + id, null);
+
                 /*bitmap = BitmapFactory.decodeByteArray(stream.toByteArray(), 0, stream.toByteArray().length);
                 image.setImageBitmap(bitmap);*/
 

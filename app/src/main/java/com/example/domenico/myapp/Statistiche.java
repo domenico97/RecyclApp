@@ -48,9 +48,9 @@ public class Statistiche extends AppCompatActivity {
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent i = new Intent();
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent i = new Intent();
                         i.setClass(getApplicationContext(), HomepageCittadino.class);
                         startActivity(i);
                         break;
@@ -58,7 +58,8 @@ public class Statistiche extends AppCompatActivity {
 
                         break;
                     case R.id.navigation_info:
-
+                        i.setClass(getApplicationContext(), Contatti.class);
+                        startActivity(i);
                         break;
                 }
                 return false;
