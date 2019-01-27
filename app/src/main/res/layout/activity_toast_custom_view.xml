@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:orientation="horizontal"
+    android:background="#A300FF00"
+    android:padding="10dp">
+
+    <ImageView
+        android:id="@+id/customToastImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:src="@drawable/sent_mail" />
+
+    <TextView
+        android:id="@+id/customToastText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Segnalazione inviata"
+        android:textSize="20dp" />
+
+</LinearLayout>

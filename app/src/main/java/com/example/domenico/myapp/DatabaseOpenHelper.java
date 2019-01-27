@@ -24,7 +24,10 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             SchemaDB.Tavola.COLUMN_INFRAZIONI,
             SchemaDB.Tavola.COLUMN_SEGNALAZIONI,
             SchemaDB.Tavola.COLUMN_MESSAGGIO,
-          SchemaDB.Tavola.COLUMN_MITTENTE
+          SchemaDB.Tavola.COLUMN_MITTENTE,
+            SchemaDB.Tavola.COLUMN_OGGETTO,
+            SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE
+
     };
 
     final private static String CREATE_CMD =
@@ -50,6 +53,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                     + SchemaDB.Tavola.COLUMN_MESSAGGIO + " TEXT NOT NULL, "
                     + SchemaDB.Tavola.COLUMN_MITTENTE + " TEXT NOT NULL,"
+                    + SchemaDB.Tavola.COLUMN_OGGETTO + " TEXT NOT NULL, "
+                    + SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE + " TEXT NOT NULL,"
                     + SchemaDB.Tavola.COLUMN_TIPO + " TEXT NOT NULL); ";
 
 

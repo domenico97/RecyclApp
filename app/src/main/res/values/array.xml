@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <string-array name="segnalazioni">
+        <item>Applicazione</item>
+        <item>Chiarimento</item>
+        <item>Disservizio</item>
+        <item>Consiglio</item>
+        <item>Altro</item>
+    </string-array>
+</resources>

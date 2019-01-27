@@ -33,6 +33,8 @@ public class SchemaDB {
         public static final String COLUMN_IMMAGINE = "immagine";
         public static final String COLUMN_MESSAGGIO = "messaggio";
         public static final String COLUMN_MITTENTE = "mittente";
+        public static final String COLUMN_OGGETTO = "oggetto";
+        public static final String COLUMN_TIPO_SEGNALAZIONE = "tipo_segnalazione";
 
     }
 
