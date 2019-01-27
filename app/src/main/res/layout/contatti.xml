@@ -91,14 +91,14 @@ Qualcosa non funziona nell'applicazione ?"
         android:layout_height="wrap_content"
         android:layout_below="@id/text2"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="40dp"
         android:layout_marginRight="15dp">
 
         <ImageView
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/close_envelope"
-            android:layout_marginRight="20dp"/>
+            android:layout_marginRight="25dp"/>
 
 
 
@@ -108,7 +108,7 @@ Qualcosa non funziona nell'applicazione ?"
             android:layout_gravity="center"
             android:text="RecyclApp@comunefisciano.gov"
             android:textColor="@color/black"
-            android:textSize="21sp"
+            android:textSize="20sp"
             android:textStyle="bold|italic" />
 
     </LinearLayout>
@@ -126,8 +126,7 @@ Qualcosa non funziona nell'applicazione ?"
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:src="@drawable/phone_receiver"
-            android:layout_marginRight="20dp"/>
-
+            android:layout_marginRight="25dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -135,7 +134,7 @@ Qualcosa non funziona nell'applicazione ?"
             android:layout_gravity="center"
             android:text="089 145621"
             android:textColor="@color/black"
-            android:textSize="21sp"
+            android:textSize="20sp"
             android:textStyle="bold|italic" />
 
     </LinearLayout>
@@ -150,23 +149,19 @@ Qualcosa non funziona nell'applicazione ?"
         android:layout_marginRight="15dp">
 
         <ImageView
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/location_pointer" />
-
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:src="@drawable/location_pointer"
+            android:layout_marginRight="25dp"/>
 
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="089 145621"
+            android:text="Via Giovanni Paolo II ,4 Fisciano (SA)"
             android:textColor="@color/black"
-            android:textSize="21sp"
+
+            android:textSize="20sp"
             android:textStyle="bold|italic" />
 
     </LinearLayout>
@@ -174,7 +169,7 @@ Qualcosa non funziona nell'applicazione ?"
     <RelativeLayout
         android:layout_width="wrap_content"
         android:id="@+id/linear4"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="55dp"
         android:layout_below="@id/linear3"
         android:layout_height="wrap_content"
       >
@@ -212,12 +207,12 @@ Qualcosa non funziona nell'applicazione ?"
     <android.support.v7.widget.CardView
         android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_below="@id/linear4"
+      android:layout_above="@id/navigationView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="35dp"
+        android:layout_marginBottom="40dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="logout"
+        android:onClick="inviaSegnalazione"
         app:cardCornerRadius="5dp"
         app:cardElevation="6dp">
 

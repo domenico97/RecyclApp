@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -46,7 +47,7 @@ public class Contatti extends AppCompatActivity {
 
                         break;
                     case R.id.navigation_info:
-                       //Siamo già in questa pagina
+                        //Siamo già in questa pagina
                         break;
                 }
                 return false;
@@ -54,7 +55,22 @@ public class Contatti extends AppCompatActivity {
         });
 
 
+    }
 
+    public void inviaSegnalazione(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), Segnalazione.class);
+        startActivity(i);
+    }
 
+    public void areaPersonale(View v) {
+        Intent i = new Intent();
+        i.putExtra("ActivityPrecedente","calendario");
+        i.setClass(getApplicationContext(), AreaPersonale.class);
+        startActivity(i);
+    }
+
+    public void back(View v) {
+        finish();
     }
 }
