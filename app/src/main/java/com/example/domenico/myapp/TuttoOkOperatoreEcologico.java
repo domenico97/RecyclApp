@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.util.Calendar;
+
 public class TuttoOkOperatoreEcologico extends Activity {
 
 
@@ -31,6 +33,23 @@ public class TuttoOkOperatoreEcologico extends Activity {
         viaText.setText(via);
 
 
+
+        Calendar calendar = Calendar.getInstance();
+
+        int cDay = calendar.get(Calendar.DAY_OF_MONTH);
+        int cMonth = calendar.get(Calendar.MONTH) + 1;
+        int cYear = calendar.get(Calendar.YEAR);
+        String selectedMonth = "" + cMonth;
+        String selectedYear = "" + cYear;
+        int cHour = calendar.get(Calendar.HOUR);
+        int cMinute = calendar.get(Calendar.MINUTE);
+        int cSecond = calendar.get(Calendar.SECOND);
+
+        data = cDay+"/"+cMonth+"/"+cYear;
+        ora = cHour+":"+cMinute+":"+cSecond;
+
+        dataText.setText(data);
+        oraText.setText(ora);
 
     }
 
