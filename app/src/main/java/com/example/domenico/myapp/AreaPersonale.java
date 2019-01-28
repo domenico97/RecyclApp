@@ -199,7 +199,7 @@ public class AreaPersonale extends AppCompatActivity {
             s.setChecked(false);
             editor.putBoolean("RIMANI_CONNESSO", false);
         }
-
+             editor.commit();
 
     }
 }
