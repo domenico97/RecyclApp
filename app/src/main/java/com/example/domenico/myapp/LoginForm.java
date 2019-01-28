@@ -33,6 +33,7 @@ public class LoginForm extends Activity {
         setContentView(R.layout.login);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("RIMANI_CONNESSO", false);
         editor.putBoolean("Accesso", false);
         editor.apply();
         email = findViewById(R.id.email);
