@@ -90,7 +90,8 @@
                 android:letterSpacing="0.1"
                 android:text="Password dimenticata?"
                 android:textSize="15sp"
-                android:textColor="#d9e5f3" />
+                android:textColor="#d9e5f3"
+                tools:targetApi="lollipop" />
         </LinearLayout>
 
 
