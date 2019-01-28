@@ -78,7 +78,8 @@ public class Calendario extends FragmentActivity  {
                         startActivity(i);
                         break;
                     case R.id.navigation_news:
-
+                        i.setClass(getApplicationContext(), AvvisiCittadino.class);
+                        startActivity(i);
                         break;
                     case R.id.navigation_info:
                         i.setClass(getApplicationContext(),Contatti.class);

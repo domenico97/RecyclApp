@@ -56,7 +56,8 @@ public class Statistiche extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.navigation_news:
-
+                        i.setClass(getApplicationContext(), AvvisiCittadino.class);
+                        startActivity(i);
                         break;
                     case R.id.navigation_info:
                         i.setClass(getApplicationContext(), Contatti.class);
@@ -84,10 +85,10 @@ public class Statistiche extends AppCompatActivity {
         pieChartView = findViewById(R.id.chart);
 
         List pieData = new ArrayList<>();
-        pieData.add(new SliceValue(((Integer.parseInt(conferimentiTot.getText().toString())+1) * 10), Color.rgb(51, 133, 255)).setLabel(conferimentiTot.getText().toString()));
-        pieData.add(new SliceValue(((Integer.parseInt(infrazioni.getText().toString())+1) * 10), Color.rgb(255, 0, 0)).setLabel(infrazioni.getText().toString()));
-        pieData.add(new SliceValue(((Integer.parseInt(segnalazioni.getText().toString())+1) * 10), Color.rgb(255, 214, 51)).setLabel(segnalazioni.getText().toString()));
-        pieData.add(new SliceValue(((Integer.parseInt(puntiTot.getText().toString())+1) * 10), Color.rgb(0, 179, 60)).setLabel(puntiTot.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(conferimentiTot.getText().toString()) + 1) * 10), Color.rgb(51, 133, 255)).setLabel(conferimentiTot.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(infrazioni.getText().toString()) + 1) * 10), Color.rgb(255, 0, 0)).setLabel(infrazioni.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(segnalazioni.getText().toString()) + 1) * 10), Color.rgb(255, 214, 51)).setLabel(segnalazioni.getText().toString()));
+        pieData.add(new SliceValue(((Integer.parseInt(puntiTot.getText().toString()) + 1) * 10), Color.rgb(0, 179, 60)).setLabel(puntiTot.getText().toString()));
 
         PieChartData pieChartData = new PieChartData(pieData);
         pieChartData.setHasLabels(true).setValueLabelTextSize(14);
@@ -110,7 +111,7 @@ public class Statistiche extends AppCompatActivity {
     public void onButtonShowPopupWindowClick(View view) {
 
         DialogFragment x = new StatisticheLegenda();
-        x.show(getSupportFragmentManager(),"legenda");
+        x.show(getSupportFragmentManager(), "legenda");
 
         // inflate the layout of the popup window
       /*  LayoutInflater inflater = (LayoutInflater)

@@ -25,6 +25,12 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
+
 public class Segnalazione extends AppCompatActivity {
 
     private DatabaseOpenHelper dbHelper;
@@ -53,7 +59,8 @@ public class Segnalazione extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.navigation_news:
-
+                        i.setClass(getApplicationContext(), AvvisiCittadino.class);
+                        startActivity(i);
                         break;
                     case R.id.navigation_info:
                         i.setClass(getApplicationContext(), Contatti.class);
@@ -101,26 +108,28 @@ public class Segnalazione extends AppCompatActivity {
 
                                 }
                             }
-
+                            Calendar cal = Calendar.getInstance();
+                            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+                            String data = sdf.format(cal.getTime());
 
                             ContentValues values = new ContentValues();
                             values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, tipo);
                             values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
                             values.put(SchemaDB.Tavola.COLUMN_OGGETTO, obj);
                             values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
-                            values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino");
-
+                            values.put(SchemaDB.Tavola.COLUMN_TIPO, "dip comunale"); //Tipologia di attori a cui è rivolta la segnalazione
+                            values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
+                            values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
                             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
 
 
-                            View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
-
-                       /* Toast toast = new Toast(getApplicationContext());
-                        // Set custom view in toast.
-                        toast.setView(toastView);
-                        toast.setDuration(Toast.LENGTH_LONG);
-                        toast.setGravity(Gravity.CENTER, 0, 0);
-                        toast.show();*/
+                            /*View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
+                            Toast toast = new Toast(getApplicationContext());
+                            // Set custom view in toast.
+                            toast.setView(toastView);
+                            toast.setDuration(Toast.LENGTH_LONG);
+                            toast.setGravity(Gravity.CENTER, 0, 0);
+                            toast.show();*/
 
                             c = db.rawQuery("SELECT messaggio FROM messaggi ", null);
                             if (c != null && c.getCount() > 0) {

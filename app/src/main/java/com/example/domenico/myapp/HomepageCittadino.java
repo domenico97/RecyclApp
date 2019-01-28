@@ -69,7 +69,8 @@ public class HomepageCittadino extends AppCompatActivity {
                         //Sono già alla Home
                         break;
                     case R.id.navigation_news:
-
+                        i.setClass(getApplicationContext(), AvvisiCittadino.class);
+                        startActivity(i);
                         break;
                     case R.id.navigation_info:
                         i.setClass(getApplicationContext(), Contatti.class);
@@ -165,7 +166,9 @@ public class HomepageCittadino extends AppCompatActivity {
     }
 
     public void raccoltaPunti(View v) {
-
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), RaccoltaPunti.class);
+        startActivity(i);
     }
 
     public void easyMode(View v) {

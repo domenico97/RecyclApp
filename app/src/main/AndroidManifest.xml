@@ -32,6 +32,9 @@
         <activity android:name=".Statistiche" />
         <activity android:name=".Contatti" />
         <activity android:name=".Segnalazione" />
+        <activity android:name=".AvvisiCittadino" />
+        <activity android:name=".VisualizzaMessaggio" />
+        <activity android:name=".RaccoltaPunti" />
 
     </application>
 

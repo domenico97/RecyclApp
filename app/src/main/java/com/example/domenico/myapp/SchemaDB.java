@@ -35,7 +35,8 @@ public class SchemaDB {
         public static final String COLUMN_MITTENTE = "mittente";
         public static final String COLUMN_OGGETTO = "oggetto";
         public static final String COLUMN_TIPO_SEGNALAZIONE = "tipo_segnalazione";
-
+        public static final String COLUMN_DATA_SEGNALAZIONE = "data_segnalazione";
+        public static final String COLUMN_DESTINATARIO = "destinatario";
     }
 
 }

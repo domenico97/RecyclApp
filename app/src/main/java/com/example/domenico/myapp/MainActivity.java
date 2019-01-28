@@ -36,10 +36,23 @@ public class MainActivity extends Activity {
         if (primoAccesso) {
             db = dbHelper.getWritableDatabase();
             utenti.add(new Utente("Giulia", "Valli", "VLLGLI79A41H703B", "giulia.valli@gmail.com", "via Roma Fisciano", "giulia79", "3894552124", "dip comunale"));
-            utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703B", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
+            utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703C", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
             utenti.add(new Utente("Marco", "Giuliani", "GLNMRC74M06H703X", "marco.giuliani@gmail.com", "via Toscanello Baronissi", "marco74", "3297856896", "op ecologico"));
+            Messaggio x = new Messaggio(0,"ciao","VLLGLI79A41H703B","cittadino","22/10/2018","PROVA","VLLGLI79A41H703C","Multa");
+
+            ContentValues values = new ContentValues();
+            values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, x.getData());
+            values.put(SchemaDB.Tavola.COLUMN_MITTENTE, x.getMittente());
+            values.put(SchemaDB.Tavola.COLUMN_OGGETTO, x.getOggetto());
+            values.put(SchemaDB.Tavola.COLUMN_TIPO, x.getTipo());
+            values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, x.getDestinatario());
+            values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, x.getTipo_segnalazione());
+            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, x.getMesssaggio());
+            db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
+
+
             for (int i = 0; i < utenti.size(); i++) {
-                ContentValues values = new ContentValues();
+                 values = new ContentValues();
                 values.put(SchemaDB.Tavola.COLUMN_NAME, utenti.get(i).getNome());
                 values.put(SchemaDB.Tavola.COLUMN_COGNOME, utenti.get(i).getCognome());
                 values.put(SchemaDB.Tavola.COLUMN_CF, utenti.get(i).getCf());

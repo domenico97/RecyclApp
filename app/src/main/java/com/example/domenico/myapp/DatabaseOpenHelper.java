@@ -26,7 +26,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             SchemaDB.Tavola.COLUMN_MESSAGGIO,
           SchemaDB.Tavola.COLUMN_MITTENTE,
             SchemaDB.Tavola.COLUMN_OGGETTO,
-            SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE
+            SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE,
+            SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE,
 
     };
 
@@ -55,6 +56,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.COLUMN_MITTENTE + " TEXT NOT NULL,"
                     + SchemaDB.Tavola.COLUMN_OGGETTO + " TEXT NOT NULL, "
                     + SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE + " TEXT NOT NULL,"
+                    + SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE + " TEXT ,"
+                    + SchemaDB.Tavola.COLUMN_DESTINATARIO + " TEXT ,"
                     + SchemaDB.Tavola.COLUMN_TIPO + " TEXT NOT NULL); ";
 
 
