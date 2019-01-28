@@ -38,7 +38,7 @@ public class MainActivity extends Activity {
             utenti.add(new Utente("Giulia", "Valli", "VLLGLI79A41H703B", "giulia.valli@gmail.com", "via Roma Fisciano", "giulia79", "3894552124", "dip comunale"));
             utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703C", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
             utenti.add(new Utente("Marco", "Giuliani", "GLNMRC74M06H703X", "marco.giuliani@gmail.com", "via Toscanello Baronissi", "marco74", "3297856896", "op ecologico"));
-            Messaggio x = new Messaggio(0,"ciao","VLLGLI79A41H703B","cittadino","22/10/2018","PROVA","VLLGLI79A41H703C","Multa");
+            Messaggio x = new Messaggio(0, "ciao", "VLLGLI79A41H703B", "cittadino", "22/10/2018", "PROVA", "VLLGLI79A41H703C", "Multa");
 
             ContentValues values = new ContentValues();
             values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, x.getData());
@@ -52,7 +52,7 @@ public class MainActivity extends Activity {
 
 
             for (int i = 0; i < utenti.size(); i++) {
-                 values = new ContentValues();
+                values = new ContentValues();
                 values.put(SchemaDB.Tavola.COLUMN_NAME, utenti.get(i).getNome());
                 values.put(SchemaDB.Tavola.COLUMN_COGNOME, utenti.get(i).getCognome());
                 values.put(SchemaDB.Tavola.COLUMN_CF, utenti.get(i).getCf());
@@ -81,25 +81,36 @@ public class MainActivity extends Activity {
 
 
         } else {
-            Intent z = new Intent();
-            if (prefs.getBoolean("RIMANI_CONNESSO", false)) {
-                if (prefs.getString("TIPO", "").equals("cittadino")) {
-                    z.setClass(getApplicationContext(), HomepageCittadino.class);
-                } else if (prefs.getString("TIPO", "").equals("operatoreEcologico")) {
-                    z.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
-                } else if (prefs.getString("TIPO", "").equals("dipendenteComunale")) {
-                    z.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
+            /*int id = prefs.getInt("ID", 0);
+            Log.d("PROVA", "" + id);
+            db = MainActivity.dbHelper.getWritableDatabase();
+            int connesso;
+
+            Cursor c = db.rawQuery("SELECT connesso FROM utenti where id = ?", new String[]{"" + id});
+            if (c != null && c.getCount() > 0) {
+                if (c.moveToFirst()) {
+                    connesso = c.getInt(0);
+
+                }*/
+                Intent z = new Intent();
+                if (prefs.getBoolean("RIMANI_CONNESSO", false)==true) {
+                    if (prefs.getString("TIPO", "").equals("cittadino")) {
+                        z.setClass(getApplicationContext(), HomepageCittadino.class);
+                    } else if (prefs.getString("TIPO", "").equals("op ecologico")) {
+                        z.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
+                    } else if (prefs.getString("TIPO", "").equals("dip comunale")) {
+                        z.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
+                    }
+
+                } else {
+                    z.setClass(getApplicationContext(), LoginForm.class);
+
                 }
-
-            } else {
-                z.setClass(getApplicationContext(), LoginForm.class);
-
+                startActivity(z);
             }
-            startActivity(z);
+
+
         }
 
 
     }
-
-
-}

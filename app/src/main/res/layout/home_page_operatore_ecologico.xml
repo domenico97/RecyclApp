@@ -37,6 +37,7 @@
                 android:background="@android:color/transparent"
                 android:foregroundGravity="right"
                 android:src="@drawable/user_circle"
+                android:onClick="areaPersonale"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

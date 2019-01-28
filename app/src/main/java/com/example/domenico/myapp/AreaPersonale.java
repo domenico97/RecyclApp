@@ -52,7 +52,7 @@ public class AreaPersonale extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.navigationView);
         s = findViewById(R.id.switchConnesso);
 
-        if (prefs.getBoolean("RIMANI_CONNESSO", false)) {
+        if (prefs.getBoolean("RIMANI_CONNESSO", false) == true) {
             s.setChecked(true);
         } else {
             s.setChecked(false);
@@ -117,6 +117,9 @@ public class AreaPersonale extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("RIMANI_CONNESSO", false);
+                        s.setChecked(false);
                         Intent i = new Intent();
                         i.setClass(getApplicationContext(), LoginForm.class);
                         startActivity(i);
@@ -189,7 +192,7 @@ public class AreaPersonale extends AppCompatActivity {
     public void rimaniConnesso(View v) {
         SharedPreferences.Editor editor = prefs.edit();
 
-        if (!prefs.getBoolean("RIMANI_CONNESSO", false)) {
+        if (prefs.getBoolean("RIMANI_CONNESSO", false)==false) {
             s.setChecked(true);
             editor.putBoolean("RIMANI_CONNESSO", true);
         } else {
@@ -197,8 +200,7 @@ public class AreaPersonale extends AppCompatActivity {
             editor.putBoolean("RIMANI_CONNESSO", false);
         }
 
-        editor.putString("TIPO", "cittadino");
-        editor.apply();
+
     }
 }
 

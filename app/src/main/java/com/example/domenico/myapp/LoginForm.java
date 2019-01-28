@@ -150,7 +150,8 @@ public class LoginForm extends Activity {
                 editor.putInt("ID", cursor.getInt(0));
                 editor.putString("NOME", cursor.getString(1));
                 editor.putInt("PUNTI", cursor.getInt(4));
-                editor.apply();
+                editor.putString("TIPO", cursor.getString(3));
+                editor.commit();
                 startActivity(i);
 
                 Toast.makeText(getApplicationContext(), "Nome:" + cursor.getString(1) + "Cognome: " + cursor.getString(2), Toast.LENGTH_LONG).show();

@@ -186,8 +186,8 @@ public class HomepageCittadino extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        SharedPreferences.Editor editor = prefs.edit();
-                        editor.putBoolean("RIMANI_CONNESSO", false);
+                        /*SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("RIMANI_CONNESSO", false);*/
                         finishAffinity();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:

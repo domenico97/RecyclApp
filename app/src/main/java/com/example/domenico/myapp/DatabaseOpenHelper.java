@@ -27,7 +27,8 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
           SchemaDB.Tavola.COLUMN_MITTENTE,
             SchemaDB.Tavola.COLUMN_OGGETTO,
             SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE,
-            SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE,
+            SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE
+           // SchemaDB.Tavola.COLUMN_RIMANI_CONNESSO
 
     };
 
@@ -46,6 +47,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.COLUMN_INFRAZIONI + " INTEGER DEFAULT 0, "
                     + SchemaDB.Tavola.COLUMN_SEGNALAZIONI + " INTEGER DEFAULT 0, "
                     + SchemaDB.Tavola.COLUMN_IMMAGINE + " BLOB, "
+                   // + SchemaDB.Tavola.COLUMN_RIMANI_CONNESSO + " INTEGER DEFAULT 0, "
                     + SchemaDB.Tavola.COLUMN_TELEFONO + " TEXT NOT NULL); ";
 
 
