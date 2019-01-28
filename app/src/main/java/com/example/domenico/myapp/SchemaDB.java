@@ -37,7 +37,6 @@ public class SchemaDB {
         public static final String COLUMN_TIPO_SEGNALAZIONE = "tipo_segnalazione";
         public static final String COLUMN_DATA_SEGNALAZIONE = "data_segnalazione";
         public static final String COLUMN_DESTINATARIO = "destinatario";
-       // public static final String COLUMN_RIMANI_CONNESSO = "connesso";
     }
 
 }
