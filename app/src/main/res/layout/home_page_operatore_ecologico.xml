@@ -67,27 +67,17 @@
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView2">
+            app:layout_constraintTop_toBottomOf="@id/textView2"
+            >
+
 
             <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <fragment android:name="com.example.domenico.myapp.SimpleScannerFragment"
                     android:id="@+id/scanner_fragment"
                     android:layout_weight="1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_width="250dp"
+                    android:layout_height="250dp" />
 
-                <android.support.v7.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_gravity="top"
-                    android:minHeight="?attr/actionBarSize"
-                    android:background="@color/actionbar_opacity"
-                    app:theme="@style/TransparentToolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"/>
-            </FrameLayout>
+
 
         </android.support.constraint.ConstraintLayout>
 
@@ -133,6 +123,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Nome: " />
+                        <TextView
+                            android:id="@+id/nome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -142,6 +137,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cognome: " />
+                        <TextView
+                            android:id="@+id/cognome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -151,6 +151,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Via: " />
+                        <TextView
+                            android:id="@+id/via"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -160,6 +165,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Città: " />
+                        <TextView
+                            android:id="@+id/citta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -169,6 +179,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Numero infrazioni: " />
+                        <TextView
+                            android:id="@+id/numeroInfrazioni"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -178,6 +193,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Numero Punti: " />
+                        <TextView
+                            android:id="@+id/numeroPunti"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
