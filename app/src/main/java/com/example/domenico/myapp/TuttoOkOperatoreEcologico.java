@@ -9,6 +9,8 @@ import java.util.Calendar;
 
 public class TuttoOkOperatoreEcologico extends Activity {
 
+   private static final int PUNTIDAAGGIUNGERE = 1;
+
 
     TextView nomeCognomeText, viaText, dataText, oraText, puntiAggiuntiText;
     String nomeCognome, via, data, ora, puntiAggiunti;
@@ -41,15 +43,25 @@ public class TuttoOkOperatoreEcologico extends Activity {
         int cYear = calendar.get(Calendar.YEAR);
         String selectedMonth = "" + cMonth;
         String selectedYear = "" + cYear;
-        int cHour = calendar.get(Calendar.HOUR);
+        int cHour = calendar.get(Calendar.HOUR_OF_DAY);
         int cMinute = calendar.get(Calendar.MINUTE);
         int cSecond = calendar.get(Calendar.SECOND);
 
+        String hour=cHour+"",minute=cMinute+"",second=cSecond+"";
+
+        if(cHour<=9)
+            hour="0"+cHour;
+        if(cMinute<=9)
+            minute="0"+cMinute;
+        if(cSecond<=9)
+            second="0"+cSecond;
+
         data = cDay+"/"+cMonth+"/"+cYear;
-        ora = cHour+":"+cMinute+":"+cSecond;
+        ora = hour+":"+minute+":"+second;
 
         dataText.setText(data);
         oraText.setText(ora);
+        puntiAggiuntiText.setText(PUNTIDAAGGIUNGERE+"");
 
     }
 

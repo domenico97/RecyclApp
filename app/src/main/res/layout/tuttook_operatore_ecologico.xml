@@ -47,10 +47,13 @@
 
     <TableLayout
         android:id="@+id/datiCittadino"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative"
+
+        android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp">
 
         <TableRow>
@@ -58,7 +61,11 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Cittadino: " />
+
+
+                android:text="Cittadino: "
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/riepilogoNomeCognome"
@@ -72,7 +79,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Indirizzo: " />
+                android:text="Indirizzo: "
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/riepilogoIndirizzo"
@@ -88,14 +97,30 @@
         android:layout_below="@id/datiCittadino"
         android:layout_width="match_parent"
         android:layout_height="1dp"
+        android:id="@+id/sepView"
         android:background="@android:color/darker_gray"/>
+
+
+    <TextView
+        android:id="@+id/textInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sepView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:text="Informazioni Prelievc Rifiuto"
+        android:textSize="18sp" />
+
 
     <TableLayout
         android:id="@+id/datiScan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/datiCittadino"
-        android:layout_marginTop="50dp"
+        android:layout_below="@id/textInfo"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginRight="20dp"
         android:layout_marginBottom="50dp">
 
         <TableRow>
@@ -103,7 +128,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data: " />
+                android:text="Data: "
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dataScan"
@@ -117,7 +144,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ora: " />
+                android:text="Ora: "
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/oraScan"
@@ -131,7 +160,9 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Punti aggiunti: " />
+                android:text="Punti aggiunti: "
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/puntiScan"

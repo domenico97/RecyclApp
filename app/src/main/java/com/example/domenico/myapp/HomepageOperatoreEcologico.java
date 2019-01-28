@@ -84,25 +84,24 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
 
         String s = rawResult.getText();
-        String[] tokens = s.split("\\:");
-        nome = tokens[0];
-        cognome = tokens[1];
-        via = tokens[2];
-        citta = tokens[3];
+        if(rawResult.getBarcodeFormat().toString().equals("QR_CODE")) {
+            String[] tokens = s.split("\\:");
+            nome = tokens[0];
+            cognome = tokens[1];
+            via = tokens[2];
+            citta = tokens[3];
 
-        infrazioni =tokens[4];
-        punti = tokens[5];
+            infrazioni = tokens[4];
+            punti = tokens[5];
 
-        nomeText.setText(nome);
-        cognomeText.setText(cognome);
-        viaText.setText(via);
-        cittaText.setText(citta);
-        infrazioniText.setText(infrazioni);
-        puntiText.setText(punti);
+            nomeText.setText(nome);
+            cognomeText.setText(cognome);
+            viaText.setText(via);
+            cittaText.setText(citta);
+            infrazioniText.setText(infrazioni);
+            puntiText.setText(punti);
+        }
 
-
-
-        Toast.makeText(getApplicationContext(),rawResult.getTimestamp()+"",Toast.LENGTH_SHORT).show();
        /* for( String x : tokens){
             Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
         }*/
