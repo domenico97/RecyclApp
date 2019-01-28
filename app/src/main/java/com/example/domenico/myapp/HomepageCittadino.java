@@ -160,14 +160,21 @@ public class HomepageCittadino extends AppCompatActivity {
 
     public void areaPersonale(View v) {
         Intent i = new Intent();
-       // i.putExtra("ActivityPrecedente", "Home");
         i.setClass(getApplicationContext(), AreaPersonale.class);
         startActivity(i);
     }
-    /*
-    public void raccltaPunti(View v) {
 
-    }*/
+    public void raccoltaPunti(View v) {
+
+    }
+
+    public void easyMode(View v) {
+
+    }
+
+    public void identifica(View v) {
+
+    }
 
     @Override
     public void onBackPressed() {
@@ -178,7 +185,7 @@ public class HomepageCittadino extends AppCompatActivity {
                     case DialogInterface.BUTTON_POSITIVE:
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putBoolean("RIMANI_CONNESSO", false);
-                           finishAffinity();
+                        finishAffinity();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         break;

@@ -1,6 +1,8 @@
 package com.example.domenico.myapp;
 
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -77,64 +79,100 @@ public class Segnalazione extends AppCompatActivity {
     }
 
     public void invia(View v) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        String tipo = spinner.getSelectedItem().toString();
+                        String descr = descrizione.getText().toString();
+                        String obj = oggetto.getText().toString();
+                        if (descr.equals("") || obj.equals("")) {
+                            Toast.makeText(getApplicationContext(), "I campi non possono essere vuoti !", Toast.LENGTH_SHORT).show();
+                        } else {
+                            prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                            int id = prefs.getInt("ID", 0);
+                            db = MainActivity.dbHelper.getWritableDatabase();
+                            Cursor c = db.rawQuery("SELECT cf,segnalazioni FROM utenti where id = ?", new String[]{"" + id});
+                            if (c != null && c.getCount() > 0) {
+                                if (c.moveToFirst()) {
+                                    cf = c.getString(0);
+                                    segnalazioni = c.getInt(1);
+                                    Log.d("SEGNALAZIONI", "" + segnalazioni);
 
-        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        int id = prefs.getInt("ID", 0);
-        db = MainActivity.dbHelper.getWritableDatabase();
-        Cursor c = db.rawQuery("SELECT cf,segnalazioni FROM utenti where id = ?", new String[]{"" + id});
-        if (c != null && c.getCount() > 0) {
-            if (c.moveToFirst()) {
-                cf = c.getString(0);
-                segnalazioni = c.getInt(1);
-                Log.d("SEGNALAZIONI", ""+segnalazioni);
+                                }
+                            }
 
+
+                            ContentValues values = new ContentValues();
+                            values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, tipo);
+                            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
+                            values.put(SchemaDB.Tavola.COLUMN_OGGETTO, obj);
+                            values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
+                            values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino");
+
+                            db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
+
+
+                            View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
+
+                       /* Toast toast = new Toast(getApplicationContext());
+                        // Set custom view in toast.
+                        toast.setView(toastView);
+                        toast.setDuration(Toast.LENGTH_LONG);
+                        toast.setGravity(Gravity.CENTER, 0, 0);
+                        toast.show();*/
+
+                            c = db.rawQuery("SELECT messaggio FROM messaggi ", null);
+                            if (c != null && c.getCount() > 0) {
+                                if (c.moveToFirst()) {
+                                    Log.d("PROVA", c.getString(0));
+
+                                }
+                            }
+                            segnalazioni++;
+                            Log.d("SEGNALAZIONI", "" + segnalazioni);
+                            ContentValues cv = new ContentValues();
+                            cv.put(SchemaDB.Tavola.COLUMN_SEGNALAZIONI, segnalazioni);
+                            db.update(SchemaDB.Tavola.TABLE_NAME, cv, "id=" + id, null);
+
+                            oggetto.setText("");
+                            descrizione.setText("");
+                            confermaInvio();
+
+                        }
+                        break;
+                }
             }
-        }
-        String tipo = spinner.getSelectedItem().toString();
-        String descr = descrizione.getText().toString();
-        String obj = oggetto.getText().toString();
+        };
 
-        ContentValues values = new ContentValues();
-        values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, tipo);
-        values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
-        values.put(SchemaDB.Tavola.COLUMN_OGGETTO, obj);
-        values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
-        values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino");
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Sei sicuro di voler inviare la segnalazione?")
+                .setPositiveButton("Si", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
 
-// Inserting Row
-        db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
-       /*
-        String ROW1 = "INSERT INTO " + SchemaDB.Tavola.TABLE_NAME1 + " ("
-                + SchemaDB.Tavola.COLUMN_MESSAGGIO + ", " + SchemaDB.Tavola.COLUMN_MITTENTE + ", "
-                + SchemaDB.Tavola.COLUMN_OGGETTO + ", " + SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE + ", "
-                + SchemaDB.Tavola.COLUMN_TIPO + ") Values (" + descr + "," + cf + "," + obj + "," + tipo + ",'cittadino')";
+        return;
 
-        db.execSQL(ROW1);*/
+    }
 
-        View toastView = getLayoutInflater().inflate(R.layout.activity_toast_custom_view, null);
+    private void confermaInvio() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Intent intent = new Intent();
+                        intent.setClass(getApplicationContext(), HomepageCittadino.class);
+                        startActivity(intent);
+                        break;
 
-        // Initiate the Toast instance.
-        Toast toast = new Toast(getApplicationContext());
-        // Set custom view in toast.
-        toast.setView(toastView);
-        toast.setDuration(Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toast.show();
-
-        c = db.rawQuery("SELECT messaggio FROM messaggi ", null);
-        if (c != null && c.getCount() > 0) {
-            if (c.moveToFirst()) {
-                Log.d("PROVA", c.getString(0));
-
+                }
             }
-        }
-        segnalazioni++;
-        Log.d("SEGNALAZIONI", ""+segnalazioni);
-        ContentValues cv = new ContentValues();
-        cv.put(SchemaDB.Tavola.COLUMN_SEGNALAZIONI,segnalazioni);
-        db.update(SchemaDB.Tavola.TABLE_NAME, cv, "id=" + id, null);
-        oggetto.setText("");
-        descrizione.setText("");
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Segnalazione Inviata\n" +
+                "La tua segnalazione è stata inviata. Grazie.")
+                .setPositiveButton("OK", dialogClickListener).show();
+        return;
 
     }
 }

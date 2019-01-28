@@ -34,7 +34,7 @@ public class LoginForm extends Activity {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("Accesso", false);
-        editor.commit();
+        editor.apply();
         email = findViewById(R.id.email);
         password = (EditText) findViewById(R.id.pswrdd);
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -150,7 +150,7 @@ public class LoginForm extends Activity {
                 editor.putInt("ID", cursor.getInt(0));
                 editor.putString("NOME", cursor.getString(1));
                 editor.putInt("PUNTI", cursor.getInt(4));
-                editor.commit();
+                editor.apply();
                 startActivity(i);
 
                 Toast.makeText(getApplicationContext(), "Nome:" + cursor.getString(1) + "Cognome: " + cursor.getString(2), Toast.LENGTH_LONG).show();

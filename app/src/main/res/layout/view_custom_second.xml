@@ -73,7 +73,7 @@
         android:layout_marginLeft="10dp"
         android:clickable="true"
         android:foreground="?android:attr/selectableItemBackground"
-        android:onClick="identifica">
+        android:onClick="raccoltaPunti">
 
 
         <RelativeLayout

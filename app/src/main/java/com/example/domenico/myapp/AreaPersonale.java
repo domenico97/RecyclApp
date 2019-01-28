@@ -197,7 +197,7 @@ public class AreaPersonale extends AppCompatActivity {
         }
 
         editor.putString("TIPO", "cittadino");
-        editor.commit();
+        editor.apply();
     }
 }
 
