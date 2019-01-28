@@ -321,12 +321,6 @@ public class Calendario extends FragmentActivity  {
         }
 
 
-//        private HashMap<String, Integer> findNumberOfEventsPerMonth(int year,
-//                                                                    int month) {
-//            HashMap<String, Integer> map = new HashMap<String, Integer>();
-//
-//            return map;
-//        }
 
         @Override
         public long getItemId(int position) {
@@ -344,7 +338,7 @@ public class Calendario extends FragmentActivity  {
 
 // Get a reference to the Day gridcell
             gridcell = (TextView) row.findViewById(R.id.calendar_day_gridcell);
-            gridcell.setOnClickListener(this);
+//            gridcell.setOnClickListener(this);
             imgGiorno =(ImageView) row.findViewById(R.id.imgGiorno);
 
 
@@ -356,14 +350,6 @@ public class Calendario extends FragmentActivity  {
             String themonth = day_color[2];
             String theyear = day_color[3];
 
-            /*if ((!eventsPerMonthMap.isEmpty()) && (eventsPerMonthMap != null)) {*/
-            /*    if (eventsPerMonthMap.containsKey(theday)) {*/
-            /*        num_events_per_day = (TextView) row*/
-            /*                .findViewById(R.id.num_events_per_day);*/
-            /*        Integer numEvents = (Integer) eventsPerMonthMap.get(theday);*/
-            /*        num_events_per_day.setText(numEvents.toString());*/
-            /*    }*/
-            /*}*/
 
 // Set the Day GridCell
             gridcell.setText(theday);

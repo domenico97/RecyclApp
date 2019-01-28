@@ -67,14 +67,17 @@
             android:layout_marginRight="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView2">
+            app:layout_constraintTop_toBottomOf="@id/textView2"
+            >
 
-            <View
-                android:layout_width="200dp"
-                android:layout_height="200dp"
-                android:background="@color/black">
 
-            </View>
+            <FrameLayout
+                    android:id="@+id/scanner_fragment"
+                    android:layout_weight="1"
+                    android:layout_width="250dp"
+                    android:layout_height="250dp" />
+
+
 
         </android.support.constraint.ConstraintLayout>
 
@@ -120,6 +123,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Nome: " />
+                        <TextView
+                            android:id="@+id/nome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -129,6 +137,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Cognome: " />
+                        <TextView
+                            android:id="@+id/cognome"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -138,6 +151,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Via: " />
+                        <TextView
+                            android:id="@+id/via"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -147,6 +165,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Città: " />
+                        <TextView
+                            android:id="@+id/citta"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -156,6 +179,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Numero infrazioni: " />
+                        <TextView
+                            android:id="@+id/numeroInfrazioni"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -165,6 +193,11 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Numero Punti: " />
+                        <TextView
+                            android:id="@+id/numeroPunti"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="empty" />
 
                     </TableRow>
 
@@ -175,50 +208,87 @@
 
         </android.support.constraint.ConstraintLayout>
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/navigationView"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+
+        <FrameLayout
+            android:id="@+id/infrazioneButton"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="60dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/constraintLayout2">
+            android:layout_weight="1">
 
-            <ImageButton
-                android:id="@+id/imageButton2"
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@android:color/holo_red_dark"
-                android:src="@drawable/infrazione_operatore_ecologico"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp">
 
-            <ImageButton
-                android:id="@+id/imageButton"
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@android:color/holo_red_dark"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/infrazioneOperatoreEcologico"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentTop="true"
+                        android:src="@drawable/infrazione_operatore_ecologico" />
+
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:id="@+id/tuttoOkButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <android.support.v7.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginRight="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@android:color/holo_green_dark"
-                android:src="@drawable/tutto_ok_operatore_ecologico"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="10dp">
 
 
-        </android.support.constraint.ConstraintLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/holo_green_dark"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/tuttoOkOperatoreEcologico"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/tutto_ok_operatore_ecologico" />
 
 
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
+
+        </FrameLayout>
+
+    </LinearLayout>
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigationView"
             android:layout_width="match_parent"
