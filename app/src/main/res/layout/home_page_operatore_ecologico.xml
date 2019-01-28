@@ -228,6 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
+                android:onClick="infrazione"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="7dp"
                 app:cardElevation="10dp">
@@ -265,6 +266,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:clickable="true"
+                android:onClick="tuttoOk"
                 android:foreground="?android:attr/selectableItemBackground"
                 app:cardCornerRadius="7dp"
                 app:cardElevation="10dp">

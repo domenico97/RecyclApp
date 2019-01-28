@@ -4,6 +4,7 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:allowBackup="true"
@@ -34,10 +35,15 @@
         <activity android:name=".Segnalazione" />
         <activity android:name=".AvvisiCittadino" />
         <activity android:name=".SimpleScannerActivity" />
+        <activity android:name=".TuttoOkOperatoreEcologico" />
         <activity android:name=".VisualizzaMessaggio" />
         <activity android:name=".RaccoltaPunti" />
-        <activity android:name=".SimpleScannerFragmentActivity" />
         <activity android:name=".BaseScannerActivity" />
+
+
+        <activity android:name=".SimpleScannerFragmentActivity" />
+
+
 
 
     </application>

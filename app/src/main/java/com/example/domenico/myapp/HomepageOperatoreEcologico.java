@@ -28,7 +28,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
     TextView cittaText;
     TextView infrazioniText;
     TextView puntiText;
-
+    String nome,cognome,via,citta,infrazioni,punti;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +81,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
     @Override
     public void resultReady(Result rawResult) {
-        String nome,cognome,via,citta,infrazioni,punti;
+
 
         String s = rawResult.getText();
         String[] tokens = s.split("\\:");
@@ -102,10 +102,34 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
 
 
-       /* Toast.makeText(getApplicationContext(),tokens.length,Toast.LENGTH_SHORT).show();
-        for( String x : tokens){
+        Toast.makeText(getApplicationContext(),rawResult.getTimestamp()+"",Toast.LENGTH_SHORT).show();
+       /* for( String x : tokens){
             Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
         }*/
 
+    }
+
+    public void tuttoOk(View view) {
+
+        if(nome!=null){
+
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(),TuttoOkOperatoreEcologico.class);
+        i.putExtra("nome",nome);
+        i.putExtra("cognome",cognome);
+        i.putExtra("via",via);
+        i.putExtra("citta",citta);
+        i.putExtra("nInfrazioni",infrazioni);
+        i.putExtra("nPunti",punti);
+        startActivity(i);
+
+
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Dati non rilevati",Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    public void infrazione(View view) {
     }
 }
