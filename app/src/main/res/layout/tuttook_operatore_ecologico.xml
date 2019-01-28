@@ -47,7 +47,7 @@
 
     <TableLayout
         android:id="@+id/datiCittadino"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/relative"
 
@@ -59,34 +59,41 @@
         <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
 
-
+                android:layout_weight="1"
                 android:text="Cittadino: "
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/riepilogoNomeCognome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="prova"
+                android:textSize="18sp" />
 
         </TableRow>
 
         <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Indirizzo: "
+                android:layout_weight="1"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/riepilogoIndirizzo"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="prova"
+                android:layout_weight="1"
+                android:textSize="18sp" />
 
         </TableRow>
 
@@ -109,7 +116,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
-        android:text="Informazioni Prelievc Rifiuto"
+        android:text="Informazioni Prelievo Rifiuto"
         android:textSize="18sp" />
 
 
@@ -126,48 +133,60 @@
         <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:text="Data: "
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/dataScan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="prova"
+                android:layout_weight="1"
+                android:textSize="18sp"/>
 
         </TableRow>
 
         <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Ora: "
+                android:layout_weight="1"
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/oraScan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="prova"
+                android:layout_weight="1"
+                android:textSize="18sp"/>
 
         </TableRow>
 
         <TableRow>
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Punti aggiunti: "
                 android:textSize="24sp"
+                android:layout_weight="1"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/puntiScan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="prova"
+                android:layout_weight="1"
+                android:textSize="18sp"/>
 
         </TableRow>
 

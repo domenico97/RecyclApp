@@ -1,8 +1,11 @@
 package com.example.domenico.myapp;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import java.util.Calendar;
@@ -10,14 +13,19 @@ import java.util.Calendar;
 public class TuttoOkOperatoreEcologico extends Activity {
 
    private static final int PUNTIDAAGGIUNGERE = 1;
-
+   private SQLiteDatabase db = null;
 
     TextView nomeCognomeText, viaText, dataText, oraText, puntiAggiuntiText;
-    String nomeCognome, via, data, ora, puntiAggiunti;
+    String nomeCognome, via, data, ora, punti,cf;
+
+
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tuttook_operatore_ecologico);
+
+        db = MainActivity.dbHelper.getWritableDatabase();
 
         nomeCognomeText = findViewById(R.id.riepilogoNomeCognome);
         viaText = findViewById(R.id.riepilogoIndirizzo);
@@ -29,7 +37,7 @@ public class TuttoOkOperatoreEcologico extends Activity {
         Intent i = getIntent();
         nomeCognome = i.getStringExtra("nome") + " " +i.getStringExtra("cognome");
         via = i.getStringExtra("via");
-
+        punti = i.getStringExtra("punti");
 
         nomeCognomeText.setText(nomeCognome);
         viaText.setText(via);
@@ -63,6 +71,18 @@ public class TuttoOkOperatoreEcologico extends Activity {
         oraText.setText(ora);
         puntiAggiuntiText.setText(PUNTIDAAGGIUNGERE+"");
 
+
+        ContentValues cv = new ContentValues();
+        cv.put(SchemaDB.Tavola.COLUMN_PUNTI,punti+PUNTIDAAGGIUNGERE+"");
+
+
+        //ERRORE: non aggiunge punti
+        db.update(SchemaDB.Tavola.TABLE_NAME, cv, SchemaDB.Tavola.COLUMN_CF + "= ?", new String[] {cf});
+
+    }
+
+    public void back(View v) {
+        finish();
     }
 
 
