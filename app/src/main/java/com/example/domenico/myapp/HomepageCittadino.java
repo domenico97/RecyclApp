@@ -186,7 +186,9 @@ public class HomepageCittadino extends AppCompatActivity {
     }
 
     public void identifica(View v) {
-
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), IdentificaTipologiaRifiuto.class);
+        startActivity(i);
     }
 
     @Override

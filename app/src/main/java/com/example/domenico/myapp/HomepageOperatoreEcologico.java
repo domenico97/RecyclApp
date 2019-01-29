@@ -35,6 +35,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
     TextView cittaText;
     TextView infrazioniText;
     TextView puntiText;
+
     String nome,cognome,via,citta,infrazioni,punti,cf;
     private BottomNavigationView bottomNavigationView;
     private DatabaseOpenHelper dbHelper;
