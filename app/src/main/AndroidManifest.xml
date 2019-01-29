@@ -39,6 +39,7 @@
         <activity android:name=".VisualizzaMessaggio" />
         <activity android:name=".RaccoltaPunti" />
         <activity android:name=".BaseScannerActivity" />
+        <activity android:name=".InfrazioneOperatoreEcologico" />
         <activity android:name=".EasyMode" />
 
 
