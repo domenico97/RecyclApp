@@ -124,12 +124,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Nome: " />
+                            android:text="Nome: "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/nome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="empty" />
+                            android:text="empty"
+                            android:textSize="18sp" />
 
                     </TableRow>
 
@@ -138,12 +142,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Cognome: " />
+                            android:text="Cognome: "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/cognome"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="empty" />
+                            android:text="empty"
+                            android:textSize="18sp" />
 
                     </TableRow>
 
@@ -152,12 +160,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Via: " />
+                            android:text="Via: "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/via"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="empty" />
+                            android:text="empty"
+                            android:textSize="18sp" />
 
                     </TableRow>
 
@@ -166,12 +178,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Città: " />
+                            android:text="Città: "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/citta"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="empty" />
+                            android:text="empty"
+                            android:textSize="18sp" />
 
                     </TableRow>
 
@@ -180,12 +196,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Numero infrazioni: " />
+                            android:text="Numero infrazioni: "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/numeroInfrazioni"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="empty" />
+                            android:text="empty"
+                            android:textSize="18sp" />
 
                     </TableRow>
 
@@ -194,12 +214,16 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Numero Punti: " />
+                            android:text="Numero Punti: "
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
                         <TextView
                             android:id="@+id/numeroPunti"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="empty" />
+                            android:text="empty"
+                            android:textSize="18sp" />
 
                     </TableRow>
 

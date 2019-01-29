@@ -41,7 +41,9 @@
         <activity android:name=".BaseScannerActivity" />
         <activity android:name=".InfrazioneOperatoreEcologico" />
         <activity android:name=".EasyMode" />
-
+        <activity android:name=".AvvisiOperatoreEcologico" />
+        <activity android:name=".SegnalazioniOperatoreEcologico" />
+        <activity android:name=".AreaPersonaleOperatoreEcologico" />
 
         <activity android:name=".SimpleScannerFragmentActivity" />
 

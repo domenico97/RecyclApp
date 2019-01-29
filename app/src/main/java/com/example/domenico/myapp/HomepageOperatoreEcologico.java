@@ -226,4 +226,12 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
             Toast.makeText(getApplicationContext(),"Dati non rilevati",Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    public void areaPersonale(View v) {
+        Intent i = new Intent();
+        i.putExtra("ActivityPrecedente","homepageOperatoreEcologico");
+        i.setClass(getApplicationContext(), AreaPersonaleOperatoreEcologico.class);
+        startActivity(i);
+    }
 }

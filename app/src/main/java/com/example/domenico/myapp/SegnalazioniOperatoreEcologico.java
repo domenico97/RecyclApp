@@ -1,4 +1,6 @@
 package com.example.domenico.myapp;
 
-public class SegnalazioniOperatoreEcologico {
+import android.app.Activity;
+
+public class SegnalazioniOperatoreEcologico extends Activity {
 }
