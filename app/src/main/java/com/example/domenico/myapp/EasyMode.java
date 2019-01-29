@@ -1,15 +1,26 @@
 package com.example.domenico.myapp;
 
+import android.annotation.TargetApi;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
+
 import com.synnapps.carouselview.CarouselView;
 
 import java.text.SimpleDateFormat;
@@ -31,11 +42,16 @@ public class EasyMode extends AppCompatActivity {
     int occorenzaGiorno;
 
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.easy_mode);
+        Switch easyMode = findViewById(R.id.switch1);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+            easyMode.setChecked(true);
+
+
         nomeUtente = prefs.getString("NOME", "");
         punti = prefs.getInt("PUNTI", 0);
         Date date = new Date();
@@ -44,27 +60,38 @@ public class EasyMode extends AppCompatActivity {
         occorenzaGiorno = getOccurenceOfDayInMonth(date);
         giorno = format.format((date));
 
-        bottomNavigationView = findViewById(R.id.navigationView);
-        //Listener bottomNavigationView
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Intent i = new Intent();
-                switch (item.getItemId()) {
-                    case R.id.navigation_home:
-                        //Sono già alla Home
+    }
+
+    public void easyMode(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), HomepageCittadino.class);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("EASY_MODE",false);
+        editor.apply();
+        startActivity(i);
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            @TargetApi(Build.VERSION_CODES.JELLY_BEAN)
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        finish();
                         break;
-                    case R.id.navigation_news:
-                        i.setClass(getApplicationContext(), AvvisiCittadino.class);
-                        startActivity(i);
-                        break;
-                    case R.id.navigation_info:
-                        i.setClass(getApplicationContext(), Contatti.class);
-                        startActivity(i);
+                    case DialogInterface.BUTTON_NEGATIVE:
                         break;
                 }
-                return false;
             }
-        });
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Conferma \nStai per uscire dalla modalità Easy Mode.Sei sicuro?")
+                .setPositiveButton("Si", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
+        return;
     }
 }

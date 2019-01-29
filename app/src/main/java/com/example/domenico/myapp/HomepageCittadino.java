@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -15,8 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -52,6 +55,8 @@ public class HomepageCittadino extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         nomeUtente = prefs.getString("NOME", "");
         punti = prefs.getInt("PUNTI", 0);
+        Switch easyMode = findViewById(R.id.switch1);
+        easyMode.setChecked(false);
         Date date = new Date();
 
         SimpleDateFormat format = new SimpleDateFormat("EEEE");
@@ -174,6 +179,9 @@ public class HomepageCittadino extends AppCompatActivity {
     public void easyMode(View v) {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), EasyMode.class);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putBoolean("EASY_MODE",true);
+        editor.apply();
         startActivity(i);
     }
 

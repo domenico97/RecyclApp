@@ -11,8 +11,9 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="7dp"
         android:text="RecyclApp"
+        android:textColor="@color/black"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="21sp"
         android:textStyle="bold|italic" />
 
     <Switch
@@ -21,9 +22,11 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_marginTop="7dp"
+        android:textSize="18sp"
+        android:textColor="@color/black"
         android:layout_marginBottom="10dp"
         android:onClick="easyMode"
-        android:text="Easy Mode" />
+        android:text="Easy Mode  " />
 
 
     <FrameLayout

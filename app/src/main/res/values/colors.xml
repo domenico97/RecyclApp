@@ -11,5 +11,6 @@
     <color name="orange">#e33d1b</color>
     <color name="darkorange">#cc2303</color>
     <color name="red">#FF0000</color>
+    <color name="blue">#0000FF</color>
     <color name="actionbar_opacity">#33000000</color>
 </resources>

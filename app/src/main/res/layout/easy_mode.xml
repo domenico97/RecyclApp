@@ -4,6 +4,48 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="8dp"
+            android:text="RecyclApp"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="23sp"
+            android:textStyle="bold|italic" />
+
+
+        <Switch
+            android:id="@+id/switch1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:thumbTint="@color/black"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="easyMode"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:text="Easy Mode  "
+          />
+
+    </RelativeLayout>
+
+
     <!-- <android.support.design.widget.BottomNavigationView
          android:id="@+id/navigationView"
          android:layout_width="match_parent"
@@ -14,28 +56,39 @@
          app:itemTextColor="@drawable/bottom_navigation_colors"
          app:menu="@menu/navigation_easy" />-->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:layout_centerHorizontal="true"
             android:onClick="home">
 
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:src="@drawable/home"
+                android:tint="@color/white"/>
+
             <TextView
+                android:layout_toRightOf="@id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Pagina iniziale"
+                android:layout_marginLeft="20dp"
+                android:layout_centerVertical="true"
                 android:textStyle="bold|italic"
-                />
+                android:textSize="23sp"
+                android:textColor="@color/white"/>
 
-        </LinearLayout>
+        </RelativeLayout>
 
-    </LinearLayout>
+    </RelativeLayout>
 
 
 </RelativeLayout>
