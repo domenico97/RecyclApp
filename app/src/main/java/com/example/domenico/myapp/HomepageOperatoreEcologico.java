@@ -1,8 +1,12 @@
 package com.example.domenico.myapp;
 
 import android.app.Activity;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -28,7 +32,11 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
     TextView cittaText;
     TextView infrazioniText;
     TextView puntiText;
-    String nome,cognome,via,citta,infrazioni,punti;
+    String nome,cognome,via,citta,infrazioni,punti,cf;
+
+    private DatabaseOpenHelper dbHelper;
+    private SQLiteDatabase db = null;
+
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,25 +94,52 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
         String s = rawResult.getText();
         if(rawResult.getBarcodeFormat().toString().equals("QR_CODE")) {
             String[] tokens = s.split("\\:");
-            nome = tokens[0];
-            cognome = tokens[1];
-            via = tokens[2];
-            citta = tokens[3];
-
+            cf = tokens[0];
+            nome = tokens[1];
+            cognome = tokens[2];
+            via = tokens[3];
+            citta = tokens[4];
+/*
             infrazioni = tokens[4];
-            punti = tokens[5];
+            punti = tokens[5];*/
 
             nomeText.setText(nome);
             cognomeText.setText(cognome);
             viaText.setText(via);
             cittaText.setText(citta);
-            infrazioniText.setText(infrazioni);
-            puntiText.setText(punti);
+            /*infrazioniText.setText(infrazioni);
+            puntiText.setText(punti);*/
+
+
+
+
+            // infrazioni e punti vanno prelevati dal DB se si trova la corrispondenza sul codice fiscale
+
+            db = MainActivity.dbHelper.getWritableDatabase();
+
+            Cursor c = db.rawQuery("SELECT cf,infrazioni,punti FROM  utenti where cf = ?", new String[]{cf});
+            if (c.moveToLast()) {
+
+                infrazioni = ""+c.getInt(1);
+                punti = ""+c.getInt(2);
+                Log.d("DBUG","punti="+punti);
+                infrazioniText.setText(infrazioni);
+                puntiText.setText(punti);
+
+
+            }
+            else{
+                Toast.makeText(getApplicationContext(), "Nessun Risultato", Toast.LENGTH_SHORT).show();
+            }
+
+
+
         }
 
-       /* for( String x : tokens){
-            Toast.makeText(getApplicationContext(),x,Toast.LENGTH_SHORT).show();
-        }*/
+
+
+
+
 
     }
 
@@ -115,6 +150,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
         Intent i = new Intent();
         i.setClass(getApplicationContext(),TuttoOkOperatoreEcologico.class);
+        i.putExtra("cf",cf);
         i.putExtra("nome",nome);
         i.putExtra("cognome",cognome);
         i.putExtra("via",via);
