@@ -70,6 +70,7 @@ public class LoginForm extends Activity {
 
         String mail = email.getText().toString();
         String passw = password.getText().toString();
+        boolean easy_mode = prefs.getBoolean("EASY_MODE",false);
 
         boolean cancel = false;
         View focusView = null;
@@ -140,7 +141,10 @@ public class LoginForm extends Activity {
 
                 Intent i = new Intent();
                 if (cursor.getString(3).equals("cittadino")) {
-                    i.setClass(getApplicationContext(), HomepageCittadino.class);
+                    if (easy_mode) {
+                        i.setClass(getApplicationContext(), EasyMode.class);
+                    } else
+                        i.setClass(getApplicationContext(), HomepageCittadino.class);
                 } else if (cursor.getString(3).equals("op ecologico")) {
                     i.setClass(getApplicationContext(), HomepageOperatoreEcologico.class);
                 } else if (cursor.getString(3).equals("dip comunale")) {

@@ -172,7 +172,9 @@ public class HomepageCittadino extends AppCompatActivity {
     }
 
     public void easyMode(View v) {
-
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), EasyMode.class);
+        startActivity(i);
     }
 
     public void identifica(View v) {

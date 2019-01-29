@@ -83,7 +83,6 @@ public class RaccoltaPunti extends AppCompatActivity {
             punti = c.getInt(0);
         }
 
-        punti = 350;
         StateProgressBar stateProgressBar = (StateProgressBar) findViewById(R.id.your_state_progress_bar_id);
         stateProgressBar.setStateDescriptionData(descriptionData);
 
@@ -116,7 +115,7 @@ public class RaccoltaPunti extends AppCompatActivity {
         tariDaPagare.setText("" + (tari - (punti * 0.45)) + " €");
         float result = (float) (tari - (tari - (punti * 0.45))) / tari;
 
-        risparmio.setText("" + String.format("%.2f", result));
+        risparmio.setText("" + String.format("%.2f", result*100));
 
         stateProgressBar.setOnStateItemClickListener(new OnStateItemClickListener() {
             @Override

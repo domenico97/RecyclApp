@@ -284,6 +284,7 @@
             android:clickable="true"
             android:text="Utilizzare pagina iniziale EasyMode"
             android:textColor="#d9e5f3"
+            android:onClick="onEasyModeClick"
             android:textSize="12sp" />
 
     </LinearLayout>

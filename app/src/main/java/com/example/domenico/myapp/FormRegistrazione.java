@@ -3,23 +3,30 @@ package com.example.domenico.myapp;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class FormRegistrazione extends Activity {
     private EditText email, password, nome, cognome, telefono, indirizzo, cf;
     private DatabaseOpenHelper dbHelper;
+    private CheckBox easyMode;
     private SQLiteDatabase db = null;
+    SharedPreferences prefs;
+    private boolean selezionato= false;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
+        prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         nome = findViewById(R.id.nome);
         cognome = findViewById(R.id.cognome);
         cf = findViewById(R.id.codiceFiscale);
@@ -27,7 +34,9 @@ public class FormRegistrazione extends Activity {
         telefono = findViewById(R.id.mobphone);
         password = findViewById(R.id.pswrdd);
         email = findViewById(R.id.mail);
-//Controllare checkBox easyMode
+        easyMode = findViewById(R.id.easyMode);
+
+
 
         nome.setHintTextColor(Color.WHITE);
         cognome.setHintTextColor(Color.WHITE);
@@ -42,6 +51,15 @@ public class FormRegistrazione extends Activity {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), LoginForm.class);
         startActivity(i);
+    }
+    public void onEasyModeClick(View v){
+        SharedPreferences.Editor editor = prefs.edit();
+        if(selezionato){
+            editor.putBoolean("EASY_MODE", false);
+        }else
+        editor.putBoolean("EASY_MODE", true);
+
+        editor.apply();
     }
 
 
