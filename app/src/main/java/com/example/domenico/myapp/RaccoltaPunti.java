@@ -92,42 +92,47 @@ public class RaccoltaPunti extends AppCompatActivity {
         if (punti >= 100) {
             livello = 2;
             stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
-        }  if (punti >= 200) {
+        }
+        if (punti >= 200) {
             livello = 3;
             stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
-        } if (punti >= 300) {
+        }
+        if (punti >= 300) {
             livello = 4;
             stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
-        }  if (punti >= 400) {
+        }
+        if (punti >= 400) {
             livello = 5;
             stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
         }
         puntiTotali.setText("" + punti);
         puntiDaInizioAnno.setText("" + punti);
-        puntiNextLevel.setText("" + getPuntiNextLevel(punti));
+        puntiNextLevel.setText("" + getPuntiNextLevel(punti, livello));
         Random r = new Random();
         int low = 150;
         int high = 700;
         int tari = r.nextInt(high - low) + low;
 
         tariIniziale.setText("" + tari + " €");
-        bonus.setText("" + (punti * 0.45)+" €");
+        bonus.setText("" + (punti * 0.45) + " €");
         tariDaPagare.setText("" + (tari - (punti * 0.45)) + " €");
         float result = (float) (tari - (tari - (punti * 0.45))) / tari;
 
-        risparmio.setText("" + String.format("%.2f", result*100));
+        risparmio.setText("" + String.format("%.2f", result * 100));
 
         stateProgressBar.setOnStateItemClickListener(new OnStateItemClickListener() {
             @Override
             public void onStateItemClick(StateProgressBar stateProgressBar, StateItem stateItem, int stateNumber, boolean isCurrentState) {
 
-                if (stateNumber == livello) {
+                if (stateNumber == 1) {
+                    avviso("Sei ancora al primo livello!");
+
+                } else if (stateNumber == livello) {
                     avviso("Complimenti hai già raggiunto il " + stateNumber + "° livello!");
 
-                } else if(stateNumber>livello){
-                    avviso(stateNumber + "° Livello.Ti mancano "+getPuntiNextLevel(punti)+" punti.");
-                }
-                else {
+                } else if (stateNumber > livello) {
+                    avviso(stateNumber + "° Livello.Ti mancano " + getPunti(punti, stateNumber) + " punti.");
+                } else {
                     avviso(stateNumber + "° Livello. Hai " + punti + " punti");
                 }
 
@@ -138,12 +143,24 @@ public class RaccoltaPunti extends AppCompatActivity {
 
     }
 
-    public int getPuntiNextLevel(int punti) {
-        int liv = livello + 1;
+    public int getPunti(int punti, int level) {
+
+        if (level == 2) punti = 100 - punti;
+        else if (level == 3) punti = 200 - punti;
+        else if (level == 4) punti = 300 - punti;
+        else if (level == 5) punti = 400 - punti;
+        else if (level == 6) punti = 500 - punti;
+        return punti;
+    }
+
+
+    public int getPuntiNextLevel(int punti, int level) {
+        int liv = level + 1;
         if (liv == 2) punti = 100 - punti;
         else if (liv == 3) punti = 200 - punti;
         else if (liv == 4) punti = 300 - punti;
         else if (liv == 5) punti = 400 - punti;
+
         return punti;
     }
 

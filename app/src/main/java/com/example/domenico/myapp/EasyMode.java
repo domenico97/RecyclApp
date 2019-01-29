@@ -34,6 +34,7 @@ public class EasyMode extends AppCompatActivity {
     SharedPreferences prefs;
     private int NUMBER_OF_PAGES = 2;
     TextView testo;
+    Switch easyMode;
     boolean prima_pagina = true;
     String giorno, nomeUtente;
     ImageButton image;
@@ -47,9 +48,9 @@ public class EasyMode extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.easy_mode);
-        Switch easyMode = findViewById(R.id.switch1);
+        easyMode = findViewById(R.id.switch1);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-            easyMode.setChecked(true);
+        easyMode.setChecked(true);
 
 
         nomeUtente = prefs.getString("NOME", "");
@@ -66,7 +67,7 @@ public class EasyMode extends AppCompatActivity {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), HomepageCittadino.class);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("EASY_MODE",false);
+        editor.putBoolean("EASY_MODE", false);
         editor.apply();
         startActivity(i);
     }
@@ -79,6 +80,7 @@ public class EasyMode extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        easyMode.setChecked(false);
                         finish();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
