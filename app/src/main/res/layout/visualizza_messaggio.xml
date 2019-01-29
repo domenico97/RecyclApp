@@ -156,8 +156,9 @@
 
     <TextView
         android:id="@+id/descrizione"
+        android:background="@drawable/back"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="140dp"
         android:layout_below="@id/textdescrizione"
         android:layout_marginLeft="20dp"
         android:textSize="20sp"
