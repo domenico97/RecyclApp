@@ -80,6 +80,7 @@ public class RaccoltaPunti extends AppCompatActivity {
         finish();
     }
 
+
     public void avviso(View v) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {

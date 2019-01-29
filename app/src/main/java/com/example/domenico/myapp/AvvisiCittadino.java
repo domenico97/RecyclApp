@@ -74,26 +74,27 @@ public class AvvisiCittadino extends AppCompatActivity {
         if (c != null && c.getCount() > 0) {
             if (c.moveToFirst()) {
                 cf = c.getString(0);
-                Log.d("PROVA",cf);
+                Log.d("PROVA", cf);
 
             }
         }
 
         TextView text = findViewById(R.id.text1);
-        c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ? OR destinatario = ?", new String[]{"cittadino", cf});
+        c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ?", new String[]{"cittadino"});
         if (c != null && c.getCount() > 0) {
-            text.setText("Avvisi ricevuti");
             if (c.moveToFirst()) {
-                Log.d("PROVA",c.getString(1));
-                Messaggio mess = new Messaggio(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5),c.getString(6),c.getString(7));
-                customAdapter.add(mess);
+                if (c.getString(6).equals(cf) || c.getString(6).equals("") || c.getString(6) == null) {
+                    text.setText("Avvisi ricevuti");
+                    Messaggio mess = new Messaggio(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7));
+                    customAdapter.add(mess);
+                }
             }
-        }else if( c.getCount() == 0){
+        } else if (c.getCount() == 0) {
             text.setText("Nessun avviso ricevuto");
         }
 
-
     }
+
 
     public void mostraAvviso(View v) {
         int position = Integer.parseInt(v.getTag().toString()); //Prelevo la posizione dal tag
