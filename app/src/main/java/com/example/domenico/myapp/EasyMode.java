@@ -80,7 +80,9 @@ public class EasyMode extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
-                        easyMode.setChecked(false);
+                        SharedPreferences.Editor editor = prefs.edit();
+                        editor.putBoolean("EASY_MODE", false);
+                        editor.apply();
                         finish();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
