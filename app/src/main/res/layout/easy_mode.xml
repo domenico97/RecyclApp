@@ -16,10 +16,10 @@
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_marginTop="8dp"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="RecyclApp"
             android:textAlignment="center"
@@ -34,16 +34,231 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:thumbTint="@color/black"
             android:layout_marginTop="7dp"
             android:layout_marginBottom="10dp"
             android:onClick="easyMode"
-            android:textSize="18sp"
-            android:textColor="@color/black"
             android:text="Easy Mode  "
-          />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:thumbTint="@color/black" />
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/data"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relative"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:text="21 Gennaio 2019"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="bold|italic" />
+
+    <FrameLayout
+        android:id="@+id/contenitoreImmagine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/data"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/back">
+
+        <ImageButton
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitCenter" />
+    </FrameLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/contattaci"
+        android:layout_width="380dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/contenitoreImmagine"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="contatti"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="3dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/logoContatti"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/phone_receiver" />
+
+            <TextView
+                android:id="@+id/textContatti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="3dp"
+                android:text="Contattaci"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="italic|bold" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/avvisi"
+        android:layout_width="380dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/contattaci"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="avvisi"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="3dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/logoAvvisi"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/folded_newspaper" />
+
+            <TextView
+                android:id="@+id/textAvvisi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="3dp"
+                android:text="Vedi gli avvisi"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="italic|bold" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/calendario"
+        android:layout_width="380dp"
+        android:layout_height="55dp"
+        android:layout_below="@id/avvisi"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="calendario"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="3dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="3dp"
+            android:padding="5dp">
+
+            <ImageView
+                android:id="@+id/logoCalendario"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/folded_newspaper" />
+
+            <TextView
+                android:id="@+id/textCalendario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="3dp"
+                android:text="Vedi il calendario"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                android:textStyle="italic|bold" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_above="@id/footer"
+            android:layout_alignParentRight="true"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="10dp"
+           >
+
+            <ImageView
+                android:id="@+id/logoEsci"
+                android:layout_width="45dp"
+                android:layout_height="35dp"
+                android:layout_alignParentLeft="true"
+
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/sign_out_option" />
+
+            <TextView
+                android:id="@+id/textEsci"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/logoEsci"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="3dp"
+                android:text="Esci"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="17sp"
+                android:textStyle="italic|bold" />
+
+        </RelativeLayout>
+
 
 
     <!-- <android.support.design.widget.BottomNavigationView
@@ -56,7 +271,10 @@
          app:itemTextColor="@drawable/bottom_navigation_colors"
          app:menu="@menu/navigation_easy" />-->
 
+
+    <!--FOOTER-->
     <RelativeLayout
+        android:id="@+id/footer"
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
@@ -65,26 +283,25 @@
         <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:onClick="home">
+            android:layout_centerHorizontal="true">
 
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:src="@drawable/home"
-                android:tint="@color/white"/>
+                android:tint="@color/white" />
 
             <TextView
-                android:layout_toRightOf="@id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Pagina iniziale"
-                android:layout_marginLeft="20dp"
                 android:layout_centerVertical="true"
-                android:textStyle="bold|italic"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/image"
+                android:text="Pagina iniziale"
+                android:textColor="@color/white"
                 android:textSize="23sp"
-                android:textColor="@color/white"/>
+                android:textStyle="bold|italic" />
 
         </RelativeLayout>
 

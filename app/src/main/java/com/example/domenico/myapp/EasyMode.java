@@ -73,6 +73,8 @@ public class EasyMode extends AppCompatActivity {
     }
 
 
+
+
     @Override
     public void onBackPressed() {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
