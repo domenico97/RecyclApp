@@ -5,8 +5,13 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 
@@ -17,7 +22,7 @@ public class TuttoOkOperatoreEcologico extends Activity {
 
     TextView nomeCognomeText, viaText, dataText, oraText, puntiAggiuntiText;
     String nomeCognome, via, data, ora, punti,cf;
-
+    private BottomNavigationView bottomNavigationView;
 
 
 
@@ -37,10 +42,35 @@ public class TuttoOkOperatoreEcologico extends Activity {
         Intent i = getIntent();
         nomeCognome = i.getStringExtra("nome") + " " +i.getStringExtra("cognome");
         via = i.getStringExtra("via");
-        punti = i.getStringExtra("punti");
+        punti = i.getStringExtra("nPunti");
+        cf = i.getStringExtra("cf");
 
         nomeCognomeText.setText(nomeCognome);
         viaText.setText(via);
+
+        bottomNavigationView = findViewById(R.id.navigationView);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent i = new Intent();
+                switch (item.getItemId()) {
+                    case R.id.home_operatore_ecologico:
+                        i.setClass(getApplicationContext(),HomepageOperatoreEcologico.class);
+                        startActivity(i);
+                        break;
+                    case R.id.segnalazioni_operatore_ecologico:
+                        i.setClass(getApplicationContext(),SegnalazioniOperatoreEcologico.class);
+                        startActivity(i);
+                        break;
+                    case R.id.avvisi_operatore_ecologico:
+                        i.setClass(getApplicationContext(),AvvisiOperatoreEcologico.class);
+                        startActivity(i);
+                        break;
+                }
+                return false;
+            }
+        });
 
 
 
@@ -73,11 +103,14 @@ public class TuttoOkOperatoreEcologico extends Activity {
 
 
         ContentValues cv = new ContentValues();
-        cv.put(SchemaDB.Tavola.COLUMN_PUNTI,punti+PUNTIDAAGGIUNGERE+"");
+        String puntiAggiornati = Integer.parseInt(punti) + PUNTIDAAGGIUNGERE+"";
+        cv.put(SchemaDB.Tavola.COLUMN_PUNTI,puntiAggiornati);
 
 
-        //ERRORE: non aggiunge punti
-        db.update(SchemaDB.Tavola.TABLE_NAME, cv, SchemaDB.Tavola.COLUMN_CF + "= ?", new String[] {cf});
+
+        int x = db.update(SchemaDB.Tavola.TABLE_NAME, cv, SchemaDB.Tavola.COLUMN_CF + "= ?", new String[] {cf});
+        Log.d("DBUG","rows affected: "+x);
+        Toast.makeText(getApplicationContext(), "Punti aggiornati: "+puntiAggiornati, Toast.LENGTH_SHORT).show();
 
     }
 
