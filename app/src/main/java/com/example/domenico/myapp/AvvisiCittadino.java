@@ -96,6 +96,7 @@ public class AvvisiCittadino extends AppCompatActivity {
     }
 
 
+
     public void mostraAvviso(View v) {
         int position = Integer.parseInt(v.getTag().toString()); //Prelevo la posizione dal tag
         Messaggio c = (Messaggio) customAdapter.getItem(position);//Prelevo il contatto con quella posizione
