@@ -44,13 +44,7 @@
         <activity android:name=".AvvisiOperatoreEcologico" />
         <activity android:name=".SegnalazioniOperatoreEcologico" />
         <activity android:name=".AreaPersonaleOperatoreEcologico" />
-        <activity android:name=".IdentificaTipologiaRifiuto" >
-            <intent-filter>
-                <action android:name="android.intent.action.SEARCH" />
-            </intent-filter>
-            <meta-data android:name="android.app.searchable"
-                android:resource="@xml/searchable"/>
-        </activity>
+        <activity android:name=".IdentificaTipologiaRifiuto" />
         <activity android:name=".SimpleScannerFragmentActivity" />
 
 

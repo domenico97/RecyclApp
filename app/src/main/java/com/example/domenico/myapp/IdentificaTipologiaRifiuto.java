@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -106,8 +107,14 @@ public class IdentificaTipologiaRifiuto extends FragmentActivity implements Simp
         FragmentTransaction ft = fm.beginTransaction();
         SimpleScannerFragment fr = new SimpleScannerFragment();
         ft.add(R.id.scanner_fragment,fr,"scannerQR");
+        ft.detach(fr);
         fr.setNoticeDialogListener(this);
         ft.commit();
+        toggleQr();
+
+
+
+
 
 
 
@@ -127,6 +134,26 @@ public class IdentificaTipologiaRifiuto extends FragmentActivity implements Simp
             checkQuery(query);
             Log.d("DBUG","query: "+query);
         }*/
+    }
+
+    private void toggleQr() {
+
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        Fragment x = fm.findFragmentById(R.id.scanner_fragment);
+        if(x!=null){
+            if(x.isDetached()){
+                Log.d("DBUG","QR is detached");
+                ft.attach(x);
+            }else {
+                Log.d("DBUG","QR is attached");
+                ft.detach(x);
+            }
+            ft.commit();
+        }
+        else{
+            Log.d("DBUG","QR is NULL");
+        }
     }
 
     private void checkQuery(String query) {
@@ -178,5 +205,12 @@ public class IdentificaTipologiaRifiuto extends FragmentActivity implements Simp
         if(customAdapter.isEmpty()){
             nessunRisultatoText.setVisibility(View.VISIBLE);
         }
+
+        toggleQr();
+    }
+
+
+    public void onQrClick(View view) {
+        toggleQr();
     }
 }
