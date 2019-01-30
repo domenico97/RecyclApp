@@ -62,6 +62,28 @@ public class EasyMode extends AppCompatActivity {
         giorno = format.format((date));
 
     }
+    public void logout(View v){
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        Intent i = new Intent();
+                        i.setClass(getApplicationContext(), LoginForm.class);
+                        startActivity(i);
+                        break;
+                    case DialogInterface.BUTTON_NEGATIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setMessage("Stai per uscire da RecyclApp. Sei sicuro?")
+                .setPositiveButton("Si", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
+        return;
+    }
 
     public void easyMode(View v) {
         Intent i = new Intent();

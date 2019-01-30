@@ -169,7 +169,7 @@
 
             <TextView
                 android:id="@+id/textContatti"
-                android:layout_width="wrap_content"
+                android:layout_width="122dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
@@ -217,7 +217,7 @@
 
             <TextView
                 android:id="@+id/textAvvisi"
-                android:layout_width="wrap_content"
+                android:layout_width="152dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
@@ -261,11 +261,11 @@
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="5dp"
-                android:src="@drawable/folded_newspaper" />
+                android:src="@drawable/calendar2" />
 
             <TextView
                 android:id="@+id/textCalendario"
-                android:layout_width="wrap_content"
+                android:layout_width="191dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
@@ -290,12 +290,13 @@
 
        >
 
-        <ImageView
+        <ImageButton
             android:id="@+id/logoEsci"
             android:layout_width="45dp"
             android:layout_height="35dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="5dp"
+            android:onClick="logout"
             android:src="@drawable/sign_out_option" />
 
         <TextView
