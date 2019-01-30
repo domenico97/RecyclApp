@@ -67,23 +67,80 @@
         android:layout_below="@id/data"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_marginRight="10dp"
         android:background="@drawable/back">
 
         <ImageButton
             android:layout_width="match_parent"
             android:layout_height="250dp"
+            android:layout_marginBottom="5dp"
             android:adjustViewBounds="true"
-            android:scaleType="fitCenter" />
+            android:scaleType="fitCenter"
+            android:src="@drawable/plastica"
+            android:background="@android:color/transparent"/>
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/identifica"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/contenitoreImmagine"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:text="Non sai cosa si butta nella PLASTICA?"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
+
+    <Button
+        android:id="@+id/buttonIdentifica"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:layout_below="@id/identifica"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginRight="10dp"
+        android:text="Premi PLASTICA"
+        />
+
+    <TextView
+        android:id="@+id/TextViewTasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/buttonIdentifica"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:text="Quanto pagherai di spazzatura a fine anno?"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tasse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewTasse"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="10dp"
+        android:text="300 €"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="22sp" />
 
 
     <android.support.v7.widget.CardView
         android:id="@+id/contattaci"
         android:layout_width="380dp"
         android:layout_height="55dp"
-        android:layout_below="@id/contenitoreImmagine"
+        android:layout_below="@id/tasse"
         android:layout_centerHorizontal="true"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
@@ -223,42 +280,39 @@
     </android.support.v7.widget.CardView>
 
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
 
+       >
 
-        <RelativeLayout
+        <ImageView
+            android:id="@+id/logoEsci"
+            android:layout_width="45dp"
+            android:layout_height="35dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/sign_out_option" />
+
+        <TextView
+            android:id="@+id/textEsci"
             android:layout_width="wrap_content"
-            android:layout_above="@id/footer"
-            android:layout_alignParentRight="true"
             android:layout_height="wrap_content"
+            android:layout_below="@id/logoEsci"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="3dp"
+            android:text="Esci"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:textStyle="italic|bold" />
 
-            android:layout_marginBottom="10dp"
-           >
-
-            <ImageView
-                android:id="@+id/logoEsci"
-                android:layout_width="45dp"
-                android:layout_height="35dp"
-                android:layout_alignParentLeft="true"
-
-                android:layout_marginLeft="5dp"
-                android:src="@drawable/sign_out_option" />
-
-            <TextView
-                android:id="@+id/textEsci"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/logoEsci"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="5dp"
-                android:layout_marginTop="3dp"
-                android:text="Esci"
-                android:textAlignment="center"
-                android:textColor="@color/black"
-                android:textSize="17sp"
-                android:textStyle="italic|bold" />
-
-        </RelativeLayout>
-
+    </RelativeLayout>
 
 
     <!-- <android.support.design.widget.BottomNavigationView
@@ -272,11 +326,11 @@
          app:menu="@menu/navigation_easy" />-->
 
 
-    <!--FOOTER-->
+    <!--FOOTER
     <RelativeLayout
         android:id="@+id/footer"
         android:layout_width="match_parent"
-        android:layout_height="47dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary">
 
@@ -305,7 +359,7 @@
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </RelativeLayout>-->
 
 
 </RelativeLayout>
