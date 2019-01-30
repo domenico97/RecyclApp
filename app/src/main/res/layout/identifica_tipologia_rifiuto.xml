@@ -64,21 +64,24 @@
         android:focusableInTouchMode="true"
         android:layout_width="0px"
         android:layout_height="0px"/>
+
     <SearchView
         android:id="@+id/searchBar"
-        android:layout_below="@id/relative"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/relative"
+        android:layout_marginTop="10dp"
+        android:nextFocusLeft="@id/searchBar"
         android:nextFocusUp="@id/searchBar"
-        android:nextFocusLeft="@id/searchBar"/>
+        android:queryHint="Inserisci il nome di un prodotto o il barcode"/>
 
     <RelativeLayout
-        android:layout_width="wrap_content"
         android:id="@+id/linear4"
-        android:layout_marginTop="55dp"
-        android:layout_below="@id/searchBar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        >
+        android:layout_below="@id/searchBar"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:id="@+id/oppureText"
@@ -109,39 +112,42 @@
             android:background="#A2000000" />
 
     </RelativeLayout>
+
     <TextView
         android:id="@+id/inquadraText"
-        android:layout_below="@id/linear4"
-        android:text="Inquadra il barcode"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linear4"
         android:layout_centerHorizontal="true"
-        android:layout_height="wrap_content" />
+        android:layout_marginBottom="10dp"
+        android:text="Inquadra il barcode" />
 
     <RelativeLayout
         android:id="@+id/constraintLayout3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@id/inquadraText"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="20dp"
         android:background="#000000"
         android:onClick="onQrClick"
-        app:layout_constraintTop_toBottomOf="@id/inquadraText"
-        android:layout_below="@id/inquadraText"
-        >
+        app:layout_constraintTop_toBottomOf="@id/inquadraText">
 
 
         <FrameLayout
             android:id="@+id/scanner_fragment"
 
             android:layout_width="250dp"
-            android:layout_height="120dp" >
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Premi per attivare"
-            android:textColor="#FFFFFF"/>
+            android:layout_height="120dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Premi per attivare"
+                android:textColor="#FFFFFF" />
 
         </FrameLayout>
-
 
 
     </RelativeLayout>
@@ -150,31 +156,40 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/constraintLayout3">
+        android:layout_below="@id/constraintLayout3"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#000000"
+        android:padding="3dp">
 
-        <TableRow
-            android:background="#006064">
+        <TableRow android:background="@color/colorPrimary"
+            android:layout_marginBottom="2dp">
+
             <TextView
-                android:text="PROVA"/>
+                android:layout_gravity="center_horizontal"
+                android:text="Risultati Ricerca"
+                />
 
         </TableRow>
 
-        <TableRow>
+        <TableRow android:background="@color/background_holo_light">
 
-
-            <TextView
-                android:id="@+id/noResult"
-                android:text="Nessun Risultato"/>
 
             <FrameLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/noResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Nessun Risultato" />
 
                 <ListView
                     android:id="@+id/mylistview"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="390dp"
                     android:layout_margin="10dp"></ListView>
 
             </FrameLayout>
@@ -193,8 +208,8 @@
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        app:itemIconTint="@drawable/bottom_navigation_colors"
-        app:itemTextColor="@drawable/bottom_navigation_colors"
+        app:itemIconTint="@drawable/bottom_navigation_colors2"
+        app:itemTextColor="@drawable/bottom_navigation_colors2"
         app:menu="@menu/navigation" />
 
 

@@ -43,7 +43,7 @@ public class IdentificaTipologiaRifiuto extends FragmentActivity implements Simp
 
 
     String[] nomi = {"Fiordacqua", "Toka", "Cioccolata Migros", "Cioccolata Novi"};
-    final int [] immagini ={R.drawable.plastica,R.drawable.plastica,R.drawable.carta,R.drawable.carta};
+    final int [] immagini ={R.drawable.plastica_result,R.drawable.plastica_result,R.drawable.carta_result,R.drawable.carta_result};
     String[] barcodes = {"8006789010157", "8006373000526", "7613269195306", "80063800215203"};
     ArrayList<Prodotto> prodotti = new ArrayList<Prodotto>();
 
@@ -56,7 +56,7 @@ public class IdentificaTipologiaRifiuto extends FragmentActivity implements Simp
 
         listView = (ListView) findViewById(R.id.mylistview);
 
-        customAdapter = new ResultAdapter(this, R.layout.list_element, new ArrayList<Prodotto>());
+        customAdapter = new ResultAdapter(this, R.layout.result_prodotto, new ArrayList<Prodotto>());
 
         listView.setAdapter(customAdapter);
 
@@ -67,7 +67,6 @@ public class IdentificaTipologiaRifiuto extends FragmentActivity implements Simp
                 Intent i = new Intent();
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-
                         i.setClass(getApplicationContext(), HomepageCittadino.class);
                         startActivity(i);
                         break;

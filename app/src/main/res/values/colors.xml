@@ -13,4 +13,6 @@
     <color name="red">#FF0000</color>
     <color name="blue">#0000FF</color>
     <color name="actionbar_opacity">#33000000</color>
+    <color name="background_holo_dark">#ff000000</color>
+    <color name="background_holo_light">#fff3f3f3</color>
 </resources>

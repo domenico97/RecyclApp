@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -33,21 +35,21 @@ public class ResultAdapter extends ArrayAdapter<Prodotto> {
 
         Log.d("DEBUG","contact c="+c);
 
-        Button nameButton;
-        ImageButton fotoButton;
+        TextView name;
+        ImageView fotoButton;
 
 
-        nameButton = (Button) v.findViewById(R.id.elem_lista_nome);
-        fotoButton = (ImageButton) v.findViewById(R.id.elem_lista_foto);
+        name = (TextView) v.findViewById(R.id.elem_lista_nome);
+        fotoButton = (ImageView) v.findViewById(R.id.elem_lista_foto);
 
 
         fotoButton.setImageDrawable(c.getPicture());
-        nameButton.setText(c.getName());
+        name.setText(c.getName());
 
 
 
         fotoButton.setTag(position);
-        nameButton.setTag(position);
+        name.setTag(position);
 
 
 
