@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.SimpleCursorAdapter;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class MainActivity extends Activity {
@@ -25,6 +26,8 @@ public class MainActivity extends Activity {
     private SimpleCursorAdapter adapterSelected;
     SharedPreferences prefs;
     ArrayList<Utente> utenti = new ArrayList<>();
+    String[] giorni = {"Sun","Mon_Odd","Mon_Even","Tue","Wed","Thu","Fri","Sat"};
+    String[] tipologia = {"umido","indifferenziato","alluminio","umido","plastica","cartonevetro","umido","nonconferire"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class MainActivity extends Activity {
             utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703C", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
             utenti.add(new Utente("Marco", "Giuliani", "GLNMRC74M06H703X", "marco.giuliani@gmail.com", "via Toscanello Baronissi", "marco74", "3297856896", "op ecologico"));
             Messaggio x = new Messaggio(0, "ciao", "VLLGLI79A41H703B", "cittadino", "22/10/2018", "PROVA", "VLLGLI79A41H703C", "Multa");
+            Messaggio y = new Messaggio(0, "avviso", "VLLGLI79A41H703B", "op ecologico", "22/10/2018", "Avviso", "", "Multa");
 
             ContentValues values = new ContentValues();
             values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, x.getData());
@@ -47,8 +51,19 @@ public class MainActivity extends Activity {
             values.put(SchemaDB.Tavola.COLUMN_TIPO, x.getTipo());
             values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, x.getDestinatario());
             values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, x.getTipo_segnalazione());
-            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, x.getMesssaggio());
+            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, x.getMessaggio());
             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
+
+            ContentValues valori = new ContentValues();
+            valori.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, y.getData());
+            valori.put(SchemaDB.Tavola.COLUMN_MITTENTE, y.getMittente());
+            valori.put(SchemaDB.Tavola.COLUMN_OGGETTO, y.getOggetto());
+            valori.put(SchemaDB.Tavola.COLUMN_TIPO, y.getTipo());
+            valori.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, y.getDestinatario());
+            valori.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, y.getTipo_segnalazione());
+            valori.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, y.getMessaggio());
+            long controllo = db.insert(SchemaDB.Tavola.TABLE_NAME1, null, valori);
+            Log.d("PROVA",controllo+"");
 
 
             for (int i = 0; i < utenti.size(); i++) {
@@ -63,6 +78,16 @@ public class MainActivity extends Activity {
                 values.put(SchemaDB.Tavola.COLUMN_PASSWORD, utenti.get(i).getPassword());
                 db.insert(SchemaDB.Tavola.TABLE_NAME, null, values);
             }
+
+            for(int i=0; i< giorni.length;i++){
+                ContentValues cv = new ContentValues();
+                cv.put(SchemaDB.Tavola.CALENDARIO_GIORNO,giorni[i]);
+                cv.put(SchemaDB.Tavola.CALENDARIO_TIPOLOGIA,tipologia[i]);
+                long test = db.insert(SchemaDB.Tavola.CALENDARIO, null, cv);
+                Log.d("TEST",""+test);
+
+            }
+
             new Thread(new Runnable() {
                 @Override
                 public void run() {

@@ -121,7 +121,7 @@ public class HomepageCittadino extends AppCompatActivity {
                     image.setImageResource(R.drawable.umido);
                 if (giorno.equals("sabato")) {
                     nonConferire = true;
-                    image.setImageResource(R.drawable.non_conferire);
+                    image.setImageResource(R.drawable.nonconferire);
                 }
                 if (giorno.equals("domenica"))
                     image.setImageResource(R.drawable.umido);

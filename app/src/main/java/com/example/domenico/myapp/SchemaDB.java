@@ -17,6 +17,9 @@ public class SchemaDB {
     public static abstract class Tavola implements BaseColumns {
         public static final String TABLE_NAME = "utenti";
         public static final String TABLE_NAME1 = "messaggi";
+        public static final String CALENDARIO = "calendario";
+        public static final String CALENDARIO_GIORNO = "giorno";
+        public static final String CALENDARIO_TIPOLOGIA = "tipologia";
         public static final String _ID = "id";
         public static final String COLUMN_NAME = "nome";
         public static final String COLUMN_COGNOME = "cognome";

@@ -67,12 +67,12 @@ public class Messaggio {
         this.tipo = tipo;
     }
 
-    public String getMesssaggio() {
+    public String getMessaggio() {
         return messsaggio;
     }
 
-    public void setMesssaggio(String messsaggio) {
-        this.messsaggio = messsaggio;
+    public void setMesssaggio(String messaggio) {
+        this.messsaggio = messaggio;
     }
 
     public String getMittente() {

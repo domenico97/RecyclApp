@@ -24,10 +24,12 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
             SchemaDB.Tavola.COLUMN_INFRAZIONI,
             SchemaDB.Tavola.COLUMN_SEGNALAZIONI,
             SchemaDB.Tavola.COLUMN_MESSAGGIO,
-          SchemaDB.Tavola.COLUMN_MITTENTE,
+            SchemaDB.Tavola.COLUMN_MITTENTE,
             SchemaDB.Tavola.COLUMN_OGGETTO,
             SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE,
-            SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE
+            SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE,
+            SchemaDB.Tavola.CALENDARIO_GIORNO,
+            SchemaDB.Tavola.CALENDARIO_TIPOLOGIA
 
     };
 
@@ -60,6 +62,11 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.COLUMN_DESTINATARIO + " TEXT ,"
                     + SchemaDB.Tavola.COLUMN_TIPO + " TEXT NOT NULL); ";
 
+    final private static String CREATE_CMD2 =
+            "CREATE TABLE " + SchemaDB.Tavola.CALENDARIO + " ("
+                    + SchemaDB.Tavola.CALENDARIO_GIORNO + " TEXT PRIMARY KEY, "
+                    + SchemaDB.Tavola.CALENDARIO_TIPOLOGIA + " TEXT NOT NULL); ";
+
 
     final private static Integer VERSION = 1;
     final private Context context;
@@ -73,6 +80,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_CMD);
         db.execSQL(CREATE_CMD1);
+        db.execSQL(CREATE_CMD2);
     }
 
 

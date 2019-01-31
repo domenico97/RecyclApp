@@ -131,12 +131,12 @@
                 android:id="@+id/checkBox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:tag="prova1"
+                android:tag="Busta Errata"
                 android:onClick="checkBoxClick"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="prova"
+                android:text="Busta Errata"
                 />
 
         </TableRow>
@@ -146,13 +146,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox2"
-                android:tag="prova2"
+                android:tag="Giorno Errato"
                 android:onClick="checkBoxClick"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="prova"
+                android:text="Giorno Errato"
                 />
 
         </TableRow>
@@ -162,12 +162,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/checkBox3"
-                android:tag="prova3"
+                android:tag="Mix Rifiuti"
                 android:onClick="checkBoxClick"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="prova"
+                android:text="Mix Rifiuti"
                 />
 
         </TableRow>
@@ -240,8 +240,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@android:color/transparent"
-        app:itemIconTint="@color/black"
-        app:itemTextColor="@color/black"
+        app:itemIconTint="@drawable/bottom_navigation_colors_operatore_ecologico"
+        app:itemTextColor="@drawable/bottom_navigation_colors_operatore_ecologico"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation_operatore_ecologico" />
 </RelativeLayout>

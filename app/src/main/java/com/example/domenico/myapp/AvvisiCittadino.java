@@ -103,7 +103,7 @@ public class AvvisiCittadino extends AppCompatActivity {
 
         Intent i = new Intent();
         i.putExtra("OGGETTO", c.getOggetto());
-        i.putExtra("DESCRIZIONE", c.getMesssaggio());
+        i.putExtra("DESCRIZIONE", c.getMessaggio());
         i.putExtra("DATA", c.getData());
         i.putExtra("DESTINATARIO", c.getDestinatario());
         i.setClass(getApplicationContext(), VisualizzaMessaggio.class);

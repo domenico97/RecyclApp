@@ -5,4 +5,7 @@ import android.app.Activity;
 public class SegnalazioniOperatoreEcologico extends Activity {
 
 
+
+
+
 }

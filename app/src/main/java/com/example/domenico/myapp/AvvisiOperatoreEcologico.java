@@ -35,7 +35,7 @@ public class AvvisiOperatoreEcologico extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.avvisi_cittadino);
+        setContentView(R.layout.avvisi_operatore_ecologico);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         bottomNavigationView = findViewById(R.id.navigationView);
@@ -66,7 +66,7 @@ public class AvvisiOperatoreEcologico extends Activity {
         customAdapter = new CustomAdapter(this, R.layout.list_element, new ArrayList<Messaggio>());
         listView.setAdapter(customAdapter);
 
-        //Prelevo il codice fiscale del cittadino dal database
+        //Prelevo il codice fiscale dell'operatore  dal database
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         int id = prefs.getInt("ID", 0);
         db = MainActivity.dbHelper.getWritableDatabase();
@@ -80,7 +80,7 @@ public class AvvisiOperatoreEcologico extends Activity {
         }
 
         TextView text = findViewById(R.id.text1);
-        c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ?", new String[]{"op. ecologico"});
+        c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ?", new String[]{"op ecologico"});
         if (c != null && c.getCount() > 0) {
             if (c.moveToFirst()) {
                 if (c.getString(6).equals(cf) || c.getString(6).equals("") || c.getString(6) == null) {
@@ -103,10 +103,10 @@ public class AvvisiOperatoreEcologico extends Activity {
 
         Intent i = new Intent();
         i.putExtra("OGGETTO", c.getOggetto());
-        i.putExtra("DESCRIZIONE", c.getMesssaggio());
+        i.putExtra("DESCRIZIONE", c.getMessaggio());
         i.putExtra("DATA", c.getData());
         i.putExtra("DESTINATARIO", c.getDestinatario());
-        i.setClass(getApplicationContext(), VisualizzaMessaggio.class);
+        i.setClass(getApplicationContext(), VisualizzaMessaggioOperatoreEcologico.class);
         startActivity(i);
     }
 
