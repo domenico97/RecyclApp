@@ -49,7 +49,6 @@
         <activity android:name=".VisualizzaMessaggioOperatoreEcologico" />
         <activity android:name=".ModificaCalendarioDipendenteComunale" />
         <activity android:name=".HomepageDipendenteComunale" />
-        <activity android:name=".CambiaTipologiaRifiuto" />
 
 
 
