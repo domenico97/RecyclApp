@@ -75,9 +75,9 @@
             android:id="@+id/nomeAvviso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20sp"
             android:layout_marginTop="15dp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </LinearLayout>
@@ -105,8 +105,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </LinearLayout>
@@ -134,8 +134,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
-            android:textColor="@color/black" />
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
     </LinearLayout>
@@ -154,19 +154,25 @@
         android:textStyle="bold|italic" />
 
 
-    <TextView
-        android:id="@+id/descrizione"
-        android:background="@drawable/back"
+    <FrameLayout
+        android:id="@+id/Frame"
         android:layout_width="match_parent"
-        android:layout_height="140dp"
+        android:layout_height="180dp"
         android:layout_below="@id/textdescrizione"
         android:layout_marginLeft="20dp"
-        android:textSize="20sp"
         android:layout_marginTop="20dp"
-        android:textColor="@color/black"
         android:layout_marginRight="20dp"
-        />
+        android:background="@drawable/back">
 
+        <TextView
+            android:id="@+id/descrizione"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="5dp"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"

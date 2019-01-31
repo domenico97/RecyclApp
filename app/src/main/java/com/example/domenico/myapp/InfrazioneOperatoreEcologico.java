@@ -170,10 +170,10 @@ public class InfrazioneOperatoreEcologico extends FragmentActivity implements Di
         values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE,tipo);
         values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
         values.put(SchemaDB.Tavola.COLUMN_OGGETTO, obj);
-        values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
+        values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cfOpEc);
         values.put(SchemaDB.Tavola.COLUMN_TIPO, "dip comunale"); //Tipologia di attori a cui è rivolta la segnalazione
         values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
-        values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, cfOpEc);
+        values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, cf);
         long x = db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
         if(x!=-1){
             Toast.makeText(getApplicationContext(),"Operazione Effettuata con successo",Toast.LENGTH_SHORT).show();

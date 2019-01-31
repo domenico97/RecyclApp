@@ -46,6 +46,8 @@
         <activity android:name=".AreaPersonaleOperatoreEcologico" />
         <activity android:name=".IdentificaTipologiaRifiuto" />
         <activity android:name=".SimpleScannerFragmentActivity" />
+        <activity android:name=".DettagliSegnalazione" />
+
         <activity android:name=".VisualizzaMessaggioOperatoreEcologico" />
         <activity android:name=".ModificaCalendarioDipendenteComunale" />
         <activity android:name=".HomepageDipendenteComunale" />
