@@ -17,7 +17,6 @@ import android.widget.TextView;
 import java.util.ArrayList;
 
 public class DettagliSegnalazione extends Activity {
-    CustomAdapterSegnalazioni customAdapter;
     private BottomNavigationView bottomNavigationView;
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
@@ -26,7 +25,7 @@ public class DettagliSegnalazione extends Activity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.segnalazioni_operatore_ecologico);
+        setContentView(R.layout.visualizza_segnalazione);
 
 
         numeroSegnalazione = findViewById(R.id.numeroSegnalazione);
@@ -37,7 +36,8 @@ public class DettagliSegnalazione extends Activity {
         indirizzo = findViewById(R.id.Indirizzo);
 
         Intent i = getIntent();
-        numeroSegnalazione.setText(i.getStringExtra("NUMERO_SEGNALAZIONE"));
+
+        numeroSegnalazione.setText(""+i.getIntExtra("NUMERO_SEGNALAZIONE",0));
         dataCreazione.setText(i.getStringExtra("DATA"));
         infrazioni.setText(i.getStringExtra("DESCRIZIONE"));
         nome.setText(i.getStringExtra("NOME"));

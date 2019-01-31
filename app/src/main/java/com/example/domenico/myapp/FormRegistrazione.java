@@ -59,7 +59,7 @@ public class FormRegistrazione extends Activity {
         }else
         editor.putBoolean("EASY_MODE", true);
 
-        editor.apply();
+        editor.commit();
     }
 
 

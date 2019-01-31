@@ -27,7 +27,7 @@ public class CustomAdapterSegnalazioni extends ArrayAdapter {
     public View getView(int position, View v, ViewGroup parent) {
         if (v == null) {
 
-            v = inflater.inflate(R.layout.list_element, null);
+            v = inflater.inflate(R.layout.segnalazione_element, null);
         }
         SegnalazioneBean c = (SegnalazioneBean) getItem(position);
 
@@ -41,10 +41,10 @@ public class CustomAdapterSegnalazioni extends ArrayAdapter {
         //Mostro i dati del contatto c
         /* Populate the row's xml with info from the item */
 
-        Log.d("PROVA",""+c.getNumeroSegnalazione());
-        String s = ""+c.getNumeroSegnalazione();
-        numeroSegnalazione.setText(s);
+        Log.d("PROVA",c.getDataCreazione());
         dataCreazione.setText(c.getDataCreazione());
+        Log.d("PROVA",""+c.getNumeroSegnalazione());
+        numeroSegnalazione.setText(""+c.getNumeroSegnalazione());
 
         dettagli.setTag(position);
         numeroSegnalazione.setTag(position);

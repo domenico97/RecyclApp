@@ -57,7 +57,7 @@ public class SegnalazioniOperatoreEcologico extends Activity {
         });
 
         listView = (ListView) findViewById(R.id.listView);
-        customAdapter = new CustomAdapterSegnalazioni(this, R.layout.list_element, new ArrayList<SegnalazioneBean>());
+        customAdapter = new CustomAdapterSegnalazioni(this, R.layout.segnalazione_element, new ArrayList<SegnalazioneBean>());
         listView.setAdapter(customAdapter);
 
         //Prelevo il codice fiscale dell' operatore dal database
@@ -75,16 +75,25 @@ public class SegnalazioniOperatoreEcologico extends Activity {
         TextView text = findViewById(R.id.text1);
         c = db.rawQuery("SELECT id,messaggio,data_segnalazione,destinatario FROM messaggi WHERE mittente = ?", new String[]{cf});
         if (c != null && c.getCount() > 0) {
-            if (c.moveToFirst()) {
-                cfDestinatario = c.getString(3);
-                SegnalazioneBean segn = new SegnalazioneBean(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
-                customAdapter.add(segn);
+            for (int j = 0; j < c.getCount(); j++) {
+                if (c.moveToFirst()) {
+                    // cfDestinatario = c.getString(3);
+                    SegnalazioneBean segn = new SegnalazioneBean(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
+                    customAdapter.add(segn);
+                }
             }
         } else if (c.getCount() == 0) {
             text.setText("Nessuna segnalazione inviata");
         }
 
-        c = db.rawQuery("SELECT nome,cognome,indirizzo FROM utenti WHERE cf = ?", new String[]{cfDestinatario});
+
+    }
+
+    public void mostraSegnalazione(View v) {
+        int position = Integer.parseInt(v.getTag().toString()); //Prelevo la posizione dal tag
+        SegnalazioneBean s = (SegnalazioneBean) customAdapter.getItem(position);//Prelevo la segnalazione con quella posizione
+        cfDestinatario = s.getDestinatario();
+        Cursor c = db.rawQuery("SELECT nome,cognome,indirizzo FROM utenti WHERE cf = ?", new String[]{cfDestinatario});
         if (c != null && c.getCount() > 0) {
             if (c.moveToFirst()) {
                 nome = c.getString(0);
@@ -93,18 +102,11 @@ public class SegnalazioniOperatoreEcologico extends Activity {
             }
         }
 
-
-    }
-
-    public void mostraSegnalazione(View v) {
-        int position = Integer.parseInt(v.getTag().toString()); //Prelevo la posizione dal tag
-        SegnalazioneBean c = (SegnalazioneBean) customAdapter.getItem(position);//Prelevo la segnalazione con quella posizione
-
         Intent i = new Intent();
-        i.putExtra("NUMERO_SEGNALAZIONE", c.getNumeroSegnalazione());
-        i.putExtra("DESCRIZIONE", c.getMesssaggio());
-        i.putExtra("DATA", c.getDataCreazione());
-        i.putExtra("DESTINATARIO", c.getDestinatario());
+        i.putExtra("NUMERO_SEGNALAZIONE",s.getNumeroSegnalazione());
+        i.putExtra("DESCRIZIONE", s.getMesssaggio());
+        i.putExtra("DATA", s.getDataCreazione());
+        i.putExtra("DESTINATARIO", s.getDestinatario());
         i.putExtra("NOME", nome);
         i.putExtra("COGNOME", cognome);
         i.putExtra("INDIRIZZO", indirizzo);
@@ -121,9 +123,6 @@ public class SegnalazioniOperatoreEcologico extends Activity {
     public void back(View v) {
         finish();
     }
-
-
-
 
 
 }

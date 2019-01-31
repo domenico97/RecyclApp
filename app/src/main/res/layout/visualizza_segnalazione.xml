@@ -73,7 +73,7 @@
             android:textStyle="bold|italic" />
 
         <TextView
-            android:id="@+id/numeroSegnalazioni"
+            android:id="@+id/numeroSegnalazione"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"

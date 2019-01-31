@@ -141,7 +141,7 @@ public class EasyMode extends AppCompatActivity {
                     case DialogInterface.BUTTON_POSITIVE:
                         SharedPreferences.Editor editor = prefs.edit();
                         editor.putBoolean("EASY_MODE", false);
-                        editor.apply();
+                        editor.commit();
                         finish();
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:

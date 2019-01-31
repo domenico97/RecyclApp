@@ -201,7 +201,7 @@ public class AreaPersonaleOperatoreEcologico extends Activity {
             s.setChecked(false);
             editor.putBoolean("RIMANI_CONNESSO", false);
         }
-        editor.apply();
+        editor.commit();
 
     }
 }
