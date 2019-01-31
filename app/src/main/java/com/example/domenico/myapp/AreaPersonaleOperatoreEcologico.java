@@ -194,14 +194,14 @@ public class AreaPersonaleOperatoreEcologico extends Activity {
     public void rimaniConnesso(View v) {
         SharedPreferences.Editor editor = prefs.edit();
 
-        if (!prefs.getBoolean("RIMANI_CONNESSO", false)) {
+        if (prefs.getBoolean("RIMANI_CONNESSO", false)==false) {
             s.setChecked(true);
             editor.putBoolean("RIMANI_CONNESSO", true);
         } else {
             s.setChecked(false);
             editor.putBoolean("RIMANI_CONNESSO", false);
         }
-        editor.commit();
+        editor.apply();
 
     }
 }

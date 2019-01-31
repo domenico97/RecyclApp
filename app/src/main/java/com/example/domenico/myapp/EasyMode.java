@@ -23,8 +23,10 @@ import android.widget.TextView;
 
 import com.synnapps.carouselview.CarouselView;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import static com.example.domenico.myapp.HomepageCittadino.getOccurenceOfDayInMonth;
 
@@ -33,7 +35,7 @@ public class EasyMode extends AppCompatActivity {
     CarouselView customCarouselView;
     SharedPreferences prefs;
     private int NUMBER_OF_PAGES = 2;
-    TextView testo;
+    TextView testo, data;
     Switch easyMode;
     boolean prima_pagina = true;
     String giorno, nomeUtente;
@@ -43,7 +45,6 @@ public class EasyMode extends AppCompatActivity {
     int occorenzaGiorno;
 
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,18 +52,24 @@ public class EasyMode extends AppCompatActivity {
         easyMode = findViewById(R.id.switch1);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         easyMode.setChecked(true);
-
+        data = findViewById(R.id.data);
 
         nomeUtente = prefs.getString("NOME", "");
         punti = prefs.getInt("PUNTI", 0);
         Date date = new Date();
+        DateFormat formatoData = DateFormat.getDateInstance(DateFormat.LONG, Locale.ITALY);
+        String s = formatoData.format(date);
+        data.setText(s);
+
 
         SimpleDateFormat format = new SimpleDateFormat("EEEE");
         occorenzaGiorno = getOccurenceOfDayInMonth(date);
         giorno = format.format((date));
 
+
     }
-    public void logout(View v){
+
+    public void logout(View v) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -94,7 +101,35 @@ public class EasyMode extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void calendario(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), Calendario.class);
+        startActivity(i);
+    }
 
+    public void avvisi(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), AvvisiCittadino.class);
+        startActivity(i);
+    }
+
+    public void contatti(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), Contatti.class);
+        startActivity(i);
+    }
+
+    public void identifica(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), IdentificaTipologiaRifiuto.class);
+        startActivity(i);
+    }
+
+    public void raccoltaPunti(View v) {
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), RaccoltaPunti.class);
+        startActivity(i);
+    }
 
 
     @Override

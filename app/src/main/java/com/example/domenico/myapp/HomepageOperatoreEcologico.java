@@ -231,7 +231,6 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
     public void areaPersonale(View v) {
         Intent i = new Intent();
-        i.putExtra("ActivityPrecedente","homepageOperatoreEcologico");
         i.setClass(getApplicationContext(), AreaPersonaleOperatoreEcologico.class);
         startActivity(i);
     }

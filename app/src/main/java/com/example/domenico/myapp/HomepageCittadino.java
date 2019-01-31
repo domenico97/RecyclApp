@@ -45,6 +45,7 @@ public class HomepageCittadino extends AppCompatActivity {
     ImageButton image;
     private BottomNavigationView bottomNavigationView;
     private int punti;
+    Switch easyMode;
     int occorenzaGiorno;
 
 
@@ -55,7 +56,7 @@ public class HomepageCittadino extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         nomeUtente = prefs.getString("NOME", "");
         punti = prefs.getInt("PUNTI", 0);
-        Switch easyMode = findViewById(R.id.switch1);
+        easyMode = findViewById(R.id.switch1);
         easyMode.setChecked(false);
         Date date = new Date();
 
@@ -180,9 +181,11 @@ public class HomepageCittadino extends AppCompatActivity {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), EasyMode.class);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putBoolean("EASY_MODE",true);
+        editor.putBoolean("EASY_MODE", true);
         editor.apply();
         startActivity(i);
+        easyMode.setChecked(false);
+
     }
 
     public void identifica(View v) {

@@ -473,9 +473,9 @@ public class Calendario extends FragmentActivity  {
 
     public void back(View v) {
 
-     Intent i = new Intent();
+     /*Intent i = new Intent();
         i.setClass(getApplicationContext(), HomepageCittadino.class);
-        startActivity(i);
+        startActivity(i);*/
         finish();
     }
 
