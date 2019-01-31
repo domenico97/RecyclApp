@@ -8,7 +8,7 @@
     <item
         android:id="@+id/segnalazioni_operatore_ecologico"
         android:icon="@drawable/alert"
-        android:title="Segnalazioni Effettuate"/>
+        android:title="Segnalazioni"/>
 
     <item
         android:id="@+id/avvisi_operatore_ecologico"

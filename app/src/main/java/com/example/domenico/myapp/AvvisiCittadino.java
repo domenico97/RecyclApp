@@ -83,7 +83,7 @@ public class AvvisiCittadino extends AppCompatActivity {
         c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ?", new String[]{"cittadino"});
         if (c != null && c.getCount() > 0) {
             for (int j = 0; j < c.getCount(); j++) {
-                if (c.moveToFirst()) {
+                if (c.moveToPosition(j)) {
                     if (c.getString(6).equals(cf) || c.getString(6).equals("") || c.getString(6) == null) {
                         text.setText("Avvisi ricevuti");
                         Messaggio mess = new Messaggio(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7));
