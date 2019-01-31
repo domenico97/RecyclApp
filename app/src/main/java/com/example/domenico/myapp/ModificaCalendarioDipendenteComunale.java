@@ -1,5 +1,6 @@
 package com.example.domenico.myapp;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -169,6 +170,9 @@ public class ModificaCalendarioDipendenteComunale extends FragmentActivity {
         calendarView.setAdapter(adapter);
     }
 
+    public void backOE(View view) {
+        finish();
+    }
 
 
     // Inner Class
@@ -339,7 +343,7 @@ public class ModificaCalendarioDipendenteComunale extends FragmentActivity {
 
 // Get a reference to the Day gridcell
             singolaCella = (RelativeLayout) row.findViewById(R.id.singolaCella);
-            singolaCella.setOnClickListener(this);
+
             gridcell = (TextView) row.findViewById(R.id.calendar_day_gridcell);
 //            gridcell.setOnClickListener(this);
             imgGiorno =(ImageView) row.findViewById(R.id.imgGiorno);
@@ -418,24 +422,12 @@ public class ModificaCalendarioDipendenteComunale extends FragmentActivity {
 
 
                 }
-                gridcell.setTag(dayOfWeek);
+                singolaCella.setOnClickListener(this);
+                gridcell.setTag(theday + "-" + themonth + "-" + theyear+":"+dayOfWeek);
                 Log.d("CALENDARIO",dayOfWeek);
-                Cursor c = db.rawQuery("SELECT giorno,tipologia FROM calendario WHERE giorno = ?", new String[]{dayOfWeek});
-                if (c != null && c.getCount() > 0) {
-                    if (c.moveToFirst()) {
-                        Log.d("CALENDARIO","giorno = "+c.getString(0)+" tipologia = "+c.getString(1));
-                        String tipo = c.getString(1);
-                        String str_id = String.format("%s_calendar",tipo);
-                        Log.d("CALENDARIO","str_id = "+str_id);
-                        id = getResources().getIdentifier(str_id, "drawable", getPackageName());
-                        Log.d("CALENDARIO","id = "+id);
 
-                    }
-                }
-                else{
-                    Log.d("CALENDARIO","non va");
-                }
 
+                id=searchDayinDB(dayOfWeek);
 
 
                 Bitmap tmp = BitmapFactory.decodeResource(getResources(), id);
@@ -463,10 +455,24 @@ public class ModificaCalendarioDipendenteComunale extends FragmentActivity {
         public void onClick(View view) {
 
             TextView numero = (TextView) view.findViewById(R.id.calendar_day_gridcell);
-            String day = (String) numero.getTag();
-            Log.d("CALENDARIO", day);
-            DialogFragment x = new CambiaTipologiaRifiuto();
-            x.show(getSupportFragmentManager(),"modifica");
+
+            String tag = (String) numero.getTag();
+            String[] tokens = tag.split("\\:");
+            String dataCompleta = tokens[0];
+            String day = tokens[1];
+            dataCompleta = dataCompleta.replace("-"," ");
+            Log.d("CALENDARIO", "day:"+dataCompleta+" img: "+day);
+
+
+            int id = searchDayinDB(day);
+
+            Intent i = new Intent();
+            i.setClass(getApplicationContext(),CambiaTipologiaRifiuto.class);
+            i.putExtra("dataCompleta",dataCompleta);
+            i.putExtra("day",day);
+            i.putExtra("id",id);
+            startActivityForResult(i,1);
+
 
         }
 
@@ -515,9 +521,43 @@ public class ModificaCalendarioDipendenteComunale extends FragmentActivity {
 
 
 
+    public int searchDayinDB(String day){
 
+        int id =0;
+        Cursor c = db.rawQuery("SELECT giorno,tipologia FROM calendario WHERE giorno = ?", new String[]{day});
+        if (c != null && c.getCount() > 0) {
+            if (c.moveToFirst()) {
+                Log.d("CALENDARIO","giorno = "+c.getString(0)+" tipologia = "+c.getString(1));
+                String tipo = c.getString(1);
+                String str_id = String.format("%s_calendar",tipo);
+                Log.d("CALENDARIO","str_id = "+str_id);
+                id = getResources().getIdentifier(str_id, "drawable", getPackageName());
+                Log.d("CALENDARIO","id = "+id);
 
+            }
+        }
+        else{
+            Log.d("CALENDARIO","non va");
+        }
 
+        return id;
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (requestCode == 1) {
+            if(resultCode == Activity.RESULT_OK){
+                Intent intent = getIntent();
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                finish();
+                startActivity(intent);
+            }
+            if (resultCode == Activity.RESULT_CANCELED) {
+                //Write your code if there's no result
+            }
+        }
+    }
 
 
 }

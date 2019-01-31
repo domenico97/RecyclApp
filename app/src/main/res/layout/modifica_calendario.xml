@@ -20,7 +20,7 @@
             android:layout_marginLeft="5dp"
             android:adjustViewBounds="true"
             android:background="@android:color/transparent"
-            android:onClick="back"
+            android:onClick="backOE"
             android:scaleType="fitCenter"
             android:src="@drawable/left_arrow1" />
 

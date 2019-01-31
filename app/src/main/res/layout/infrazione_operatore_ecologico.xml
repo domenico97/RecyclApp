@@ -121,7 +121,7 @@
 
 
     <TableLayout
-        android:id="@+id/tableLayoutInfrazioni"
+        android:id="@+id/sceltaTipologia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/selezionaInfrazioneText">
@@ -179,7 +179,7 @@
         android:id="@+id/altroText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tableLayoutInfrazioni"
+        android:layout_below="@id/sceltaTipologia"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"

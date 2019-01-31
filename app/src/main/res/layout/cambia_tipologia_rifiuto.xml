@@ -2,107 +2,168 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary">
+
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:onClick="backOE"
+            android:scaleType="fitCenter"
+            android:src="@drawable/left_arrow1" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="96dp"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:text="Calendario"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold|italic" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/selezionaTipologiaText"
+        app:layout_constraintTop_toBottomOf="@+id/relative">
+
+        <TextView
+            android:id="@+id/giorno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Giorno" />
+
+        <ImageView
+            android:id="@+id/immagineGiorno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:src="@drawable/carta_calendar" />
+
+    </LinearLayout>
+
 
     <TextView
-        android:id="@+id/selezionaInfrazioneText"
+        android:id="@+id/selezionaTipologiaText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
         android:text="Seleziona Tipologia"
         android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/sceltaTipologia"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-    <TableLayout
-        android:id="@+id/tableLayoutInfrazioni"
+    <RadioGroup
+        android:id="@+id/sceltaTipologia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/selezionaInfrazioneText"
+        android:layout_below="@id/selezionaTipologiaText"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/selezionaInfrazioneText">
+        app:layout_constraintTop_toBottomOf="@+id/selezionaTipologiaText"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <TableRow>
-
-            <CheckBox
-                android:id="@+id/checkBox1"
+        <RadioButton
+                android:id="@+id/radioButton1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="checkBoxClick"
-                android:tag="Busta Errata" />
-
-            <TextView
+                android:onClick="radioButtonClick"
+                android:tag="vetro"
+                android:text="Vetro"/>
+        <RadioButton
+                android:id="@+id/radioButton2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Busta Errata" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <CheckBox
-                android:id="@+id/checkBox2"
+                android:onClick="radioButtonClick"
+                android:tag="umido"
+                android:text="Umido" />
+        <RadioButton
+                android:id="@+id/radioButton3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:onClick="checkBoxClick"
-                android:tag="Giorno Errato" />
-
-            <TextView
+                android:onClick="radioButtonClick"
+                android:tag="plastica"
+                android:text="Plastica"/>
+        <RadioButton
+                android:id="@+id/radioButton4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Giorno Errato" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <CheckBox
-                android:id="@+id/checkBox3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="checkBoxClick"
-                android:tag="Mix Rifiuti" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mix Rifiuti" />
-
-        </TableRow>
-
-        <TableRow>
-
-            <CheckBox
-                android:id="@+id/checkBox4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:onClick="checkBoxClick"
-                android:tag="Mix Rifiuti" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mix Rifiuti" />
-
-        </TableRow>
+                android:onClick="radioButtonClick"
+                android:tag="alluminio"
+                android:text="Alluminio"/>
+        <RadioButton
+            android:id="@+id/radioButton5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioButtonClick"
+            android:tag="indifferenziato"
+            android:text="Indifferenziato"/>
+        <RadioButton
+            android:id="@+id/radioButton6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioButtonClick"
+            android:tag="carta"
+            android:text="Carta"/>
+        <RadioButton
+            android:id="@+id/radioButton7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioButtonClick"
+            android:tag="cartonevetro"
+            android:text="Carta e Vetro"/>
+        <RadioButton
+            android:id="@+id/radioButton8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="radioButtonClick"
+            android:tag="nonconferire"
+            android:text="Non conferire"/>
 
 
-
-    </TableLayout>
+    </RadioGroup>
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -112,19 +173,40 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigationView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tableLayoutInfrazioni">
+        app:layout_constraintTop_toBottomOf="@+id/sceltaTipologia">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:onClick="annulla"
             android:text="Annulla" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="120dp"
             android:layout_height="wrap_content"
+            android:layout_margin="3dp"
+            android:layout_weight="1"
+            android:onClick="salva"
+            android:background="@android:color/transparent"
             android:text="Salva" />
     </LinearLayout>
 
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        app:itemIconTint="@drawable/bottom_navigation_colors2"
+        app:itemTextColor="@drawable/bottom_navigation_colors2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/navigation_dipendente_comunale" />
 </android.support.constraint.ConstraintLayout>
