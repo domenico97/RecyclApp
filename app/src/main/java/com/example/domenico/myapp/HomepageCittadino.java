@@ -5,6 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -36,6 +40,8 @@ import java.util.Date;
 
 public class HomepageCittadino extends AppCompatActivity {
 
+    final String TAG = "HomepageCittadino.java";
+
     CarouselView customCarouselView;
     SharedPreferences prefs;
     private int NUMBER_OF_PAGES = 2;
@@ -46,13 +52,17 @@ public class HomepageCittadino extends AppCompatActivity {
     private BottomNavigationView bottomNavigationView;
     private int punti;
     Switch easyMode;
-    int occorenzaGiorno;
+    int occorrenzaGiorno;
+    private DatabaseOpenHelper dbHelper;
+    private SQLiteDatabase db = null;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.home_page_cittadino);
+
+        db = MainActivity.dbHelper.getWritableDatabase();
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         nomeUtente = prefs.getString("NOME", "");
         punti = prefs.getInt("PUNTI", 0);
@@ -60,8 +70,9 @@ public class HomepageCittadino extends AppCompatActivity {
         easyMode.setChecked(false);
         Date date = new Date();
 
-        SimpleDateFormat format = new SimpleDateFormat("EEEE");
-        occorenzaGiorno = getOccurenceOfDayInMonth(date);
+
+        SimpleDateFormat format = new SimpleDateFormat("E");
+        occorrenzaGiorno = getOccurenceOfDayInMonth(date);
         giorno = format.format((date));
 
         bottomNavigationView = findViewById(R.id.navigationView);
@@ -104,8 +115,36 @@ public class HomepageCittadino extends AppCompatActivity {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_first, null);
                 testo = customView.findViewById(R.id.testo);
                 image = customView.findViewById(R.id.image);
-                if (giorno.equals("lunedì")) {
-                    if (occorenzaGiorno == 2 || occorenzaGiorno == 4) {
+
+                int id = 0;
+                
+                if(giorno.equals("Mon")){
+                    if(occorrenzaGiorno == 2 || occorrenzaGiorno == 4)
+                        giorno="Mon_Even";
+                    else
+                        giorno="Mon_Odd";
+                }
+
+                Log.d(TAG,"giorno = "+giorno);
+
+                Cursor c = db.rawQuery("SELECT giorno,tipologia FROM calendario WHERE giorno = ?", new String[]{giorno});
+                if (c != null && c.getCount() > 0) {
+                    if (c.moveToFirst()) {
+                        Log.d(TAG,"giorno = "+c.getString(0)+" tipologia = "+c.getString(1));
+                        String tipo = c.getString(1);
+                        id = getResources().getIdentifier(tipo, "drawable", getPackageName());
+                        Log.d(TAG,"id = "+id);
+                    }
+                }
+
+                Bitmap tmp = BitmapFactory.decodeResource(getResources(), id);
+
+                image.setImageBitmap(tmp);
+
+
+
+                /*if (giorno.equals("lunedì")) {
+                    if (occorrenzaGiorno == 2 || occorrenzaGiorno == 4) {
                         image.setImageResource(R.drawable.alluminio);
                     } else
                         image.setImageResource(R.drawable.indifferenziato);
@@ -116,7 +155,7 @@ public class HomepageCittadino extends AppCompatActivity {
                 if (giorno.equals("mercoledì"))
                     image.setImageResource(R.drawable.plastica);
                 if (giorno.equals("giovedì"))
-                    image.setImageResource(R.drawable.carta_vetro);
+                    image.setImageResource(R.drawable.cartonevetro);
                 if (giorno.equals("venerdì"))
                     image.setImageResource(R.drawable.umido);
                 if (giorno.equals("sabato")) {
@@ -125,10 +164,10 @@ public class HomepageCittadino extends AppCompatActivity {
                 }
                 if (giorno.equals("domenica"))
                     image.setImageResource(R.drawable.umido);
-                if (nonConferire)
-                    testo.setText(nomeUtente + " oggi ");
+            */    if (giorno.equals("nonconferire"))
+                    testo.setText(nomeUtente + ", oggi ");
                 else
-                    testo.setText(nomeUtente + " oggi si conferisce");
+                    testo.setText(nomeUtente + ", oggi si conferisce");
             } else {
                 customView = getLayoutInflater().inflate(R.layout.view_custom_second, null);
                 testo = customView.findViewById(R.id.testo);
