@@ -1,6 +1,8 @@
 package com.example.domenico.myapp;
 
 import android.app.Activity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
@@ -24,6 +26,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.List;
@@ -54,7 +57,8 @@ public class Calendario extends FragmentActivity  {
     private int currentMonthInt;
     private int giornoCiclo = 1;
     boolean isOddMonday = true;
-
+    private DatabaseOpenHelper dbHelper;
+    private SQLiteDatabase db = null;
 
     private int month, year;
     private final DateFormat dateFormatter = new DateFormat();
@@ -66,6 +70,7 @@ public class Calendario extends FragmentActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.cal_utente);
 
+        db = MainActivity.dbHelper.getWritableDatabase();
 
         bottomNavigationView = findViewById(R.id.navigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -337,6 +342,8 @@ public class Calendario extends FragmentActivity  {
             }
 
 // Get a reference to the Day gridcell
+
+
             gridcell = (TextView) row.findViewById(R.id.calendar_day_gridcell);
 //            gridcell.setOnClickListener(this);
             imgGiorno =(ImageView) row.findViewById(R.id.imgGiorno);
@@ -353,8 +360,9 @@ public class Calendario extends FragmentActivity  {
 
 // Set the Day GridCell
             gridcell.setText(theday);
-            gridcell.setTag(theday + "-" + themonth + "-" + theyear);
+
             imgGiorno.setTag("img-"+theday + "-" + themonth + "-" + theyear);
+
 
             int giorno = Integer.parseInt(gridcell.getText().toString());
             int giorniInMese =  getNumberOfDaysOfMonth(currentMonthInt);
@@ -366,54 +374,60 @@ public class Calendario extends FragmentActivity  {
                 int result = calendar.get(Calendar.DAY_OF_WEEK);
                 Log.d(tag,"Day: "+theday + "-" + themonth + "-" + theyear);
                 Log.d(tag,"Day: "+giorno + "-" + month + "-" + year);
+
+                String dayOfWeek = "";
+
+
                 int id = 0;
                 switch (result) {
                     case Calendar.MONDAY:
                         Log.d(tag," it's MONDAY");
                         if(isOddMonday)
-                            id = R.drawable.indifferenziato_calendar;
+                            dayOfWeek="Mon_Odd";
                         else
-                            id= R.drawable.alluminio_calendar;
+                            dayOfWeek="Mon_Even";
 
                         isOddMonday = !isOddMonday;
 
                         break;
                     case Calendar.TUESDAY:
                         Log.d(tag," it's TUESDAY");
-                        id = R.drawable.umido_calendar;
+                        dayOfWeek="Tue";
 
                         break;
                     case Calendar.WEDNESDAY:
                         Log.d(tag," it's WEDNESDAY");
-                        id = R.drawable.plastica_calendar;
+                        dayOfWeek="Wed";
 
                         break;
                     case Calendar.THURSDAY:
                         Log.d(tag," it's THURSDAY");
-                        id = R.drawable.cartonevetro_calendar;
+                        dayOfWeek="Thu";
 
                         break;
                     case Calendar.FRIDAY:
                         Log.d(tag," it's FRIDAY");
-                        id = R.drawable.umido_calendar;
+                        dayOfWeek="Fri";
 
                         break;
                     case Calendar.SATURDAY:
                         Log.d(tag," it's SATURDAY");
-                        id = R.drawable.nonconferire;
+                        dayOfWeek="Sat";
 
                         break;
                     case Calendar.SUNDAY:
                         Log.d(tag," it's SUNDAY");
-                        id = R.drawable.umido_calendar;
+                        dayOfWeek="Sun";
                         break;
 
 
                 }
 
+                gridcell.setTag(theday + "-" + themonth + "-" + theyear+":"+dayOfWeek);
+                Log.d("CALENDARIO",dayOfWeek);
 
 
-
+                id=searchDayinDB(dayOfWeek);
 
 
                 Bitmap tmp = BitmapFactory.decodeResource(getResources(), id);
@@ -436,7 +450,6 @@ public class Calendario extends FragmentActivity  {
             }
             return row;
         }
-
         @Override
         public void onClick(View view) {
             String date_month_year = (String) view.getTag();
@@ -502,6 +515,28 @@ public class Calendario extends FragmentActivity  {
         DialogFragment x = new CalendarioLegenda();
         x.show(getSupportFragmentManager(),"legenda");
 
+    }
+
+    public int searchDayinDB(String day){
+
+        int id =0;
+        Cursor c = db.rawQuery("SELECT giorno,tipologia FROM calendario WHERE giorno = ?", new String[]{day});
+        if (c != null && c.getCount() > 0) {
+            if (c.moveToFirst()) {
+                Log.d("CALENDARIO","giorno = "+c.getString(0)+" tipologia = "+c.getString(1));
+                String tipo = c.getString(1);
+                String str_id = String.format("%s_calendar",tipo);
+                Log.d("CALENDARIO","str_id = "+str_id);
+                id = getResources().getIdentifier(str_id, "drawable", getPackageName());
+                Log.d("CALENDARIO","id = "+id);
+
+            }
+        }
+        else{
+            Log.d("CALENDARIO","non va");
+        }
+
+        return id;
     }
 
 
