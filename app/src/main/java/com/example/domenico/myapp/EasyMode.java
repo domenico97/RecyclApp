@@ -218,7 +218,8 @@ public class EasyMode extends AppCompatActivity {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Conferma \nStai per uscire dalla modalità Easy Mode.Sei sicuro?")
+        builder.setTitle("Conferma")
+        .setMessage("Stai per uscire dalla modalità Easy Mode.\nSei sicuro?")
                 .setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
 

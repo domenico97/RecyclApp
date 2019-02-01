@@ -21,7 +21,8 @@ public class DettagliSegnalazione extends Activity {
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
     SharedPreferences prefs;
-    TextView numeroSegnalazione, dataCreazione, infrazioni, cittadino ,nome, cognome,indirizzo;
+    TextView numeroSegnalazione, dataCreazione, infrazioniTV, cittadino ,nome, cognome,indirizzo;
+    String infrazioni;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +31,7 @@ public class DettagliSegnalazione extends Activity {
 
         numeroSegnalazione = findViewById(R.id.numeroSegnalazione);
         dataCreazione = findViewById(R.id.dataCreazione);
-        infrazioni = findViewById(R.id.infrazioni);
+        infrazioniTV = findViewById(R.id.infrazioni);
         nome = findViewById(R.id.Nome);
         cognome = findViewById(R.id.Cognome);
         indirizzo = findViewById(R.id.Indirizzo);
@@ -39,7 +40,7 @@ public class DettagliSegnalazione extends Activity {
 
         numeroSegnalazione.setText(""+i.getIntExtra("NUMERO_SEGNALAZIONE",0));
         dataCreazione.setText(i.getStringExtra("DATA"));
-        infrazioni.setText(i.getStringExtra("DESCRIZIONE"));
+        infrazioni = i.getStringExtra("DESCRIZIONE");
         nome.setText(i.getStringExtra("NOME"));
         cognome.setText(i.getStringExtra("COGNOME"));
         indirizzo.setText(i.getStringExtra("INDIRIZZO"));
@@ -67,6 +68,33 @@ public class DettagliSegnalazione extends Activity {
                 return false;
             }
         });
+
+
+        // parsing delle informazioni contenute in "infrazioni"
+        String testo ="";
+        String[] tmp = infrazioni.split("//");
+        String tmpInfrazioni = tmp[0];
+        String altreInformazioni = null;
+        if ( tmp.length > 1){
+            altreInformazioni = tmp[1];
+        }
+
+        if(!tmpInfrazioni.isEmpty()) {
+            String[] listaInfrazioni = tmpInfrazioni.split("/");
+            for (int x = 0; x < listaInfrazioni.length; x++) {
+                testo += (x + 1) + ") " + listaInfrazioni[x] + "\n";
+                if(x==listaInfrazioni.length-1)
+                    testo += "\n";
+            }
+        }
+        if(altreInformazioni!=null){
+            testo+="Informazioni Aggiuntive:\n"+altreInformazioni;
+        }
+
+
+        infrazioniTV.setText(testo);
+
+
 
 
     }

@@ -55,7 +55,8 @@ public class DialogConfermaInvioInfrazione extends DialogFragment {
         // Use the Builder class for convenient dialog construction
         super.onCreateDialog(savedInstanceState);
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Sei sicuro di voler inviare l'infrazione")
+        builder.setTitle("Conferma")
+                .setMessage("Sei sicuro di voler inviare l'infrazione?")
                 .setPositiveButton("Si", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         // Send the positive button event back to the host activity

@@ -251,7 +251,8 @@ public class HomepageCittadino extends AppCompatActivity {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Conferma \nVuoi davvero uscire da RecyclApp ?")
+        builder.setTitle("Conferma")
+                .setMessage("Vuoi davvero uscire da RecyclApp ?")
                 .setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
 
