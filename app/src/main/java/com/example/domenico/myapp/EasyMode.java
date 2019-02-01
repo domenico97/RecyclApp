@@ -5,6 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -13,8 +17,10 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -32,17 +38,22 @@ import static com.example.domenico.myapp.HomepageCittadino.getOccurenceOfDayInMo
 
 public class EasyMode extends AppCompatActivity {
 
+    final String TAG = "EasyMode.java";
+
     CarouselView customCarouselView;
     SharedPreferences prefs;
     private int NUMBER_OF_PAGES = 2;
-    TextView testo, data;
+    TextView identificaTesto,data;
     Switch easyMode;
     boolean prima_pagina = true;
     String giorno, nomeUtente;
     ImageButton image;
     private BottomNavigationView bottomNavigationView;
     private int punti;
-    int occorenzaGiorno;
+    int occorrenzaGiorno;
+    private DatabaseOpenHelper dbHelper;
+    private SQLiteDatabase db = null;
+    Button identificaButton;
 
 
     @Override
@@ -53,7 +64,10 @@ public class EasyMode extends AppCompatActivity {
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         easyMode.setChecked(true);
         data = findViewById(R.id.data);
-
+        db = MainActivity.dbHelper.getWritableDatabase();
+        identificaTesto = findViewById(R.id.identifica);
+        identificaButton = findViewById(R.id.buttonIdentifica);
+        image = findViewById(R.id.imageTipologia);
         nomeUtente = prefs.getString("NOME", "");
         punti = prefs.getInt("PUNTI", 0);
         Date date = new Date();
@@ -62,10 +76,63 @@ public class EasyMode extends AppCompatActivity {
         data.setText(s);
 
 
-        SimpleDateFormat format = new SimpleDateFormat("EEEE");
-        occorenzaGiorno = getOccurenceOfDayInMonth(date);
+        SimpleDateFormat format = new SimpleDateFormat("E");
+        occorrenzaGiorno = getOccurenceOfDayInMonth(date);
         giorno = format.format((date));
 
+        int id = 0;
+
+        if(giorno.equals("Mon")){
+            if(occorrenzaGiorno == 2 || occorrenzaGiorno == 4)
+                giorno="Mon_Even";
+            else
+                giorno="Mon_Odd";
+        }
+
+        Log.d(TAG,"giorno = "+giorno);
+        String tipo="null";
+        Cursor c = db.rawQuery("SELECT giorno,tipologia FROM calendario WHERE giorno = ?", new String[]{giorno});
+        if (c != null && c.getCount() > 0) {
+            if (c.moveToFirst()) {
+                Log.d(TAG,"giorno = "+c.getString(0)+" tipologia = "+c.getString(1));
+                tipo = c.getString(1);
+                id = getResources().getIdentifier(tipo, "drawable", getPackageName());
+                Log.d(TAG,"id = "+id);
+            }
+        }
+
+        Bitmap tmp = BitmapFactory.decodeResource(getResources(), id);
+        image.setImageBitmap(tmp);
+
+        String finalTVText="Non sai cosa si butta ";
+        String finalButtonText="PREMI QUI";
+        //Settiamo i testi
+//        tipo = Character.toUpperCase(tipo.charAt(0)) + tipo.substring(1);
+        switch (tipo){
+            case "umido":
+                finalTVText+="nell' UMIDO?";
+                break;
+            case "indifferenziato":
+                finalTVText+="nell' INIDFFERENZIATO?";
+                break;
+            case "alluminio":
+                finalTVText+="nell' ALLUMINIO?";
+                break;
+            case "plastica":
+                finalTVText+="nella PLASTICA?";
+                break;
+            case "cartonevetro":
+                finalTVText+="in uno dei contenitori?";
+                break;
+            case "nonconferire":
+                finalTVText+="in uno dei contenitori?";
+                break;
+            default:
+                throw new IllegalArgumentException("Tipologia non consentita: " + tipo);
+        }
+
+        identificaButton.setText(finalButtonText);
+        identificaTesto.setText(finalTVText);
 
     }
 

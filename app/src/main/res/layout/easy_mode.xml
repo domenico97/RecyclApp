@@ -72,6 +72,7 @@
         android:background="@drawable/back">
 
         <ImageButton
+            android:id="@+id/imageTipologia"
             android:layout_marginTop="5dp"
             android:layout_width="match_parent"
             android:layout_height="250dp"
@@ -90,7 +91,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:text="Non sai cosa si butta nella PLASTICA?"
+        android:text="PROVA"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="22sp" />
