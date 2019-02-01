@@ -85,7 +85,7 @@ public class FormRegistrazione extends Activity {
         }
         String codiceFis = cf.getText().toString();
         if (codiceFis.equals("")) {
-            cf.setHint("Inserire codice fiscsale");
+            cf.setHint("Inserire codice fiscale");
             cf.setHintTextColor(Color.RED);
             errore = true;
         }

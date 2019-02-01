@@ -29,8 +29,8 @@ public class NuovoAvviso extends Activity {
     String operatore = "";
     private SQLiteDatabase db = null;
     SharedPreferences prefs;
-    boolean cittadinoCheched = false;
-    boolean operatoreCheched = false;
+    boolean cittadinoChecked = false;
+    boolean operatoreChecked = false;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,18 +67,18 @@ public class NuovoAvviso extends Activity {
 
 
     public void onCittadinoClick(View v) {
-        if (cittadinoCheched) {
-            cittadinoCheched = false;
+        if (cittadinoChecked) {
+            cittadinoChecked = false;
         } else {
-            cittadinoCheched = true;
+            cittadinoChecked = true;
         }
     }
 
     public void onOperatoreClick(View v) {
-        if (operatoreCheched) {
-            operatoreCheched = false;
+        if (operatoreChecked) {
+            operatoreChecked = false;
         } else {
-            operatoreCheched = true;
+            operatoreChecked = true;
         }
     }
 
@@ -101,7 +101,7 @@ public class NuovoAvviso extends Activity {
                         }
                         String nomeAvviso = nome.getText().toString();
                         String descr = descrizione.getText().toString();
-                        if (cittadinoCheched) {
+                        if (cittadinoChecked) {
                             ContentValues values = new ContentValues();
                             values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "");
                             values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
@@ -112,7 +112,7 @@ public class NuovoAvviso extends Activity {
                             values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
                             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
                         }
-                        if (operatoreCheched) {
+                        if (operatoreChecked) {
                             ContentValues values = new ContentValues();
                             values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "");
                             values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
@@ -123,7 +123,7 @@ public class NuovoAvviso extends Activity {
                             values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
                             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
                         }
-                        if (cittadinoCheched == false && operatoreCheched == false) {
+                        if (cittadinoChecked == false && operatoreChecked == false) {
                             errore();
                         } else
                             invioEffettuato();
@@ -149,6 +149,7 @@ public class NuovoAvviso extends Activity {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
+                        finish();
                         break;
 
                 }
