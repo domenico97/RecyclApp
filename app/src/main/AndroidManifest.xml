@@ -52,8 +52,8 @@
         <activity android:name=".ModificaCalendarioDipendenteComunale" />
         <activity android:name=".HomepageDipendenteComunale" />
         <activity android:name=".CambiaTipologiaRifiuto" />
-
-
+        <activity android:name=".AreaPersonaleDipendenteComunale" />
+        <activity android:name=".NuovoAvviso" />
     </application>
 
 </manifest>

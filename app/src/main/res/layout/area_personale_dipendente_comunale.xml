@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:id="@+id/relative"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentTop="true"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal">
+
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="5dp"
+            android:adjustViewBounds="true"
+            android:background="@android:color/transparent"
+            android:onClick="back"
+            android:scaleType="fitCenter"
+            android:src="@drawable/left_arrow1" />
+
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="96dp"
+            android:layout_marginLeft="96dp"
+            android:layout_marginTop="8dp"
+            android:text="Profilo"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"
+            android:textStyle="bold|italic" />
+
+        />
+
+    </RelativeLayout>
+
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/view2"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:layout_below="@id/relative"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp"
+        android:elevation="12dp"
+        android:onClick="selectImage"
+        android:innerRadius="0dp"
+        android:shape="ring"
+        android:thicknessRatio="1.9"
+        app:cardCornerRadius="120dp">
+
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/man">
+
+        </ImageView>
+    </android.support.v7.widget.CardView>
+
+    <TextView
+        android:id="@+id/nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nome utente"
+        android:layout_marginTop="15dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/view2"
+        android:textStyle="bold|italic"
+        android:textColor="@color/black"
+        android:textSize="24sp"/>
+
+    <LinearLayout
+        android:id="@+id/linear1"
+        android:layout_below="@id/nome"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Codice Fiscale "
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/cf"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="XXXXXXXXXXXXXXXX"
+            android:gravity="right"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear2"
+        android:layout_below="@id/linear1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="E-mail"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="nome.cogome@gmail.com"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/linear3"
+        android:layout_below="@id/linear2"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Telefono"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/telefono"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="### #######"
+            android:gravity="right"
+            android:layout_gravity="right"
+            android:textStyle="italic"
+            android:textColor="@color/black"
+            android:textSize="19sp"
+            />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linear4"
+        android:layout_below="@id/linear3"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ricorda i miei dati"
+            android:textStyle="bold|italic"
+            android:textColor="@color/black"
+            android:textSize="21sp"
+            />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <Switch
+            android:id="@+id/switchConnesso"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="rimaniConnesso" />
+
+    </LinearLayout>
+
+    <android.support.v7.widget.CardView
+        android:layout_width="170dp"
+        android:layout_height="60dp"
+        android:layout_below="@id/linear4"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="35dp"
+        android:clickable="true"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:onClick="logout"
+        app:cardCornerRadius="15dp"
+        app:cardElevation="5dp">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/textLogout"
+                android:layout_width="60dp"
+                android:layout_height="wrap_content"
+                android:textStyle="italic|bold"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                android:text="ESCI"
+                android:layout_marginRight="50dp"
+                android:textAlignment="center"
+                android:textSize="19sp" />
+
+            <ImageView
+                android:id="@+id/logoLogout"
+                android:layout_width="40dp"
+                android:layout_height="45dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="5dp"
+                android:layout_toRightOf="@id/textLogout"
+                android:src="@drawable/exit" />
+
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:itemIconTint="@drawable/bottom_navigation_colors_operatore_ecologico"
+        app:itemTextColor="@drawable/bottom_navigation_colors_operatore_ecologico"
+        app:menu="@menu/navigation_dipendente_comunale" />
+
+
+</RelativeLayout>
