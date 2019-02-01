@@ -56,7 +56,6 @@
             android:id="@+id/titolo1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             android:hint="Nome avviso"
             android:textColor="@color/black"
             android:textSize="20sp"
@@ -175,6 +174,7 @@
         android:background="#CC000000" />
 
     <Button
+        android:id="@+id/annullaAvviso"
         style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -183,6 +183,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="35dp"
         android:text="Annulla"
+        android:onClick="annulla"
         android:textColor="#ff9900"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -197,6 +198,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginBottom="35dp"
         android:text="Salva"
+        android:onClick="salva"
         android:textColor="#ff9900"
         android:textSize="20sp"
         android:textStyle="bold" />
