@@ -76,15 +76,15 @@ public class ModificaCalendarioDipendenteComunale extends FragmentActivity {
                 Intent i = new Intent();
                 switch (item.getItemId()) {
                     case R.id.home_dipendente_comunale:
-                        i.setClass(getApplicationContext(), HomepageCittadino.class);
+                        i.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
                         startActivity(i);
                         break;
                     case R.id.avvisi_dipendente_comunale:
-                        i.setClass(getApplicationContext(), AvvisiCittadino.class);
-                        startActivity(i);
+                        /*i.setClass(getApplicationContext(), AvvisiCittadino.class);
+                        startActivity(i);*/
                         break;
                     case R.id.area_personale_dipendente_comunale:
-                        i.setClass(getApplicationContext(),Contatti.class);
+                        i.setClass(getApplicationContext(),AreaPersonaleDipendenteComunale.class);
                         startActivity(i);
                         break;
                 }

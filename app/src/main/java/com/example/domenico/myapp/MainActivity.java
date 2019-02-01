@@ -54,6 +54,7 @@ public class MainActivity extends Activity {
             values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, x.getMessaggio());
             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
 
+
             ContentValues valori = new ContentValues();
             valori.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, y.getData());
             valori.put(SchemaDB.Tavola.COLUMN_MITTENTE, y.getMittente());
