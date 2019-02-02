@@ -215,7 +215,7 @@ public class NuovoAvviso extends Activity {
         return;
     }
 
-    public void back(View v) {
+    public void back(View view) {
         finish();
     }
 

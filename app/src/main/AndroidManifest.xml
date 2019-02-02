@@ -56,6 +56,10 @@
         <activity android:name=".NuovoAvviso" />
         <activity android:name=".DettagliCittadino" />
         <activity android:name=".CercaCittadino" />
+        <activity android:name=".SegnalazioniDipendenteComunale" />
+        <activity android:name=".DettagliSegnalazioneDCOperatore" />
+        <activity android:name=".DettagliSegnalazioneDCCittadino" />
+
     </application>
 
 </manifest>

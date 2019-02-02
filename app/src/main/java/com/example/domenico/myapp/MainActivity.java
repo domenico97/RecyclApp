@@ -42,7 +42,7 @@ public class MainActivity extends Activity {
             utenti.add(new Utente("Domenico", "Trotta", "VLLGLI79A41H703C", "domenico.trotta@live.it", "via Roma Fisciano", "dom1997", "3894552124", "cittadino"));
             utenti.add(new Utente("Marco", "Giuliani", "GLNMRC74M06H703X", "marco.giuliani@gmail.com", "via Toscanello Baronissi", "marco74", "3297856896", "op ecologico"));
             Messaggio x = new Messaggio(0, "ciao", "VLLGLI79A41H703B", "cittadino", "22/10/2018", "PROVA", "VLLGLI79A41H703C", "Multa");
-            Messaggio y = new Messaggio(0, "avviso", "VLLGLI79A41H703B", "op ecologico", "22/10/2018", "Avviso", "", "Multa");
+            Messaggio y = new Messaggio(1, "avviso", "VLLGLI79A41H703B", "op ecologico", "22/10/2018", "Avviso", "", "Multa");
 
             ContentValues values = new ContentValues();
             values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, x.getData());

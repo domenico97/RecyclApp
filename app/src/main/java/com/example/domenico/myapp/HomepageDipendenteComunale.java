@@ -62,9 +62,9 @@ public class HomepageDipendenteComunale extends Activity {
     }
 
     public void segnalazioniRicevute(View v) {
-        /*Intent i = new Intent();
-        i.setClass(getApplicationContext(), Statistiche.class);
-        startActivity(i);*/
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), SegnalazioniDipendenteComunale.class);
+        startActivity(i);
     }
 
     public void nuovoAvviso(View v) {

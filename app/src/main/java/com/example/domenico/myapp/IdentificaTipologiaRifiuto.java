@@ -32,7 +32,7 @@ import java.util.ArrayList;
 
 public class IdentificaTipologiaRifiuto extends FragmentActivity implements SimpleScannerFragment.NoticeDialogListener{
 
-    public ListView listView;
+    private ListView listView;
     ResultAdapter customAdapter;
     SearchView searchBar;
     private DatabaseOpenHelper dbHelper;

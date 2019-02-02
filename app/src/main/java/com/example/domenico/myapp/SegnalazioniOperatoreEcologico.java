@@ -73,13 +73,13 @@ public class SegnalazioniOperatoreEcologico extends Activity {
         }
 
         TextView text = findViewById(R.id.text1);
-        c = db.rawQuery("SELECT id,messaggio,data_segnalazione,destinatario FROM messaggi WHERE mittente = ?", new String[]{cf});
+        c = db.rawQuery("SELECT id,messaggio,data_segnalazione,destinatario,mittente,tipo FROM messaggi WHERE mittente = ?", new String[]{cf});
         if (c != null && c.getCount() > 0) {
             SegnalazioneBean segn;
             for (int j = 0; j < c.getCount(); j++) {
                 if (c.moveToPosition(j)) {
                     // cfDestinatario = c.getString(3);
-                     segn = new SegnalazioneBean(c.getInt(0), c.getString(1), c.getString(2), c.getString(3));
+                     segn = new SegnalazioneBean(c.getInt(0), c.getString(1), c.getString(2), c.getString(3),c.getString(4),c.getString(5));
                     customAdapter.add(segn);
                 }
             }
@@ -105,7 +105,7 @@ public class SegnalazioniOperatoreEcologico extends Activity {
 
         Intent i = new Intent();
         i.putExtra("NUMERO_SEGNALAZIONE",s.getNumeroSegnalazione());
-        i.putExtra("DESCRIZIONE", s.getMesssaggio());
+        i.putExtra("DESCRIZIONE", s.getMessaggio());
         i.putExtra("DATA", s.getDataCreazione());
         i.putExtra("DESTINATARIO", s.getDestinatario());
         i.putExtra("NOME", nome);

@@ -126,12 +126,12 @@ public class HomepageCittadino extends AppCompatActivity {
                 }
 
                 Log.d(TAG,"giorno = "+giorno);
-
+                String tipo="null";
                 Cursor c = db.rawQuery("SELECT giorno,tipologia FROM calendario WHERE giorno = ?", new String[]{giorno});
                 if (c != null && c.getCount() > 0) {
                     if (c.moveToFirst()) {
                         Log.d(TAG,"giorno = "+c.getString(0)+" tipologia = "+c.getString(1));
-                        String tipo = c.getString(1);
+                        tipo = c.getString(1);
                         id = getResources().getIdentifier(tipo, "drawable", getPackageName());
                         Log.d(TAG,"id = "+id);
                     }
@@ -164,7 +164,7 @@ public class HomepageCittadino extends AppCompatActivity {
                 }
                 if (giorno.equals("domenica"))
                     image.setImageResource(R.drawable.umido);
-            */    if (giorno.equals("nonconferire"))
+            */    if (tipo.equals("nonconferire"))
                     testo.setText(nomeUtente + ", oggi ");
                 else
                     testo.setText(nomeUtente + ", oggi si conferisce");
