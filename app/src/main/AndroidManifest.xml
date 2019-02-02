@@ -54,6 +54,8 @@
         <activity android:name=".CambiaTipologiaRifiuto" />
         <activity android:name=".AreaPersonaleDipendenteComunale" />
         <activity android:name=".NuovoAvviso" />
+        <activity android:name=".DettagliCittadino" />
+        <activity android:name=".CercaCittadino" />
     </application>
 
 </manifest>

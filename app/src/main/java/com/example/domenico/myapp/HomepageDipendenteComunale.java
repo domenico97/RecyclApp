@@ -43,9 +43,9 @@ public class HomepageDipendenteComunale extends Activity {
 
 
     public void inviaSanzione(View v) {
-        /*Intent i = new Intent();
-        i.setClass(getApplicationContext(), Statistiche.class);
-        startActivity(i);*/
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(),CercaCittadino.class);
+        startActivity(i);
     }
 
 

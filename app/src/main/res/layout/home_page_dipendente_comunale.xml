@@ -245,7 +245,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:onClick="nuovoAvviso"
-            android:src="@drawable/white_plus" />
+           android:src="@drawable/white_plus" />
 
         <TextView
             android:layout_width="wrap_content"

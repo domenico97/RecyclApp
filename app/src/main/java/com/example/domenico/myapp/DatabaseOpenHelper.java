@@ -67,12 +67,19 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
                     + SchemaDB.Tavola.CALENDARIO_GIORNO + " TEXT PRIMARY KEY, "
                     + SchemaDB.Tavola.CALENDARIO_TIPOLOGIA + " TEXT NOT NULL); ";
 
+    final private static String CREATE_CMD3 =
+            "CREATE TABLE " + SchemaDB.Tavola.TABLE_NAME2 + " ("
+                    + SchemaDB.Tavola._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                    + SchemaDB.Tavola.COLUMN_CF + " TEXT NOT NULL, "
+                    + SchemaDB.Tavola.COLUMN_NAME + " TEXT NOT NULL, "
+                    + SchemaDB.Tavola.COLUMN_COGNOME + " TEXT NOT NULL); ";
+
 
     final private static Integer VERSION = 1;
     final private Context context;
 
     public DatabaseOpenHelper(Context context) {
-        super(context,SchemaDB.Tavola.TABLE_NAME, null, VERSION);
+        super(context, SchemaDB.Tavola.TABLE_NAME, null, VERSION);
         this.context = context;
     }
 
@@ -81,6 +88,7 @@ public class DatabaseOpenHelper extends SQLiteOpenHelper {
         db.execSQL(CREATE_CMD);
         db.execSQL(CREATE_CMD1);
         db.execSQL(CREATE_CMD2);
+        db.execSQL(CREATE_CMD3);
     }
 
 

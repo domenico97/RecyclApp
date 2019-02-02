@@ -55,6 +55,25 @@ public class MainActivity extends Activity {
             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
 
 
+            values = new ContentValues();
+            values.put(SchemaDB.Tavola.COLUMN_CF, "TREDFG88J17F874G");
+            values.put(SchemaDB.Tavola.COLUMN_NAME, "FRANCO");
+            values.put(SchemaDB.Tavola.COLUMN_COGNOME, "BBBB");
+            db.insert(SchemaDB.Tavola.TABLE_NAME2, null, values);
+
+            values = new ContentValues();
+            values.put(SchemaDB.Tavola.COLUMN_CF, "TREDFG88J17F87F4");
+            values.put(SchemaDB.Tavola.COLUMN_NAME, "LUCA");
+            values.put(SchemaDB.Tavola.COLUMN_COGNOME, "ROSSI");
+            db.insert(SchemaDB.Tavola.TABLE_NAME2, null, values);
+
+            values = new ContentValues();
+            values.put(SchemaDB.Tavola.COLUMN_CF, "TREDFG88J17F887D");
+            values.put(SchemaDB.Tavola.COLUMN_NAME, "AAAAA");
+            values.put(SchemaDB.Tavola.COLUMN_COGNOME, "BIANCHI");
+            db.insert(SchemaDB.Tavola.TABLE_NAME2, null, values);
+
+
             ContentValues valori = new ContentValues();
             valori.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, y.getData());
             valori.put(SchemaDB.Tavola.COLUMN_MITTENTE, y.getMittente());

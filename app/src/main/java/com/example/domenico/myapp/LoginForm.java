@@ -35,7 +35,7 @@ public class LoginForm extends Activity {
         SharedPreferences.Editor editor = prefs.edit();
         editor.putBoolean("RIMANI_CONNESSO", false);
         editor.putBoolean("Accesso", false);
-        editor.apply();
+        editor.commit();
         email = findViewById(R.id.email);
         password = (EditText) findViewById(R.id.pswrdd);
         password.setOnEditorActionListener(new TextView.OnEditorActionListener() {
