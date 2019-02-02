@@ -95,9 +95,9 @@
 
             <CheckBox
                 android:id="@+id/operatoreCheck"
-                android:onClick="onOperatoreClick"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="onOperatoreClick" />
 
             <TextView
                 android:id="@+id/opEcologico"
@@ -117,10 +117,10 @@
             android:layout_marginTop="10dp">
 
             <CheckBox
-                android:onClick="onCittadinoClick"
                 android:id="@+id/cittadinoCheck"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:onClick="onCittadinoClick" />
 
             <TextView
                 android:id="@+id/cittadino"
@@ -161,9 +161,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
-            android:background="@null" />
-        android:textColor="@color/black"
-        android:textSize="20sp" />
+            android:background="@null"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
     </FrameLayout>
 
@@ -186,8 +186,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="20dp"
         android:layout_marginBottom="35dp"
-        android:text="Annulla"
         android:onClick="annulla"
+        android:text="Annulla"
         android:textColor="#ff9900"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -201,8 +201,8 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="35dp"
-        android:text="Salva"
         android:onClick="salva"
+        android:text="Salva"
         android:textColor="#ff9900"
         android:textSize="20sp"
         android:textStyle="bold" />

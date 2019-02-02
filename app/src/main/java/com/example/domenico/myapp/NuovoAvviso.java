@@ -100,34 +100,41 @@ public class NuovoAvviso extends Activity {
                             cf = c.getString(0);
                         }
                         String nomeAvviso = nome.getText().toString();
-                        String descr = descrizione.getText().toString();
-                        if (cittadinoChecked) {
-                            ContentValues values = new ContentValues();
-                            values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "");
-                            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
-                            values.put(SchemaDB.Tavola.COLUMN_OGGETTO, nomeAvviso);
-                            values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
-                            values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino"); //Tipologia di attori a cui è rivolta la segnalazione
-                            values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
-                            values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
-                            db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
+                        if (nomeAvviso.equals("") || nomeAvviso == null) {
+                            errore("Non è stato inserito il nome dell'avviso");
+                        } else {
+                            String descr = descrizione.getText().toString();
+                            if (descr.equals("") || descr == null) {
+                                errore("Non è stata inserita una descrizione");
+                            } else {
+                                if (cittadinoChecked) {
+                                    ContentValues values = new ContentValues();
+                                    values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "");
+                                    values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
+                                    values.put(SchemaDB.Tavola.COLUMN_OGGETTO, nomeAvviso);
+                                    values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
+                                    values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino"); //Tipologia di attori a cui è rivolta la segnalazione
+                                    values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
+                                    values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
+                                    db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
+                                }
+                                if (operatoreChecked) {
+                                    ContentValues values = new ContentValues();
+                                    values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "");
+                                    values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
+                                    values.put(SchemaDB.Tavola.COLUMN_OGGETTO, nomeAvviso);
+                                    values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
+                                    values.put(SchemaDB.Tavola.COLUMN_TIPO, "op ecologico"); //Tipologia di attori a cui è rivolta la segnalazione
+                                    values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
+                                    values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
+                                    db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
+                                }
+                                if (cittadinoChecked == false && operatoreChecked == false) {
+                                    errore("Nessun destinatario selezionato ! ");
+                                } else
+                                    invioEffettuato();
+                            }
                         }
-                        if (operatoreChecked) {
-                            ContentValues values = new ContentValues();
-                            values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "");
-                            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, descr);
-                            values.put(SchemaDB.Tavola.COLUMN_OGGETTO, nomeAvviso);
-                            values.put(SchemaDB.Tavola.COLUMN_MITTENTE, cf);
-                            values.put(SchemaDB.Tavola.COLUMN_TIPO, "op ecologico"); //Tipologia di attori a cui è rivolta la segnalazione
-                            values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
-                            values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
-                            db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
-                        }
-                        if (cittadinoChecked == false && operatoreChecked == false) {
-                            errore();
-                        } else
-                            invioEffettuato();
-
                         break;
                     case DialogInterface.BUTTON_NEGATIVE:
                         break;
@@ -165,7 +172,7 @@ public class NuovoAvviso extends Activity {
 
     }
 
-    private void errore() {
+    private void errore(String error) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 switch (which) {
@@ -177,8 +184,7 @@ public class NuovoAvviso extends Activity {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setTitle("Attenzione");
-        builder.setMessage("Nessun destinatario selezionato ! ")
-                .setPositiveButton("Ho capito", dialogClickListener).show();
+        builder.setMessage(error).setPositiveButton("Ho capito", dialogClickListener).show();
 
         return;
 
