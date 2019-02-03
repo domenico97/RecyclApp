@@ -66,12 +66,12 @@ public class StatisticheDipendenteComunale extends AppCompatActivity {
         pieChartView = findViewById(R.id.chart);
 
         List pieData = new ArrayList<>();
-        pieData.add(new SliceValue(((float) 6.80), Color.rgb(118, 165, 175)).setLabel("Vetro"));
-        pieData.add(new SliceValue(((float) 37.68), Color.rgb(53, 28, 117)).setLabel("Plastica"));
-        pieData.add(new SliceValue(((float) 14.58), Color.rgb(255, 153, 0)).setLabel("Umido"));
-        pieData.add(new SliceValue(((float) 12.47), Color.rgb(43, 120, 228)).setLabel("Alluminio"));
-        pieData.add(new SliceValue(((float) 13.57), Color.rgb(241, 194, 50)).setLabel("Indifferenziato"));
-        pieData.add(new SliceValue(((float) 14.89), Color.rgb(142, 124, 195)).setLabel("Carta e cartone"));
+        pieData.add(new SliceValue(((float) 6.80), Color.rgb(118, 165, 175)).setLabel("6.80"));
+        pieData.add(new SliceValue(((float) 37.68), Color.rgb(53, 28, 117)).setLabel("37.68"));
+        pieData.add(new SliceValue(((float) 14.58), Color.rgb(255, 153, 0)).setLabel("14.58"));
+        pieData.add(new SliceValue(((float) 12.47), Color.rgb(43, 120, 228)).setLabel("12.47"));
+        pieData.add(new SliceValue(((float) 13.57), Color.rgb(241, 194, 50)).setLabel("13.57"));
+        pieData.add(new SliceValue(((float) 14.89), Color.rgb(142, 124, 195)).setLabel("14.89"));
 
 
         PieChartData pieChartData = new PieChartData(pieData);

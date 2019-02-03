@@ -57,13 +57,138 @@
 
     <lecho.lib.hellocharts.view.PieChartView
         android:id="@+id/chart"
-        android:layout_width="350dp"
-        android:layout_height="350dp"
+        android:layout_width="320dp"
+        android:layout_height="310dp"
         android:layout_below="@id/relative"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="30dp"
 
         />
+
+    <TableLayout
+        android:id="@+id/table"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/chart"
+        android:layout_marginTop="15dp"
+        android:layout_centerInParent="true">
+
+        <TableRow android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="60dp"
+                android:background="#76a5af" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:textColor="#CC000000"
+                android:textSize="18dp"
+                android:textStyle="italic"
+                android:layout_weight="1"
+                android:text="Vetro " />
+
+        </TableRow>
+
+        <TableRow android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="60dp"
+                android:background="#ff9900" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:textColor="#CC000000"
+                android:textSize="18dp"
+                android:textStyle="italic"
+                android:layout_weight="1"
+                android:text="Umido " />
+
+        </TableRow>
+
+        <TableRow android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="60dp"
+                android:background="#351c75" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:textStyle="italic"
+                android:textColor="#CC000000"
+                android:textSize="18dp"
+                android:text="Plastica " />
+
+        </TableRow>
+
+        <TableRow android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="60dp"
+                android:background="#2b78e4" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:textColor="#CC000000"
+                android:textSize="18dp"
+                android:textStyle="italic"
+                android:text="Alluminio " />
+
+        </TableRow>
+
+        <TableRow android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="15dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="60dp"
+                android:background="#f1c232" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:textStyle="italic"
+                android:textColor="#CC000000"
+                android:textSize="18dp"
+                android:text="Indifferenziato " />
+
+        </TableRow>
+
+        <TableRow android:layout_margin="10dp">
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="60dp"
+                android:background="#8e7cc3" />
+
+            <TextView
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:layout_weight="1"
+                android:textStyle="italic"
+                android:textColor="#CC000000"
+                android:textSize="18dp"
+                android:text="Carta e cartone " />
+
+        </TableRow>
+
+
+    </TableLayout>
 
 
     <android.support.design.widget.BottomNavigationView

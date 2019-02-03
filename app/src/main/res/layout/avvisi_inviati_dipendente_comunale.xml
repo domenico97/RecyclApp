@@ -79,8 +79,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        app:itemIconTint="@drawable/bottom_navigation_colors_dipendente_comunale"
-        app:itemTextColor="@drawable/bottom_navigation_colors_dipendente_comunale"
+        app:itemIconTint="@drawable/bottom_navigation_colors_operatore_ecologico"
+        app:itemTextColor="@drawable/bottom_navigation_colors_operatore_ecologico"
         app:menu="@menu/navigation_dipendente_comunale" />
 
 

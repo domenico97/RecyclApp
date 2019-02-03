@@ -107,7 +107,12 @@ public class AvvisiCittadino extends AppCompatActivity {
         i.putExtra("OGGETTO", c.getOggetto());
         i.putExtra("DESCRIZIONE", c.getMessaggio());
         i.putExtra("DATA", c.getData());
-        i.putExtra("DESTINATARIO", c.getDestinatario());
+        if (c.getDestinatario().equals("")) {
+            i.putExtra("DESTINATARIO", "Cittadini");
+        } else {
+            i.putExtra("DESTINATARIO", c.getDestinatario());
+        }
+
         i.setClass(getApplicationContext(), VisualizzaMessaggio.class);
         startActivity(i);
     }
