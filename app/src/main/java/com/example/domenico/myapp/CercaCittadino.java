@@ -25,7 +25,7 @@ public class CercaCittadino extends Activity {
     private BottomNavigationView bottomNavigationView;
     private DatabaseOpenHelper dbHelper;
     private SearchView searchView;
-    CustomAdapterRicerche customAdapter;
+    CustomAdapterRicerche customAdapter, customAdapterNew;
     TextView ultimeRicerche;
     ListView listView;
     private int elem = 0;
@@ -76,16 +76,14 @@ public class CercaCittadino extends Activity {
         listView = (ListView) findViewById(R.id.listRicerche);
         customAdapter = new CustomAdapterRicerche(this, R.layout.ultima_ricerca, new ArrayList<Ricerca>());
         listView.setAdapter(customAdapter);
-
         db = MainActivity.dbHelper.getWritableDatabase();
         Cursor c = db.rawQuery("SELECT cf,nome,cognome FROM ricerche", null);
         if (c != null && c.getCount() > 0) {
             Ricerca r;
-            elem = c.getCount();
+            // elem = c.getCount();
             for (int j = 0; j < c.getCount(); j++) {
                 if (c.moveToPosition(j)) {
                     r = new Ricerca(c.getString(0), c.getString(1), c.getString(2));
-                    Log.d("PROVA5", c.getString(0));
                     customAdapter.add(r);
                 }
 
@@ -103,17 +101,21 @@ public class CercaCittadino extends Activity {
                         Cursor z = db.rawQuery("SELECT cf,nome,cognome FROM ricerche WHERE cf = ?", new String[]{query});
                         if (z == null || z.getCount() == 0) {
                             Ricerca r = new Ricerca(c.getString(0), c.getString(1), c.getString(2));
-                            if (elem == 4) {
+                            if (customAdapter.getCount() == 4) {
                                 idRicerca = prefs.getInt("ID_RICERCA", 0);
+                                customAdapter.remove(customAdapter.getItem(0));
                                 idRicerca++;
                                 editor.putInt("ID_RICERCA", idRicerca);
-                                Cursor f = db.rawQuery("SELECT cf,nome,cognome FROM ricerche WHERE id = ?", new String[]{"" + idRicerca});
+                                editor.commit();
+                               /* Cursor f = db.rawQuery("SELECT cf,nome,cognome FROM ricerche WHERE id = ?", new String[]{"" + idRicerca});
                                 if (f != null && f.getCount() > 0) {
                                     if (f.moveToFirst()) {
                                         Ricerca d = new Ricerca(f.getString(0), f.getString(1), f.getString(2));
                                         customAdapter.remove(d);
+                                        Log.d("DOMENICO1", "" + customAdapter.getCount());
+                                        db.delete(SchemaDB.Tavola.TABLE_NAME2, SchemaDB.Tavola._ID + "=?", new String[]{"" + idRicerca});
                                     }
-                                }
+                                }*/
                                 db.delete(SchemaDB.Tavola.TABLE_NAME2, SchemaDB.Tavola._ID + "=?", new String[]{"" + idRicerca});
                                 ContentValues valori = new ContentValues();
                                 valori.put(SchemaDB.Tavola.COLUMN_CF, c.getString(0));
@@ -121,15 +123,12 @@ public class CercaCittadino extends Activity {
                                 valori.put(SchemaDB.Tavola.COLUMN_COGNOME, c.getString(2));
                                 db.insert(SchemaDB.Tavola.TABLE_NAME2, null, valori);
                                 customAdapter.add(r);
-                                listView = (ListView) findViewById(R.id.listRicerche);
-                                customAdapter = new CustomAdapterRicerche(getApplicationContext(), R.layout.ultima_ricerca, customAdapter.getObjects());
-                                listView.setAdapter(customAdapter);
                                 Intent i = new Intent();
                                 i.putExtra("CODFISCALE", query);
                                 i.setClass(getApplicationContext(), DettagliCittadino.class);
                                 startActivity(i);
 
-                            } else if (elem < 4) {
+                            } else if (customAdapter.getCount() < 4) {
                                 ContentValues valori = new ContentValues();
                                 valori.put(SchemaDB.Tavola.COLUMN_CF, c.getString(0));
                                 valori.put(SchemaDB.Tavola.COLUMN_NAME, c.getString(1));
@@ -158,39 +157,6 @@ public class CercaCittadino extends Activity {
         });
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (listView!= null) {
-            listView.invalidateViews();
-        }
-        customAdapter.notifyDataSetChanged();
-       /* customAdapter = new CustomAdapterRicerche(this, R.layout.ultima_ricerca, customAdapter.getObjects());
-        listView.setAdapter(customAdapter);*/
-
-    }
-
-    @Override
-    public void onRestart() {
-        super.onRestart();
-        if (listView!= null) {
-            listView.invalidateViews();
-        }
-        customAdapter.notifyDataSetChanged();
-       /* customAdapter = new CustomAdapterRicerche(this, R.layout.ultima_ricerca, customAdapter.getObjects());
-        listView.setAdapter(customAdapter);*/
-    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        if (listView!= null) {
-            listView.invalidateViews();
-        }
-        customAdapter.notifyDataSetChanged();
-       /* customAdapter = new CustomAdapterRicerche(this, R.layout.ultima_ricerca, customAdapter.getObjects());
-        listView.setAdapter(customAdapter);*/
-    }
 
     public void dettagliCittadino(View v) {
         int position = Integer.parseInt(v.getTag().toString());

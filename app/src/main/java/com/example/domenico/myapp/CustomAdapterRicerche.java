@@ -25,16 +25,15 @@ public class CustomAdapterRicerche extends ArrayAdapter {
         super(context, resourceId, objects);
         resource = resourceId;
         inflater = LayoutInflater.from(context);
-        this.objects=objects;
+        this.objects = objects;
     }
-
 
 
     @Override
     public View getView(int position, View v, ViewGroup parent) {
         if (v == null) {
 
-            v = inflater.inflate(R.layout.ultima_ricerca, null);
+            v = inflater.inflate(R.layout.ultima_ricerca, parent, false);
         }
         Ricerca c = (Ricerca) getItem(position);
 
@@ -56,4 +55,5 @@ public class CustomAdapterRicerche extends ArrayAdapter {
         dettagli.setTag(position);
         return v;
     }
+
 }

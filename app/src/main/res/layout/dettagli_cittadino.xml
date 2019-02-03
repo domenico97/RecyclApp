@@ -267,7 +267,7 @@
     <FrameLayout
         android:id="@+id/Frame2"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
+        android:layout_height="125dp"
         android:layout_below="@id/label1"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="2dp"
@@ -276,6 +276,7 @@
 
         <EditText
             android:id="@+id/descrizione"
+            android:background="@null"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="5dp"
@@ -288,7 +289,7 @@
         android:layout_width="135dp"
         android:layout_height="65dp"
         android:layout_marginLeft="10dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="35dp"
         android:layout_marginRight="20dp"
         android:layout_below="@id/Frame2"
         android:clickable="true"

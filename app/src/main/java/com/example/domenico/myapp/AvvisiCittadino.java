@@ -80,6 +80,7 @@ public class AvvisiCittadino extends AppCompatActivity {
         }
 
         TextView text = findViewById(R.id.text1);
+        //Preleva tutti gli avvisi con tipo = cittadino.
         c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ?", new String[]{"cittadino"});
         if (c != null && c.getCount() > 0) {
             for (int j = 0; j < c.getCount(); j++) {
