@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -13,15 +12,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class AvvisiCittadino extends AppCompatActivity {
+public class AvvisiInviatiDipendenteComunale extends AppCompatActivity {
 
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
@@ -34,26 +30,25 @@ public class AvvisiCittadino extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.avvisi_cittadino);
+        setContentView(R.layout.avvisi_inviati_dipendente_comunale);
         prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 
         bottomNavigationView = findViewById(R.id.navigationView);
-        bottomNavigationView.setSelectedItemId(R.id.navigation_news);
+        bottomNavigationView.setSelectedItemId(R.id.avvisi_dipendente_comunale);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 Intent i = new Intent();
                 switch (item.getItemId()) {
-                    case R.id.navigation_home:
-
-                        i.setClass(getApplicationContext(), HomepageCittadino.class);
+                    case R.id.home_dipendente_comunale:
+                        i.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
                         startActivity(i);
                         break;
-                    case R.id.navigation_news:
-                        //Siamo già in questa pagina
+                    case R.id.avvisi_dipendente_comunale:
+
                         break;
-                    case R.id.navigation_info:
-                        i.setClass(getApplicationContext(), Contatti.class);
+                    case R.id.area_personale_dipendente_comunale:
+                        i.setClass(getApplicationContext(), AreaPersonaleDipendenteComunale.class);
                         startActivity(i);
                         break;
                 }
@@ -80,20 +75,18 @@ public class AvvisiCittadino extends AppCompatActivity {
         }
 
         TextView text = findViewById(R.id.text1);
-        //Preleva tutti gli avvisi con tipo = cittadino.
-        c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE tipo = ?", new String[]{"cittadino"});
+        //Preleva tutti gli avvisi con mittente = codice fiscale utente.
+        c = db.rawQuery("SELECT id,messaggio,mittente,tipo,data_segnalazione,oggetto,destinatario,tipo_segnalazione FROM messaggi WHERE mittente = ?", new String[]{cf});
         if (c != null && c.getCount() > 0) {
+            text.setText("Avvisi inviati");
             for (int j = 0; j < c.getCount(); j++) {
                 if (c.moveToPosition(j)) {
-                    if (c.getString(6).equals(cf) || c.getString(6).equals("") || c.getString(6) == null) {
-                        text.setText("Avvisi ricevuti");
-                        Messaggio mess = new Messaggio(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7));
-                        customAdapter.add(mess);
-                    }
+                    Messaggio mess = new Messaggio(c.getInt(0), c.getString(1), c.getString(2), c.getString(3), c.getString(4), c.getString(5), c.getString(6), c.getString(7));
+                    customAdapter.add(mess);
                 }
             }
         } else if (c.getCount() == 0) {
-            text.setText("Nessun avviso ricevuto");
+            text.setText("Nessun avviso inviato");
         }
 
     }
@@ -107,14 +100,14 @@ public class AvvisiCittadino extends AppCompatActivity {
         i.putExtra("OGGETTO", c.getOggetto());
         i.putExtra("DESCRIZIONE", c.getMessaggio());
         i.putExtra("DATA", c.getData());
-        i.putExtra("DESTINATARIO", c.getDestinatario());
-        i.setClass(getApplicationContext(), VisualizzaMessaggio.class);
+        i.putExtra("DESTINATARIO", c.getTipo());
+        i.setClass(getApplicationContext(), VisualizzaAvvisoDipendenteComunale.class);
         startActivity(i);
     }
 
     public void areaPersonale(View v) {
         Intent i = new Intent();
-        i.setClass(getApplicationContext(), AreaPersonale.class);
+        i.setClass(getApplicationContext(), AreaPersonaleDipendenteComunale.class);
         startActivity(i);
     }
 

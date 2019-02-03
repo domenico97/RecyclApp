@@ -7,6 +7,7 @@
         android:id="@+id/linear1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -16,7 +17,7 @@
             android:layout_weight="1"
             android:text="Nome avviso"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -26,7 +27,7 @@
             android:layout_weight="1"
             android:text="Nome avviso"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="19sp" />
 
 
     </LinearLayout>
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linear1"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal">
 
         <TextView
@@ -45,7 +47,7 @@
             android:layout_weight="1"
             android:text="Data avviso"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <TextView
@@ -55,7 +57,7 @@
             android:layout_weight="1"
             android:text="Data avviso"
             android:textColor="@color/black"
-            android:textSize="16sp" />
+            android:textSize="19sp" />
 
 
     </LinearLayout>
@@ -63,13 +65,13 @@
 
     <ImageButton
         android:id="@+id/mostraAvviso"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="50dp"
+        android:layout_height="45dp"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="25dp"
         android:layout_marginRight="10dp"
         android:background="@android:color/transparent"
-        android:onClick="mostraAvviso"
+        android:onClick="mostraSegnalazione"
         android:src="@drawable/arrow_right1" />
 
 </RelativeLayout>

@@ -28,8 +28,8 @@ public class HomepageDipendenteComunale extends Activity {
                     case R.id.home_dipendente_comunale:
                         break;
                     case R.id.avvisi_dipendente_comunale:
-                       /* i.setClass(getApplicationContext(),. class);
-                        startActivity(i);*/
+                        i.setClass(getApplicationContext(), AvvisiInviatiDipendenteComunale.class);
+                        startActivity(i);
                         break;
                     case R.id.area_personale_dipendente_comunale:
                         i.setClass(getApplicationContext(), AreaPersonaleDipendenteComunale.class);
@@ -44,15 +44,15 @@ public class HomepageDipendenteComunale extends Activity {
 
     public void inviaSanzione(View v) {
         Intent i = new Intent();
-        i.setClass(getApplicationContext(),CercaCittadino.class);
+        i.setClass(getApplicationContext(), CercaCittadino.class);
         startActivity(i);
     }
 
 
     public void statistiche(View v) {
-        /*Intent i = new Intent();
-        i.setClass(getApplicationContext(), Statistiche.class);
-        startActivity(i);*/
+        Intent i = new Intent();
+        i.setClass(getApplicationContext(), StatisticheDipendenteComunale.class);
+        startActivity(i);
     }
 
     public void ModificaCalendario(View view) {

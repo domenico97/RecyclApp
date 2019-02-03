@@ -65,8 +65,8 @@ public class AreaPersonaleDipendenteComunale extends AppCompatActivity {
                         startActivity(i);
                         break;
                     case R.id.avvisi_dipendente_comunale:
-                       /* i.setClass(getApplicationContext(),. class);
-                        startActivity(i);*/
+                        i.setClass(getApplicationContext(),AvvisiInviatiDipendenteComunale.class);
+                        startActivity(i);
                         break;
                     case R.id.area_personale_dipendente_comunale:
                         break;

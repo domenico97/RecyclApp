@@ -59,6 +59,9 @@
         <activity android:name=".SegnalazioniDipendenteComunale" />
         <activity android:name=".DettagliSegnalazioneDCOperatore" />
         <activity android:name=".DettagliSegnalazioneDCCittadino" />
+        <activity android:name=".AvvisiInviatiDipendenteComunale" />
+        <activity android:name=".VisualizzaAvvisoDipendenteComunale" />
+        <activity android:name=".StatisticheDipendenteComunale" />
 
     </application>
 
