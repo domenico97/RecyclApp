@@ -281,8 +281,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:background="@android:color/transparent"
-        app:itemIconTint="@drawable/bottom_navigation_colors_operatore_ecologico"
-        app:itemTextColor="@drawable/bottom_navigation_colors_operatore_ecologico"
+        app:itemIconTint="@drawable/bottom_navigation_colors2"
+        app:itemTextColor="@drawable/bottom_navigation_colors2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/navigation_operatore_ecologico" />
 

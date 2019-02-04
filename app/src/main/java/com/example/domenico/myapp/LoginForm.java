@@ -162,7 +162,7 @@ public class LoginForm extends Activity {
                 startActivity(i);
 
             } else {
-                errore("Credenziali non corrette");
+                errore("Utente non registrato");
             }
         }
 
