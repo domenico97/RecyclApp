@@ -210,7 +210,7 @@
             android:layout_gravity="center"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:onClick="inviaInfrazione"
+            android:onClick="inviaInfrazioneOE"
             app:cardCornerRadius="7dp"
             app:cardElevation="10dp">
 

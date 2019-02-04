@@ -94,12 +94,11 @@ public class InfrazioneOperatoreEcologico extends FragmentActivity implements Di
 
     }
 
-    public void inviaInfrazione(View view) {
+    public void inviaInfrazioneOE(View view) {
 
         infrazioniTotali = "";
-        for (String i : tutteInfrazioni){
-            tutteInfrazioni.remove(i);
-        }
+
+        tutteInfrazioni.clear();
 
         for (CheckBox cB : mCheckBoxes){
             if(cB.isChecked()){
@@ -186,7 +185,7 @@ public class InfrazioneOperatoreEcologico extends FragmentActivity implements Di
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
         Toast.makeText(getApplicationContext(),"Operazione Annullata",Toast.LENGTH_SHORT).show();
-        return;
+
 
     }
 
