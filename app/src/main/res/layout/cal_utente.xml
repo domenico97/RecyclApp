@@ -156,43 +156,43 @@
             >
 
             <TextView
-                android:text="S"
+                android:text="Sun"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
-                android:text="M"
+                android:text="Mon"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
-                android:text="T"
+                android:text="Tue"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
-                android:text="W"
+                android:text="Wed"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
-                android:text="T"
+                android:text="Thu"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
-                android:text="F"
+                android:text="Fri"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:gravity="center"/>
             <TextView
-                android:text="S"
+                android:text="Sun"
                 android:layout_height="wrap_content"
                 android:layout_width="0dp"
                 android:layout_weight="1"
