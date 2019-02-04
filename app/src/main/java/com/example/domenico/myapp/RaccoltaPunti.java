@@ -1,11 +1,13 @@
 package com.example.domenico.myapp;
 
+import android.annotation.TargetApi;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
@@ -192,4 +194,23 @@ public class RaccoltaPunti extends AppCompatActivity {
 
         return;
     }
+
+    public void TariDialog(View view) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("TARI")
+                .setMessage("La tassa sui rifiuti (TARI) è la tassa relativa alla gestione dei rifiuti in Italia.\n" +
+                        "La tassa è destinata a finanziare i costi del servizio di raccolta e smaltimento dei rifiuti, a carico dell'utilizzatore.")
+                .setPositiveButton("HO CAPITO", tariDialog).show();
+    }
+
+    DialogInterface.OnClickListener tariDialog = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    break;
+
+            }
+        }
+    };
+
 }

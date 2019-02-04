@@ -124,7 +124,7 @@ public class InfrazioneOperatoreEcologico extends FragmentActivity implements Di
             infrazioniTotali += "//"+altro;
         }
 
-        Toast.makeText(getApplicationContext(),infrazioniTotali,Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(getApplicationContext(),infrazioniTotali,Toast.LENGTH_SHORT).show();*/
         if(!infrazioniTotali.isEmpty()){
             DialogConfermaInvioInfrazione x = new DialogConfermaInvioInfrazione();
             x.show(getFragmentManager(),"alert");

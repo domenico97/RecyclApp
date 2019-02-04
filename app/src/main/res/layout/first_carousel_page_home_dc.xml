@@ -15,7 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp"
-        android:text="% Raccolta Differenziata" />
+        android:text="% Raccolta Differenziata"
+        android:textSize="24sp" />
     <LinearLayout
         android:id="@+id/progressBarWrapper"
         android:layout_width="wrap_content"
@@ -38,7 +39,8 @@
             android:layout_height="wrap_content"
 
             android:layout_gravity="end"
-            android:text="100" />
+            android:text="100"
+            android:textSize="24sp" />
     </LinearLayout>
     <LinearLayout
         android:layout_margin="20dp"
@@ -47,21 +49,26 @@
         android:layout_below="@id/progressBarWrapper"
         android:layout_centerInParent="true"
         >
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Percentuale attuale: "/>
+            android:text="Percentuale attuale: "
+            android:textSize="24sp" />
 
         <TextView
 
             android:id="@+id/percentageOfCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="20"/>
+            android:text="20"
+            android:textSize="24sp" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=" %"/>
+            android:text=" %"
+            android:textSize="24sp" />
     </LinearLayout>
 </RelativeLayout>
     <LinearLayout
