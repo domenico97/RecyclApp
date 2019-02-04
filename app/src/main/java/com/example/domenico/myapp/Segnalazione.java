@@ -178,9 +178,8 @@ public class Segnalazione extends AppCompatActivity {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Segnalazione Inviata\n" +
-                "La tua segnalazione è stata inviata. Grazie.")
-                .setPositiveButton("OK", dialogClickListener).show();
+        builder.setTitle("Segnalazione Inviata");
+        builder.setMessage("La tua segnalazione è stata inviata. Grazie.").setPositiveButton("OK", dialogClickListener).show();
         return;
 
     }

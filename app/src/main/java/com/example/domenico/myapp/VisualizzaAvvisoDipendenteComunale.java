@@ -18,7 +18,7 @@ public class VisualizzaAvvisoDipendenteComunale extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.visualizza_messaggio);
+        setContentView(R.layout.visualizza_avviso_dipendente_comunale);
 
         nomeAvviso = findViewById(R.id.nomeAvviso);
         dataAvviso = findViewById(R.id.dataAvviso);

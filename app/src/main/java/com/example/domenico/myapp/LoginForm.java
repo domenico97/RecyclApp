@@ -3,6 +3,8 @@ package com.example.domenico.myapp;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
@@ -70,7 +72,7 @@ public class LoginForm extends Activity {
 
         String mail = email.getText().toString();
         String passw = password.getText().toString();
-        boolean easy_mode = prefs.getBoolean("EASY_MODE",false);
+        boolean easy_mode = prefs.getBoolean("EASY_MODE", false);
 
         boolean cancel = false;
         View focusView = null;
@@ -159,9 +161,8 @@ public class LoginForm extends Activity {
                 editor.commit();
                 startActivity(i);
 
-                Toast.makeText(getApplicationContext(), "Nome:" + cursor.getString(1) + "Cognome: " + cursor.getString(2), Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Credenziali non corrette", Toast.LENGTH_LONG).show();
+                errore("Credenziali non corrette");
             }
         }
 
@@ -189,6 +190,24 @@ public class LoginForm extends Activity {
         Intent i = new Intent();
         i.setClass(getApplicationContext(), FormRegistrazione.class);
         startActivity(i);
+    }
+
+    private void errore(String error) {
+        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int which) {
+                switch (which) {
+                    case DialogInterface.BUTTON_POSITIVE:
+                        break;
+                }
+            }
+        };
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Attenzione");
+        builder.setMessage(error).setPositiveButton("Ho capito", dialogClickListener).show();
+
+        return;
+
     }
 }
 

@@ -24,6 +24,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/message"
+                    android:tint="@color/white"
                     android:layout_gravity="center"/>
                 <EditText
                     android:id="@+id/email"
@@ -53,6 +54,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:src="@drawable/pswd"
+                    android:tint="@color/white"
                     android:layout_gravity="center"/>
                 <EditText
                     android:id="@+id/pswrdd"

@@ -214,7 +214,6 @@
         android:layout_width="match_parent"
         android:layout_height="47dp"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
         app:itemIconTint="@drawable/bottom_navigation_colors2"
         app:itemTextColor="@drawable/bottom_navigation_colors2"
         app:menu="@menu/navigation" />

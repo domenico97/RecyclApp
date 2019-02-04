@@ -91,10 +91,10 @@
         android:layout_marginLeft="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginRight="10dp"
-        android:text="PROVA"
-        android:textAlignment="center"
+        android:text="Non sai cosa si butta nell'INDIFFERENZIATO?"
+
         android:textColor="@color/black"
-        android:textSize="22sp" />
+        android:textSize="19sp" />
 
     <Button
         android:id="@+id/buttonIdentifica"

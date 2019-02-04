@@ -113,7 +113,7 @@ public class EasyMode extends AppCompatActivity {
                 finalTVText+="nell' UMIDO?";
                 break;
             case "indifferenziato":
-                finalTVText+="nell' INIDFFERENZIATO?";
+                finalTVText+="nell' INDIFFERENZIATO?";
                 break;
             case "alluminio":
                 finalTVText+="nell' ALLUMINIO?";

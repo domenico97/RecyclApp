@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/login_layout">
 
     <TextView
@@ -35,9 +36,10 @@
                 android:padding="16dp">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
+                    android:layout_width="16dp"
+                    android:layout_height="15dp"
                     android:layout_gravity="center"
+                    android:tint="@color/white"
                     android:src="@drawable/usrusr" />
 
                 <LinearLayout
@@ -78,6 +80,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
+                    android:tint="@color/white"
                     android:src="@drawable/usrusr" />
 
                 <LinearLayout
@@ -118,7 +121,8 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/usrusr" />
+                    android:tint="@color/white"
+                    android:src="@drawable/cf" />
 
                 <EditText
                     android:id="@+id/codiceFiscale"
@@ -148,6 +152,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:tint="@color/white"
                     android:layout_gravity="center"
                     android:src="@drawable/message" />
 
@@ -179,6 +184,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:tint="@color/white"
                     android:layout_gravity="center"
                     android:src="@drawable/pswd" />
 
@@ -211,6 +217,7 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:tint="@color/white"
                     android:layout_gravity="center"
                     android:src="@drawable/phonemob" />
 
@@ -242,8 +249,9 @@
                 <ImageView
                     android:layout_width="20dp"
                     android:layout_height="20dp"
+                    android:tint="@color/white"
                     android:layout_gravity="center"
-                    android:src="@drawable/phonemob" />
+                    android:src="@drawable/location_pointer" />
 
                 <EditText
                     android:id="@+id/indirizzo"
