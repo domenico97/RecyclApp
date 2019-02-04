@@ -156,7 +156,7 @@ public class CambiaTipologiaRifiuto extends FragmentActivity implements DialogCo
             values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
             values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, "");
             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
-            invioEffettuato();
+
         }
 
         Log.d("CALENDARIO", "rows affected: " + x);
@@ -178,26 +178,7 @@ public class CambiaTipologiaRifiuto extends FragmentActivity implements DialogCo
         finish();
     }
 
-    private void invioEffettuato() {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        finish();
-                        break;
 
-                }
-            }
-        };
-
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Notifica");
-        builder.setMessage("L'avviso è stato inviato ")
-                .setPositiveButton("Ho capito", dialogClickListener).show();
-
-        return;
-
-    }
 
     private void errore(String error) {
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {

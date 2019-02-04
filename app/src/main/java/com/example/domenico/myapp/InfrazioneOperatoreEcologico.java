@@ -186,7 +186,7 @@ public class InfrazioneOperatoreEcologico extends FragmentActivity implements Di
     @Override
     public void onDialogNegativeClick(DialogFragment dialog) {
         Toast.makeText(getApplicationContext(),"Operazione Annullata",Toast.LENGTH_SHORT).show();
-
+        return;
 
     }
 

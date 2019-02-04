@@ -242,6 +242,7 @@
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginLeft="10dp"
+        android:foregroundGravity="center"
         android:layout_marginRight="10dp"
         android:layout_above="@id/navigationView"
         app:autoPlay="false"
@@ -251,7 +252,6 @@
         app:strokeColor="@color/colorPrimary"
         app:strokeWidth="1dp">
         <!-- app:slideInterval="3000"-->
-
     </com.synnapps.carouselview.CarouselView>
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"

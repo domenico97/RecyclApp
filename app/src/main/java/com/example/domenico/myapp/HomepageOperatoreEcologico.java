@@ -29,6 +29,9 @@ import android.widget.Toast;
 
 import com.google.zxing.Result;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 
 public class HomepageOperatoreEcologico extends FragmentActivity implements SimpleScannerFragment.NoticeDialogListener{
 
@@ -41,6 +44,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
     TextView puntiText;
 
     String nome,cognome,via,citta,infrazioni,punti,cf;
+    Boolean isAlreadyScanned = false;
     private BottomNavigationView bottomNavigationView;
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
@@ -119,7 +123,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
     @Override
     public void resultReady(Result rawResult) {
 
-
+        isAlreadyScanned=false;
         String s = rawResult.getText();
         if(rawResult.getBarcodeFormat().toString().equals("QR_CODE")) {
             String[] tokens = s.split("\\:");
@@ -146,6 +150,8 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
             db = MainActivity.dbHelper.getWritableDatabase();
 
+            checkIfIsAlreadyScanned();
+
             Cursor c = db.rawQuery("SELECT cf,infrazioni,punti FROM  utenti where cf = ?", new String[]{cf});
             if (c.moveToLast()) {
 
@@ -155,6 +161,7 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
                     Toast.makeText(getApplicationContext(), "Infrazioni: "+infrazioni, Toast.LENGTH_SHORT).show();
                 infrazioniText.setText(infrazioni);
                 puntiText.setText(punti);
+
 
 
             }
@@ -171,6 +178,35 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
 
 
+    }
+
+    private void checkIfIsAlreadyScanned() {
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        String dataAttuale = sdf.format(cal.getTime());
+
+        Cursor c = db.rawQuery("SELECT data_segnalazione,destinatario FROM messaggi where tipo = ?", new String[]{"dip comunale"});
+        if (c != null && c.getCount() > 0) {
+            for (int j = 0; j < c.getCount(); j++) {
+                if (c.moveToPosition(j)) {
+                    Log.d("DBUG", "ciSta");
+
+                    String data = c.getString(0);
+                    String destinatario = c.getString(1);
+
+                    Log.d("DBUG", data + destinatario);
+                    if (data.equals(dataAttuale) && destinatario.equals(cf)) {
+                        Log.d("DBUG", "giaInviata");
+                        isAlreadyScanned=true;
+
+                        return;
+                    }
+
+
+                }
+            }
+        }
     }
 
 
@@ -194,16 +230,50 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
     public void tuttoOk(View view) {
 
-        if(nome!=null){
+        if(isAlreadyScanned){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Attenzione");
+            builder.setMessage("Hai già scansionato questo codice oggi")
+                    .setPositiveButton("OK", dialogClickListener).show();
+        }
+        else if(nome!=null){
 
-            inviaIntent(TuttoOkOperatoreEcologico.class);
-            resetScan();
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Tutto OK");
+            builder.setMessage("Vuoi confermare?")
+                    .setPositiveButton("Si", tuttoOkListener)
+                    .setNegativeButton("No",tuttoOkListener).show();
+
 
         }
         else{
             Toast.makeText(getApplicationContext(),"Dati non rilevati",Toast.LENGTH_SHORT).show();
         }
     }
+
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    break;
+
+            }
+        }
+    };
+
+
+    DialogInterface.OnClickListener tuttoOkListener = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    inviaIntent(TuttoOkOperatoreEcologico.class);
+                    resetScan();
+                    break;
+                case DialogInterface.BUTTON_NEGATIVE:
+                    break;
+            }
+        }
+    };
 
     public void inviaIntent (Class cls){
         Intent i = new Intent();
@@ -221,7 +291,13 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
     public void infrazione(View view) {
 
-        if(nome!=null){
+        if(isAlreadyScanned){
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Attenzione");
+            builder.setMessage("Hai già scansionato questo codice oggi")
+                    .setPositiveButton("OK", dialogClickListener).show();
+        }
+        else if(nome!=null){
 
             inviaIntent(InfrazioneOperatoreEcologico.class);
             resetScan();

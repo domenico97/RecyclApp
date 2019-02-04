@@ -30,6 +30,7 @@ public class DettagliSegnalazioneDCOperatore extends Activity {
     private DatabaseOpenHelper dbHelper;
     private SQLiteDatabase db = null;
     SharedPreferences prefs;
+    String codiceFiscale = "Assessorato all'ambiente";
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -135,7 +136,7 @@ public class DettagliSegnalazioneDCOperatore extends Activity {
     public void inviaInfrazione(View view) {
 
             int id = prefs.getInt("ID",0);
-            String codiceFiscale = "Assessorato all'ambiente";
+
             Cursor c = db.rawQuery("SELECT cf FROM utenti where id = ?", new String[]{"" + id});
             if (c != null && c.getCount() > 0) {
                 if (c.moveToFirst()) {
@@ -147,16 +148,14 @@ public class DettagliSegnalazioneDCOperatore extends Activity {
 
 
 
-            ContentValues values = new ContentValues();
-            values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "Sanzione");
-            values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, infrazioni);
-            values.put(SchemaDB.Tavola.COLUMN_OGGETTO, "Sanzione");
-            values.put(SchemaDB.Tavola.COLUMN_MITTENTE, codiceFiscale);
-            values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino");
-            values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, dataInfrazione);
-            values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, cfDaSegnalare);
-            Log.d("DBUG",""+db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values));
-            confermaInvio();
+
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Invia Sanzione");
+        builder.setMessage("Sei sicuro di voler inviare la sanzione ? ")
+                .setPositiveButton("Si", dialogClickListener)
+                .setNegativeButton("No", dialogClickListener).show();
+
 
     }
 
@@ -164,42 +163,44 @@ public class DettagliSegnalazioneDCOperatore extends Activity {
         finish();
     }
 
-    private void errore(String error) {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        break;
-                }
+    DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    confermaInvio();
+                    break;
+
             }
-        };
+        }
+    };
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Attenzione");
-        builder.setMessage(error).setPositiveButton("Ho capito", dialogClickListener).show();
+    DialogInterface.OnClickListener sanzioneInviata = new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int which) {
+            switch (which) {
+                case DialogInterface.BUTTON_POSITIVE:
+                    finish();
+                    break;
 
-        return;
-
-    }
+            }
+        }
+    };
 
     private void confermaInvio() {
-        DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog, int which) {
-                switch (which) {
-                    case DialogInterface.BUTTON_POSITIVE:
-                        Intent intent = new Intent();
-                        intent.setClass(getApplicationContext(), HomepageDipendenteComunale.class);
-                        startActivity(intent);
-                        break;
 
-                }
-            }
-        };
+        ContentValues values = new ContentValues();
+        values.put(SchemaDB.Tavola.COLUMN_TIPO_SEGNALAZIONE, "Sanzione");
+        values.put(SchemaDB.Tavola.COLUMN_MESSAGGIO, infrazioni);
+        values.put(SchemaDB.Tavola.COLUMN_OGGETTO, "Sanzione");
+        values.put(SchemaDB.Tavola.COLUMN_MITTENTE, codiceFiscale);
+        values.put(SchemaDB.Tavola.COLUMN_TIPO, "cittadino");
+        values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, dataInfrazione);
+        values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, cfDaSegnalare);
+        Log.d("DBUG",""+db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Sanzione Inviata\n" +
                 "La sanzione è stata inviata.")
-                .setPositiveButton("OK", dialogClickListener).show();
+                .setPositiveButton("OK", sanzioneInviata).show();
         return;
 
     }

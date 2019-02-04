@@ -3,12 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true">
     <TextView
         android:id="@+id/raccoltaDifferenziataTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
         android:text="% Raccolta Differenziata"/>
     <LinearLayout
         android:id="@+id/progressBarWrapper"
@@ -57,7 +60,7 @@
             android:layout_height="wrap_content"
             android:text=" %"/>
     </LinearLayout>
-
+</RelativeLayout>
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
