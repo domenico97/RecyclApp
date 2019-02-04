@@ -51,6 +51,7 @@ public class DettagliSegnalazioneDCCittadino extends Activity {
         cfSegnalatore.setText(i.getStringExtra("mittente"));
         dataSegnalazione.setText(i.getStringExtra("data"));
         infrazioni = i.getStringExtra("messaggio");
+        descrizioneInfrazione.setText(infrazioni);
     }
 
     public void back(View view) {

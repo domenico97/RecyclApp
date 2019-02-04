@@ -54,98 +54,160 @@
         android:layout_height="wrap_content">
 
 
-        <TableRow>
+        <TableRow
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Segnalatore : "/>
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Operatore"/>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Segnalatore : "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-        </TableRow>
-
-        <TableRow>
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="CF Segnalatore : "/>
-                <TextView
-                    android:id="@+id/cfSegnalatore"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DDDDDDD"/>
-
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Operatore"
+                android:textSize="18sp" />
 
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginBottom="20dp">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="CF Segnalatore : "
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Data di segnalazione: "/>
-                <TextView
-                    android:id="@+id/dataSegnalazione"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DDDDDDD"/>
+            <TextView
+                android:id="@+id/cfSegnalatore"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
 
 
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginBottom="20dp">
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cittadino segnalato: "/>
+                android:text="Data di segnalazione: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/dataSegnalazione"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
+
+
+        </TableRow>
+
+        <TableRow android:layout_marginBottom="20dp">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Cittadino segnalato: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/cfSegnalato"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DDDDDDD"/>
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
 
 
         </TableRow>
 
-        <TableRow android:gravity="center">
+        <TableRow
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descrizione Segnalazione" />
+                android:text="Descrizione Segnalazione"
+                android:textSize="20sp" />
 
         </TableRow>
 
         <TableRow>
 
 
-                <TextView
-                    android:id="@+id/descrizioneInfrazione"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="DDDDDDD"/>
+            <TextView
+                android:id="@+id/descrizioneInfrazione"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
 
         </TableRow>
 
 
 
     </TableLayout>
+
+    <FrameLayout
+        android:id="@+id/inviaButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/navigationView"
+        android:layout_alignEnd="@id/navigationView"
+        android:layout_alignRight="@id/navigationView"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="30dp">
+
+        <android.support.v7.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:onClick="inviaInfrazione"
+            app:cardCornerRadius="7dp"
+            app:cardElevation="10dp">
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/holo_green_dark"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Invia"
+                    android:textColor="#FFFFFF" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>
+
+    </FrameLayout>
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"

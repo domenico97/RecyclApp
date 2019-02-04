@@ -65,4 +65,5 @@ public class SegnalazioneBean {
     public void setNumeroSegnalazione(int numeroSegnalazione) {
         this.numeroSegnalazione = numeroSegnalazione;
     }
+
 }

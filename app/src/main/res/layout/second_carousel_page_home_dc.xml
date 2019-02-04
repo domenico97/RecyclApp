@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/constraintLayout3"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
+        android:background="#000000"
+        android:padding="3dp">
+
+        <TableRow android:background="@color/colorPrimary"
+            android:layout_marginBottom="2dp">
+
+            <TextView
+                android:layout_gravity="center_horizontal"
+                android:text="Ultime Segnalazioni"
+                />
+
+        </TableRow>
+
+        <TableRow android:background="@color/background_holo_light">
+
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/noResult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Nessun Risultato" />
+
+                <ListView
+                    android:id="@+id/mylistview"
+                    android:layout_width="match_parent"
+                    android:layout_height="390dp"
+                    android:layout_margin="10dp"></ListView>
+
+            </FrameLayout>
+
+
+        </TableRow>
+
+    </TableLayout>
+</RelativeLayout>

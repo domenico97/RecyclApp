@@ -43,6 +43,7 @@ public class SegnalazioniDipendenteComunale extends FragmentActivity {
     private SQLiteDatabase db = null;
     ArrayList<SegnalazioneBean> segnalazioni = new ArrayList<SegnalazioneBean>();
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.segnalazioni_dipendente_comunale);
@@ -169,7 +170,7 @@ public class SegnalazioniDipendenteComunale extends FragmentActivity {
     }
 
 
-    class SegnalazioniAdapter extends ArrayAdapter {
+     class SegnalazioniAdapter extends ArrayAdapter {
 
         private int resource;
         private LayoutInflater inflater;
@@ -228,4 +229,6 @@ public class SegnalazioniDipendenteComunale extends FragmentActivity {
     public void back(View view) {
         finish();
     }
+
+
 }

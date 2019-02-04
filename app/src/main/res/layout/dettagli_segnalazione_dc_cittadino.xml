@@ -54,64 +54,81 @@
         android:layout_height="wrap_content">
 
 
-        <TableRow>
+        <TableRow
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Segnalatore : "/>
+                android:text="Segnalatore : "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Cittadino"/>
+                android:text="Cittadino"
+                android:textSize="18sp" />
 
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginBottom="20dp">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="CF Segnalatore : "/>
+                android:text="CF Segnalatore : "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/cfSegnalatore"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DDDDDDD"/>
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
 
 
         </TableRow>
 
-        <TableRow>
+        <TableRow android:layout_marginBottom="20dp">
 
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Data di segnalazione: "/>
+                android:text="Data di segnalazione: "
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/dataSegnalazione"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DDDDDDD"/>
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
 
 
         </TableRow>
 
 
-
-        <TableRow android:gravity="center">
+        <TableRow
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:gravity="center">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Descrizione Segnalazione" />
+                android:text="Descrizione Segnalazione"
+                android:textSize="20sp" />
 
         </TableRow>
 
@@ -123,7 +140,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="DDDDDDD"/>
+                android:text="DDDDDDD"
+                android:textSize="18sp" />
 
         </TableRow>
 
