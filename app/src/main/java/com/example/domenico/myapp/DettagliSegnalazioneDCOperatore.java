@@ -118,7 +118,7 @@ public class DettagliSegnalazioneDCOperatore extends Activity {
             values.put(SchemaDB.Tavola.COLUMN_DATA_SEGNALAZIONE, data);
             values.put(SchemaDB.Tavola.COLUMN_DESTINATARIO, cf.getText().toString());
             db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values);
-            confermaInvio(); */
+            confermaInvio();  */
 
     }
 
