@@ -38,8 +38,8 @@ public class SimpleScannerFragment extends Fragment implements ZXingScannerView.
     @Override
     public void handleResult(Result rawResult) {
 
-        Toast.makeText(getActivity(), "Contents = " + rawResult.getText() +
-                ", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(getActivity(), "Contents = " + rawResult.getText() +
+                ", Format = " + rawResult.getBarcodeFormat().toString(), Toast.LENGTH_SHORT).show();*/
 
 
 

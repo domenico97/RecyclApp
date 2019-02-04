@@ -112,7 +112,7 @@ public class SegnalazioniDipendenteComunale extends FragmentActivity {
                 }
             }
         } else if (c.getCount() == 0) {
-            Toast.makeText(getApplicationContext(),"NO SEGN",Toast.LENGTH_SHORT).show();
+            /*Toast.makeText(getApplicationContext(),"NO SEGN",Toast.LENGTH_SHORT).show();*/
         }
 
 
@@ -151,7 +151,7 @@ public class SegnalazioniDipendenteComunale extends FragmentActivity {
         SegnalazioneBean seg;
         seg = (SegnalazioneBean) customAdapter.getItem(tag);
 
-        Toast.makeText(getApplicationContext(),seg.getMittente()+seg.getDestinatario()+seg.getMessaggio()+"",Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(getApplicationContext(),seg.getMittente()+seg.getDestinatario()+seg.getMessaggio()+"",Toast.LENGTH_SHORT).show();*/
         boolean x = customAdapter.getIsCitizen();
 
         Intent i = new Intent();

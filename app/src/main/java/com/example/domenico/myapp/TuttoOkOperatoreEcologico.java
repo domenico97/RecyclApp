@@ -110,7 +110,7 @@ public class TuttoOkOperatoreEcologico extends Activity {
 
         int x = db.update(SchemaDB.Tavola.TABLE_NAME, cv, SchemaDB.Tavola.COLUMN_CF + "= ?", new String[] {cf});
         Log.d("DBUG","rows affected: "+x);
-        Toast.makeText(getApplicationContext(), "Punti aggiornati: "+puntiAggiornati, Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(getApplicationContext(), "Punti aggiornati: "+puntiAggiornati, Toast.LENGTH_SHORT).show();*/
 
     }
 

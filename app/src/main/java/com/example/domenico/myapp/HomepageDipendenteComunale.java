@@ -188,7 +188,7 @@ public class HomepageDipendenteComunale extends Activity {
                     }
                 } else if (c.getCount() == 0) {
                     noResult.setVisibility(View.VISIBLE);
-                    Toast.makeText(getApplicationContext(),"NO SEGN",Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(getApplicationContext(),"NO SEGN",Toast.LENGTH_SHORT).show();*/
                 }
 
                 for (SegnalazioneBean x : segnalazioni){
@@ -223,7 +223,7 @@ public class HomepageDipendenteComunale extends Activity {
         SegnalazioneBean seg;
         seg = (SegnalazioneBean) customAdapter.getItem(tag);
 
-        Toast.makeText(getApplicationContext(),seg.getMittente()+seg.getDestinatario()+seg.getMessaggio()+"",Toast.LENGTH_SHORT).show();
+        /*Toast.makeText(getApplicationContext(),seg.getMittente()+seg.getDestinatario()+seg.getMessaggio()+"",Toast.LENGTH_SHORT).show();*/
         boolean x;
         if(seg.getDestinatario().isEmpty())
             x=true;

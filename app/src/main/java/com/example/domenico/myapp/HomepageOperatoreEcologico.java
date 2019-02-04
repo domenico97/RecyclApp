@@ -157,8 +157,8 @@ public class HomepageOperatoreEcologico extends FragmentActivity implements Simp
 
                 infrazioni = ""+c.getInt(1);
                 punti = ""+c.getInt(2);
-                    Toast.makeText(getApplicationContext(), "Punti: "+punti, Toast.LENGTH_SHORT).show();
-                    Toast.makeText(getApplicationContext(), "Infrazioni: "+infrazioni, Toast.LENGTH_SHORT).show();
+                    /*Toast.makeText(getApplicationContext(), "Punti: "+punti, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Infrazioni: "+infrazioni, Toast.LENGTH_SHORT).show();*/
                 infrazioniText.setText(infrazioni);
                 puntiText.setText(punti);
 

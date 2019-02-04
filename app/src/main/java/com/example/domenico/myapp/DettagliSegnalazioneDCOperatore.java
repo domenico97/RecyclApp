@@ -198,8 +198,8 @@ public class DettagliSegnalazioneDCOperatore extends Activity {
         Log.d("DBUG",""+db.insert(SchemaDB.Tavola.TABLE_NAME1, null, values));
 
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage("Sanzione Inviata\n" +
-                "La sanzione è stata inviata.")
+        builder.setTitle("Sanzione Inviata")
+                .setMessage("La sanzione è stata inviata.")
                 .setPositiveButton("OK", sanzioneInviata).show();
         return;
 

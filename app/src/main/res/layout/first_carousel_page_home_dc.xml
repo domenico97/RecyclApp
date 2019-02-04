@@ -6,13 +6,16 @@
 <RelativeLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_gravity="center"
     android:layout_centerInParent="true">
+
     <TextView
         android:id="@+id/raccoltaDifferenziataTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:text="% Raccolta Differenziata"/>
+        android:layout_marginBottom="30dp"
+        android:text="% Raccolta Differenziata" />
     <LinearLayout
         android:id="@+id/progressBarWrapper"
         android:layout_width="wrap_content"
